@@ -2,13 +2,22 @@
 
 // Variables globales del test
 let currentStep = 1;
-const totalSteps = 14;
+const totalSteps = 20; // Aumentado para incluir páginas de relleno
 let testAnswers = {};
 let selectedOptions = {};
 
 // Configuración de Mapbox
 const MAPBOX_ACCESS_TOKEN = 'pk.eyJ1IjoiYWd1dGkxOTAyIiwiYSI6ImNtZXV2YjEzNjBiNXoyaXM0cjhxYXE4NDQifQ.MuOAP6Uk69hrzJ1bZHz-6g';
 let geocoder = null;
+
+// Configuración de páginas de relleno
+const fillerPages = [
+    { step: 3, title: "¡Genial!", description: "La posición del Sol, la Luna y los planetas en el día en que nacimos y en el momento en que respiramos por primera vez determina nuestra carta natal.", illustration: "meditation" },
+    { step: 6, title: "Cosas que se prometen", description: "Comprende lo que te han prometido, los temas en los que debes profundizar, tus tendencias y la actitud que debes tener.", illustration: "meditation" },
+    { step: 9, title: "La carta natal no es una adivinación", description: "Es una ayuda para interpretar científicamente la astrología. Sólo puede ser creada e interpretada por personas experimentadas y certificadas.", illustration: "astrology" },
+    { step: 12, title: "Descubre tu potencial", description: "Cada respuesta nos acerca más a revelar tu verdadero potencial astrológico y las oportunidades que el universo tiene preparadas para ti.", illustration: "potential" },
+    { step: 15, title: "Tu camino astral", description: "Estás a punto de descubrir el camino que las estrellas han trazado para ti. Cada paso te acerca más a tu destino.", illustration: "path" }
+];
 
 // Inicialización cuando se carga la página
 document.addEventListener('DOMContentLoaded', function() {
@@ -435,11 +444,19 @@ function showStep(stepNumber) {
         step.classList.remove('active');
     });
     
-    // Mostrar paso actual
-    const currentStepElement = document.getElementById(`step${stepNumber}`);
-    if (currentStepElement) {
-        currentStepElement.style.display = 'block';
-        currentStepElement.classList.add('active');
+    // Verificar si es una página de relleno
+    const fillerPage = fillerPages.find(page => page.step === stepNumber);
+    
+    if (fillerPage) {
+        // Mostrar página de relleno
+        showFillerPage(fillerPage);
+    } else {
+        // Mostrar el paso normal del test
+        const currentStepElement = document.getElementById(`step${stepNumber}`);
+        if (currentStepElement) {
+            currentStepElement.style.display = 'block';
+            currentStepElement.classList.add('active');
+        }
     }
     
     // Actualizar estado de navegación
@@ -524,6 +541,84 @@ function previousStep() {
         
         // Scroll al top
         window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+}
+
+// Mostrar página de relleno
+function showFillerPage(fillerPage) {
+    // Ocultar contenedor del test
+    const testContainer = document.querySelector('.test-container');
+    if (testContainer) {
+        testContainer.innerHTML = generateFillerPageHTML(fillerPage);
+    }
+}
+
+// Generar HTML de página de relleno
+function generateFillerPageHTML(fillerPage) {
+    return `
+        <div class="filler-page">
+            <div class="filler-illustration ${fillerPage.illustration}">
+                ${generateIllustrationHTML(fillerPage.illustration)}
+            </div>
+            
+            <h2 class="filler-title">${fillerPage.title}</h2>
+            
+            <p class="filler-description">${fillerPage.description}</p>
+            
+            <div class="filler-button-container">
+                <button class="filler-btn" onclick="nextStep()">
+                    <span>Continuar</span>
+                    <i class="fas fa-arrow-right"></i>
+                </button>
+            </div>
+        </div>
+    `;
+}
+
+// Generar HTML de ilustración según el tipo
+function generateIllustrationHTML(type) {
+    switch(type) {
+        case 'meditation':
+            return `
+                <div class="person-figure">
+                    <div class="head"></div>
+                    <div class="body"></div>
+                </div>
+                <div class="celestial-elements">
+                    <div class="sun"></div>
+                    <div class="moon"></div>
+                    <div class="stars"></div>
+                </div>
+            `;
+        case 'astrology':
+            return `
+                <div class="astrology-circle">
+                    <div class="orbit-dots"></div>
+                    <div class="central-sun"></div>
+                    <div class="planets"></div>
+                </div>
+            `;
+        case 'potential':
+            return `
+                <div class="potential-stars">
+                    <div class="star-group-1"></div>
+                    <div class="star-group-2"></div>
+                    <div class="star-group-3"></div>
+                </div>
+            `;
+        case 'path':
+            return `
+                <div class="astral-path">
+                    <div class="path-line"></div>
+                    <div class="path-stars"></div>
+                    <div class="path-destination"></div>
+                </div>
+            `;
+        default:
+            return `
+                <div class="head"></div>
+                <div class="body"></div>
+            `;
     }
 }
 
