@@ -697,7 +697,7 @@ function redirectToEmailPage() {
     
     // Redirigir después de 2 segundos
     setTimeout(() => {
-        window.location.href = 'email.html';
+        window.location.href = 'email-request.html';
     }, 2000);
 }
 
