@@ -1225,11 +1225,11 @@ body {
     justify-content: center;
 }
 
-/* Persona central - Diseño minimalista */
+/* Persona central - Exactamente como en las imágenes */
 .person-figure {
     position: relative;
-    width: 180px;
-    height: 180px;
+    width: 200px;
+    height: 200px;
     z-index: 10;
 }
 
@@ -1239,68 +1239,47 @@ body {
     left: 50%;
     transform: translateX(-50%);
     width: 80px;
-    height: 100px;
-    background: #6A40E8;
+    height: 120px;
+    background: #8b5cf6;
     border-radius: 20px;
 }
 
 .person-head {
     position: absolute;
-    top: 20px;
+    top: 30px;
     left: 50%;
     transform: translateX(-50%);
-    width: 70px;
-    height: 50px;
-    background: #F7C852;
-    border-radius: 35px;
+    width: 60px;
+    height: 60px;
+    background: #fbbf24;
+    border-radius: 50%;
 }
 
 .person-hair {
     position: absolute;
-    top: 10px;
+    top: 20px;
     left: 50%;
     transform: translateX(-50%);
-    width: 60px;
-    height: 30px;
-    background: #2B303A;
-    border-radius: 30px 30px 0 0;
+    width: 70px;
+    height: 40px;
+    background: #1f2937;
+    border-radius: 35px 35px 0 0;
 }
 
-.person-arms {
+.person-hands {
     position: absolute;
-    top: 60px;
+    top: 80px;
     left: 50%;
     transform: translateX(-50%);
-    width: 140px;
-    height: 4px;
-    background: #6A40E8;
-    border-radius: 2px;
+    width: 40px;
+    height: 40px;
+    background: #fbbf24;
+    border-radius: 50%;
+    box-shadow: 0 0 0 4px #8b5cf6;
 }
 
-.person-arms::before {
-    content: '';
-    position: absolute;
-    left: -30px;
-    top: 0;
-    width: 30px;
-    height: 4px;
-    background: #6A40E8;
-    border-radius: 2px;
-}
-
-.person-arms::after {
-    content: '';
-    position: absolute;
-    right: -30px;
-    top: 0;
-    width: 30px;
-    height: 4px;
-    background: #6A40E8;
-    border-radius: 2px;
-}
-
-/* Elementos astrológicos - Diseño minimalista */
-.astrological-elements {
+/* Elementos celestiales - Exactamente como en las imágenes */
+.celestial-elements {
     position: absolute;
     top: 0;
     left: 0;
@@ -1308,32 +1287,101 @@ body {
     height: 100%;
 }
 
-/* Círculo punteado principal */
-.astrological-elements::before {
-    content: '';
+/* Sol y luna central */
+.sun-moon-center {
     position: absolute;
     top: 50%;
     right: 20%;
     transform: translateY(-50%);
-    width: 120px;
-    height: 120px;
-    border: 2px dotted #F7C852;
-    border-radius: 50%;
+    width: 100px;
+    height: 100px;
 }
 
-/* Círculo punteado secundario */
-.astrological-elements::after {
-    content: '';
+.sun-core {
     position: absolute;
-    top: 30%;
-    right: 10%;
-    width: 80px;
-    height: 80px;
-    border: 2px dotted #D3D3D3;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 60px;
+    height: 60px;
+    background: #fbbf24;
     border-radius: 50%;
+    box-shadow: 0 0 20px rgba(251, 191, 36, 0.5);
 }
 
-/* Elementos decorativos minimalistas */
+.moon-crescent {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 40px;
+    height: 40px;
+    background: #fbbf24;
+    border-radius: 50%;
+    clip-path: polygon(50% 0%, 100% 0%, 100% 100%, 50% 100%, 0% 50%);
+}
+
+/* Lunas crecientes laterales */
+.crescent-moons {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.crescent-left,
+.crescent-right {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    background: #fbbf24;
+    border-radius: 50%;
+    clip-path: polygon(50% 0%, 100% 0%, 100% 100%, 50% 100%, 0% 50%);
+}
+
+.crescent-left {
+    top: 30%;
+    left: 20%;
+    transform: rotate(45deg);
+}
+
+.crescent-right {
+    top: 30%;
+    right: 20%;
+    transform: rotate(-45deg);
+}
+
+/* Formas de nube */
+.cloud-shapes {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.cloud-left,
+.cloud-right {
+    position: absolute;
+    width: 40px;
+    height: 25px;
+    background: #93c5fd;
+    border-radius: 20px;
+    opacity: 0.7;
+}
+
+.cloud-left {
+    bottom: 30%;
+    left: 15%;
+}
+
+.cloud-right {
+    bottom: 30%;
+    right: 15%;
+}
+
+/* Elementos orbitales para otras páginas */
 .orbital-rings {
     position: absolute;
     top: 0;
@@ -1342,68 +1390,45 @@ body {
     height: 100%;
 }
 
-/* Puntos decorativos */
-.orbital-rings::before,
-.orbital-rings::after {
-    content: '';
-    position: absolute;
-    width: 8px;
-    height: 8px;
-    background: #2B303A;
-    border-radius: 50%;
-}
-
+/* Círculo punteado principal */
 .orbital-rings::before {
-    top: 25%;
-    left: 25%;
-}
-
-.orbital-rings::after {
-    top: 60%;
-    left: 60%;
-}
-
-/* Puntos amarillos */
-.orbital-rings .star-1,
-.orbital-rings .star-2 {
-    position: absolute;
-    width: 8px;
-    height: 8px;
-    background: #F7C852;
-    border-radius: 50%;
-}
-
-.orbital-rings .star-1 {
-    top: 40%;
-    right: 30%;
-}
-
-.orbital-rings .star-2 {
-    bottom: 30%;
-    right: 20%;
-}
-
-/* Círculo objetivo en la esquina superior derecha */
-.starburst-top {
-    position: absolute;
-    top: 15%;
-    right: 15%;
-    width: 25px;
-    height: 25px;
-    background: #2B303A;
-    border-radius: 50%;
-}
-
-.starburst-top::before {
     content: '';
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    width: 200px;
+    height: 200px;
+    border: 2px dotted #d1d5db;
+    border-radius: 50%;
+}
+
+/* Planetas orbitando */
+.planet {
+    position: absolute;
+    background: #1f2937;
+    border-radius: 50%;
+}
+
+.planet-1 {
+    width: 15px;
+    height: 15px;
+    top: 10%;
+    left: 50%;
+}
+
+.planet-2 {
     width: 12px;
     height: 12px;
-    background: white;
-    border-radius: 50%;
+    top: 50%;
+    right: 10%;
+}
+
+.planet-3 {
+    width: 18px;
+    height: 18px;
+    bottom: 20%;
+    left: 20%;
 }
 
 /* Responsive */
