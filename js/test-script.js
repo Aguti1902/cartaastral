@@ -355,7 +355,6 @@ function showStep(stepNumber) {
     console.log(`📝 Pasos encontrados: ${allSteps.length}`);
     
     allSteps.forEach(step => {
-        step.style.display = 'none';
         step.classList.remove('active');
     });
     
@@ -364,7 +363,6 @@ function showStep(stepNumber) {
     console.log(`🎯 Elemento del paso ${stepNumber}:`, currentStepElement);
     
     if (currentStepElement) {
-        currentStepElement.style.display = 'block';
         currentStepElement.classList.add('active');
         console.log(`✅ Paso ${stepNumber} mostrado correctamente`);
     } else {
