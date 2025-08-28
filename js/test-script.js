@@ -12,11 +12,11 @@ let geocoder = null;
 
 // Configuración de páginas de relleno
 const fillerPages = [
-    { step: 3, title: "¡Genial!", description: "La posición del Sol, la Luna y los planetas en el día en que nacimos y en el momento en que respiramos por primera vez determina nuestra carta natal.", illustration: "meditation" },
-    { step: 6, title: "Cosas que se prometen", description: "Comprende lo que te han prometido, los temas en los que debes profundizar, tus tendencias y la actitud que debes tener.", illustration: "meditation" },
-    { step: 9, title: "La carta natal no es una adivinación", description: "Es una ayuda para interpretar científicamente la astrología. Sólo puede ser creada e interpretada por personas experimentadas y certificadas.", illustration: "astrology" },
-    { step: 12, title: "Descubre tu potencial", description: "Cada respuesta nos acerca más a revelar tu verdadero potencial astrológico y las oportunidades que el universo tiene preparadas para ti.", illustration: "potential" },
-    { step: 15, title: "Tu camino astral", description: "Estás a punto de descubrir el camino que las estrellas han trazado para ti. Cada paso te acerca más a tu destino.", illustration: "path" }
+    { step: 3, title: "¡Genial!", description: "La posición del Sol, la Luna y los planetas en el día en que nacimos y en el momento en que respiramos por primera vez determina nuestra carta natal.", image: "images/Fortune Telling with Crystal Balls and Books.png", alt: "Bola de cristal y libros de adivinación" },
+    { step: 6, title: "Cosas que se prometen", description: "Comprende lo que te han prometido, los temas en los que debes profundizar, tus tendencias y la actitud que debes tener.", image: "images/Illustration of Fortune Telling Session.png", alt: "Sesión de adivinación" },
+    { step: 9, title: "La carta natal no es una adivinación", description: "Es una ayuda para interpretar científicamente la astrología. Sólo puede ser creada e interpretada por personas experimentadas y certificadas.", image: "images/Illustration of Tarot Reader with Cards.png", alt: "Lector de tarot con cartas" },
+    { step: 12, title: "Descubre tu potencial", description: "Cada respuesta nos acerca más a revelar tu verdadero potencial astrológico y las oportunidades que el universo tiene preparadas para ti.", image: "images/Illustration of Witch Practicing Magic.png", alt: "Bruja practicando magia" },
+    { step: 15, title: "Tu camino astral", description: "Estás a punto de descubrir el camino que las estrellas han trazado para ti. Cada paso te acerca más a tu destino.", image: "images/Illustration of Woman Performing Palm Reading.png", alt: "Lectura de palma" }
 ];
 
 // Inicialización cuando se carga la página
@@ -577,8 +577,8 @@ function generateFillerPageHTML(fillerPage) {
                 <i class="fas fa-times"></i>
             </button>
             
-            <div class="filler-illustration ${fillerPage.illustration}">
-                ${generateIllustrationHTML(fillerPage.illustration)}
+            <div class="filler-illustration">
+                <img src="${fillerPage.image}" alt="${fillerPage.alt}" class="filler-image">
             </div>
             
             <h2 class="filler-title">${fillerPage.title}</h2>
