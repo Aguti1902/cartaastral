@@ -229,18 +229,50 @@ async function searchCitiesWithMapbox(query, container) {
     console.log('🔍 Buscando con Mapbox:', query);
     
     try {
-        const response = await fetch(
-            `https://api.mapbox.com/geocoding/v5/mapbox.places/${encodeURIComponent(query)}.json?access_token=${MAPBOX_ACCESS_TOKEN}&types=place,postcode&language=es&limit=15`
+        // Primera búsqueda: lugares y códigos postales
+        const response1 = await fetch(
+            `https://api.mapbox.com/geocoding/v5/mapbox.places/${encodeURIComponent(query)}.json?access_token=${MAPBOX_ACCESS_TOKEN}&types=place,postcode&language=es&limit=10`
         );
         
-        if (!response.ok) {
-            throw new Error('Error en la búsqueda');
+        // Segunda búsqueda: solo códigos postales si la consulta parece un código postal
+        let response2 = null;
+        if (/^\d{4,5}$/.test(query)) { // Si es un código postal de 4-5 dígitos
+            response2 = await fetch(
+                `https://api.mapbox.com/geocoding/v5/mapbox.places/${encodeURIComponent(query)}.json?access_token=${MAPBOX_ACCESS_TOKEN}&types=postcode&language=es&limit=5&country=es`
+            );
         }
         
-        const data = await response.json();
-        console.log('📡 Respuesta de Mapbox:', data);
+        // Tercera búsqueda: códigos postales específicos para España
+        let response3 = null;
+        if (query.length >= 3) {
+            response3 = await fetch(
+                `https://api.mapbox.com/geocoding/v5/mapbox.places/${encodeURIComponent(query + ' España')}.json?access_token=${MAPBOX_ACCESS_TOKEN}&types=postcode&language=es&limit=3&country=es`
+            );
+        }
         
-        const cities = data.features.map(feature => {
+        if (!response1.ok) {
+            throw new Error('Error en la primera búsqueda');
+        }
+        
+        const data1 = await response1.json();
+        let data2 = { features: [] };
+        let data3 = { features: [] };
+        
+        if (response2 && response2.ok) {
+            data2 = await response2.json();
+        }
+        
+        if (response3 && response3.ok) {
+            data3 = await response3.json();
+        }
+        
+        console.log('📡 Respuesta 1 (lugares):', data1);
+        console.log('📡 Respuesta 2 (códigos postales):', data2);
+        console.log('📡 Respuesta 3 (códigos postales España):', data3);
+        
+        // Combinar y procesar resultados
+        const allFeatures = [...data1.features, ...data2.features, ...data3.features];
+        const cities = allFeatures.map(feature => {
             let displayName = feature.place_name_es || feature.place_name;
             
             // Si es un código postal, formatear mejor
@@ -259,8 +291,13 @@ async function searchCitiesWithMapbox(query, container) {
             };
         });
         
-        console.log('🏙️ Ciudades procesadas:', cities);
-        displaySearchResults(cities, container);
+        // Eliminar duplicados y limitar a 15 resultados
+        const uniqueCities = cities.filter((city, index, self) => 
+            index === self.findIndex(c => c.name === city.name)
+        ).slice(0, 15);
+        
+        console.log('🏙️ Ciudades procesadas:', uniqueCities);
+        displaySearchResults(uniqueCities, container);
     } catch (error) {
         console.error('❌ Error buscando ciudades:', error);
         // Fallback a búsqueda local si hay error
