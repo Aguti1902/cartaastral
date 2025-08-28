@@ -530,19 +530,22 @@ function updateContinueButton(stepNumber) {
 // Siguiente paso
 function nextStep() {
     if (currentStep < totalSteps) {
-        // Verificar si el paso actual debe mostrar una página de relleno
-        const fillerPage = fillerPages.find(page => page.step === currentStep);
-        
-        if (fillerPage) {
-            // Mostrar página de relleno sin incrementar el paso
-            showFillerPage(fillerPage);
-        } else if (validateCurrentStep()) {
-            // Avanzar al siguiente paso real del test
-            currentStep++;
-            showStep(currentStep);
+        // Primero validar el paso actual
+        if (validateCurrentStep()) {
+            // Verificar si después de este paso debe mostrar una página de relleno
+            const fillerPage = fillerPages.find(page => page.step === currentStep);
             
-            // Scroll al top
-            window.scrollTo({ top: 0, behavior: 'smooth' });
+            if (fillerPage) {
+                // Mostrar página de relleno después de completar el paso
+                showFillerPage(fillerPage);
+            } else {
+                // Avanzar al siguiente paso real del test
+                currentStep++;
+                showStep(currentStep);
+                
+                // Scroll al top
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
         }
     }
 }

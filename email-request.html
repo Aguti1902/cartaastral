@@ -23,98 +23,137 @@
     </header>
 
     <!-- Contenido Principal -->
-    <main class="test-main">
-        <div class="test-container">
-            <div class="email-request-content">
-                <h2 class="step-question">Su carta natal está lista.</h2>
-                <p class="step-subtitle">¿A qué dirección de correo electrónico debemos enviar la lectura?</p>
+    <main class="email-main">
+        <div class="email-container">
+            <!-- Ilustración de celebración -->
+            <div class="celebration-illustration">
+                <div class="celebration-circle">
+                    <i class="fas fa-star celebration-star"></i>
+                </div>
+                <div class="floating-elements">
+                    <div class="floating-star star-1">⭐</div>
+                    <div class="floating-star star-2">✨</div>
+                    <div class="floating-star star-3">🌟</div>
+                </div>
+            </div>
+
+            <!-- Contenido principal -->
+            <div class="email-content">
+                <h1 class="celebration-title">¡Su carta natal está lista! 🎉</h1>
+                <p class="celebration-subtitle">Hemos analizado todas sus respuestas y su carta astral personalizada está preparada para ser enviada.</p>
                 
-                <div class="email-section">
-                    <div class="input-group email-input">
-                        <label for="finalEmail">Correo electrónico</label>
-                        <input type="email" id="finalEmail" name="finalEmail" placeholder="Su dirección de correo electrónico" required>
+                <!-- Sección de email -->
+                <div class="email-form-section">
+                    <div class="form-header">
+                        <i class="fas fa-envelope-open-text form-icon"></i>
+                        <h2>¿Dónde enviamos su carta natal?</h2>
+                        <p>Introduzca su dirección de correo electrónico para recibir su lectura personalizada</p>
+                    </div>
+                    
+                    <div class="email-input-container">
+                        <div class="input-wrapper">
+                            <i class="fas fa-at input-icon"></i>
+                            <input type="email" id="finalEmail" name="finalEmail" placeholder="su.email@ejemplo.com" required>
+                            <div class="input-focus-border"></div>
+                        </div>
                         <div class="error-message" id="finalEmailError" style="display: none;">
                             <i class="fas fa-exclamation-circle"></i>
-                            <span>Introduzca un email válido.</span>
+                            <span>Por favor, introduzca un email válido</span>
                         </div>
                     </div>
                     
-                    <div class="privacy-notice">
-                        <p>Respetamos su privacidad y nos comprometemos a proteger sus datos personales. Le enviaremos por correo electrónico la interpretación de su carta natal.</p>
+                    <div class="privacy-assurance">
+                        <i class="fas fa-shield-alt privacy-icon"></i>
+                        <div class="privacy-text">
+                            <h4>100% Privado y Seguro</h4>
+                            <p>Sus datos están protegidos con encriptación de nivel bancario. Solo utilizamos su email para enviar su carta natal.</p>
+                        </div>
                     </div>
                 </div>
                 
-                <div class="social-login-section">
-                    <div class="separator">
-                        <span>O</span>
+                <!-- Sección de login social -->
+                <div class="social-section">
+                    <div class="section-divider">
+                        <span class="divider-line"></span>
+                        <span class="divider-text">O continúe con</span>
+                        <span class="divider-line"></span>
                     </div>
-                    <p class="social-subtitle">Rellene puntualmente</p>
                     
                     <div class="social-buttons">
                         <button class="social-btn apple-btn">
                             <i class="fab fa-apple"></i>
+                            <span>Apple</span>
                         </button>
                         <button class="social-btn google-btn">
                             <i class="fab fa-google"></i>
+                            <span>Google</span>
                         </button>
                         <button class="social-btn facebook-btn">
                             <i class="fab fa-facebook-f"></i>
+                            <span>Facebook</span>
                         </button>
                     </div>
                 </div>
                 
+                <!-- Testimonios mejorados -->
                 <div class="testimonials-section">
-                    <h4>¿Qué piensan los usuarios?</h4>
+                    <h3 class="testimonials-title">Lo que dicen nuestros usuarios</h3>
                     <div class="testimonials-grid">
                         <div class="testimonial-card">
-                            <div class="user-avatar">
-                                <img src="https://images.unsplash.com/photo-1494790108755-2616b612b786?w=100&h=100&fit=crop&crop=face" alt="Catalina">
-                            </div>
-                            <div class="user-info">
-                                <h5>Catalina C.</h5>
-                                <div class="rating">
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
+                            <div class="testimonial-header">
+                                <div class="user-avatar">
+                                    <img src="https://images.unsplash.com/photo-1494790108755-2616b612b786?w=80&h=80&fit=crop&crop=face" alt="Catalina">
                                 </div>
-                                <p>"Responder a las preguntas fue muy emocionante y..."</p>
+                                <div class="user-info">
+                                    <h5>Catalina C.</h5>
+                                    <div class="rating">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                    </div>
+                                </div>
                             </div>
+                            <p class="testimonial-text">"La precisión de mi carta natal me sorprendió completamente. Cada detalle coincidía perfectamente con mi personalidad."</p>
                         </div>
                         
                         <div class="testimonial-card">
-                            <div class="user-avatar">
-                                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop&crop=face" alt="Rodrigo">
-                            </div>
-                            <div class="user-info">
-                                <h5>Rodrigo M.</h5>
-                                <div class="rating">
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
+                            <div class="testimonial-header">
+                                <div class="user-avatar">
+                                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=80&h=80&fit=crop&crop=face" alt="Rodrigo">
                                 </div>
-                                <p>"Una carta natal muy informativa y útil. Realmente te ayuda a..."</p>
+                                <div class="user-info">
+                                    <h5>Rodrigo M.</h5>
+                                    <div class="rating">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                    </div>
+                                </div>
                             </div>
+                            <p class="testimonial-text">"Gracias a mi carta natal, he podido tomar decisiones más conscientes en mi vida personal y profesional."</p>
                         </div>
                         
                         <div class="testimonial-card">
-                            <div class="user-avatar">
-                                <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop&crop=face" alt="Mauricio">
-                            </div>
-                            <div class="user-info">
-                                <h5>Mauricio C.</h5>
-                                <div class="rating">
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
+                            <div class="testimonial-header">
+                                <div class="user-avatar">
+                                    <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=80&h=80&fit=crop&crop=face" alt="Mauricio">
                                 </div>
-                                <p>"En comparación con otras cartas natales que he utilizado antes, ¡Ésta..."</p>
+                                <div class="user-info">
+                                    <h5>Mauricio C.</h5>
+                                    <div class="rating">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                    </div>
+                                </div>
                             </div>
+                            <p class="testimonial-text">"La interpretación fue clara y fácil de entender. Me ayudó a comprender mejor mis fortalezas y áreas de crecimiento."</p>
                         </div>
                     </div>
                 </div>
