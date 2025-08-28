@@ -226,6 +226,8 @@ function setupLocationSearch() {
 
 // Buscar ciudades con Mapbox
 async function searchCitiesWithMapbox(query, container) {
+    console.log('🔍 Buscando con Mapbox:', query);
+    
     try {
         const response = await fetch(
             `https://api.mapbox.com/geocoding/v5/mapbox.places/${encodeURIComponent(query)}.json?access_token=${MAPBOX_ACCESS_TOKEN}&types=place,postcode&language=es&limit=15`
@@ -236,6 +238,8 @@ async function searchCitiesWithMapbox(query, container) {
         }
         
         const data = await response.json();
+        console.log('📡 Respuesta de Mapbox:', data);
+        
         const cities = data.features.map(feature => {
             let displayName = feature.place_name_es || feature.place_name;
             
@@ -255,9 +259,10 @@ async function searchCitiesWithMapbox(query, container) {
             };
         });
         
+        console.log('🏙️ Ciudades procesadas:', cities);
         displaySearchResults(cities, container);
     } catch (error) {
-        console.error('Error buscando ciudades:', error);
+        console.error('❌ Error buscando ciudades:', error);
         // Fallback a búsqueda local si hay error
         const fallbackCities = searchCitiesFallback(query);
         displaySearchResults(fallbackCities, container);
@@ -298,15 +303,20 @@ function searchCitiesFallback(query) {
 
 // Mostrar resultados de búsqueda
 function displaySearchResults(cities, container) {
+    console.log('📋 Mostrando resultados:', cities);
+    console.log('📦 Container:', container);
+    
     if (cities.length === 0) {
         container.style.display = 'none';
         return;
     }
     
-    container.innerHTML = cities.map(city => 
+    const html = cities.map(city => 
         `<div class="search-result-item" data-type="${city.type}" onclick="selectCity('${city.name}', ${city.coordinates ? JSON.stringify(city.coordinates) : 'null'}, '${city.type}', ${city.postcode ? `'${city.postcode}'` : 'null'})">${city.name}</div>`
     ).join('');
     
+    console.log('🔄 HTML generado:', html);
+    container.innerHTML = html;
     container.style.display = 'block';
 }
 
