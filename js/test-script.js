@@ -10,12 +10,12 @@ let selectedOptions = {};
 const MAPBOX_ACCESS_TOKEN = 'pk.eyJ1IjoiYWd1dGkxOTAyIiwiYSI6ImNtZXV2YjEzNjBiNXoyaXM0cjhxYXE4NDQifQ.MuOAP6Uk69hrzJ1bZHz-6g';
 let geocoder = null;
 
-// Configuración de páginas de relleno
+// Configuración de páginas de relleno (no cuentan como pasos del test)
 const fillerPages = [
-    { step: 3, title: "¡Genial!", description: "La posición del Sol, la Luna y los planetas en el día en que nacimos y en el momento en que respiramos por primera vez determina nuestra carta natal.", image: "images/Fortune Telling with Crystal Balls and Books.png", alt: "Bola de cristal y libros de adivinación" },
-    { step: 6, title: "Cosas que se prometen", description: "Comprende lo que te han prometido, los temas en los que debes profundizar, tus tendencias y la actitud que debes tener.", image: "images/Illustration of Fortune Telling Session.png", alt: "Sesión de adivinación" },
-    { step: 9, title: "La carta natal no es una adivinación", description: "Es una ayuda para interpretar científicamente la astrología. Sólo puede ser creada e interpretada por personas experimentadas y certificadas.", image: "images/Illustration of Tarot Reader with Cards.png", alt: "Lector de tarot con cartas" },
-    { step: 12, title: "Descubre tu potencial", description: "Cada respuesta nos acerca más a revelar tu verdadero potencial astrológico y las oportunidades que el universo tiene preparadas para ti.", image: "images/Illustration of Witch Practicing Magic.png", alt: "Bruja practicando magia" }
+    { afterStep: 3, title: "¡Genial!", description: "La posición del Sol, la Luna y los planetas en el día en que nacimos y en el momento en que respiramos por primera vez determina nuestra carta natal.", image: "images/Fortune Telling with Crystal Balls and Books.png", alt: "Bola de cristal y libros de adivinación" },
+    { afterStep: 6, title: "Cosas que se prometen", description: "Comprende lo que te han prometido, los temas en los que debes profundizar, tus tendencias y la actitud que debes tener.", image: "images/Illustration of Fortune Telling Session.png", alt: "Sesión de adivinación" },
+    { afterStep: 9, title: "La carta natal no es una adivinación", description: "Es una ayuda para interpretar científicamente la astrología. Sólo puede ser creada e interpretada por personas experimentadas y certificadas.", image: "images/Illustration of Tarot Reader with Cards.png", alt: "Lector de tarot con cartas" },
+    { afterStep: 12, title: "Descubre tu potencial", description: "Cada respuesta nos acerca más a revelar tu verdadero potencial astrológico y las oportunidades que el universo tiene preparadas para ti.", image: "images/Illustration of Witch Practicing Magic.png", alt: "Bruja practicando magia" }
 ];
 
 // Inicialización cuando se carga la página
@@ -436,35 +436,21 @@ function populateSelectOptions() {
 
 // Mostrar paso específico
 function showStep(stepNumber) {
-    // Ocultar todos los pasos
+    // Ocultar todos los pasos y páginas de relleno
     const allSteps = document.querySelectorAll('.test-step');
     allSteps.forEach(step => {
         step.style.display = 'none';
         step.classList.remove('active');
     });
     
-    // Verificar si es una página de relleno
-    const fillerPage = fillerPages.find(page => page.step === stepNumber);
+    const allFillerPages = document.querySelectorAll('.filler-page');
+    allFillerPages.forEach(page => page.style.display = 'none');
     
-    if (fillerPage) {
-        // Mostrar página de relleno como modal
-        showFillerPage(fillerPage);
-        // Mostrar el paso anterior para que el usuario pueda ver el test
-        const previousStep = stepNumber - 1;
-        if (previousStep > 0) {
-            const previousStepElement = document.getElementById(`step${previousStep}`);
-            if (previousStepElement) {
-                previousStepElement.style.display = 'block';
-                previousStepElement.classList.add('active');
-            }
-        }
-    } else {
-        // Mostrar el paso normal del test
-        const currentStepElement = document.getElementById(`step${stepNumber}`);
-        if (currentStepElement) {
-            currentStepElement.style.display = 'block';
-            currentStepElement.classList.add('active');
-        }
+    // Mostrar el paso normal del test
+    const currentStepElement = document.getElementById(`step${stepNumber}`);
+    if (currentStepElement) {
+        currentStepElement.style.display = 'block';
+        currentStepElement.classList.add('active');
     }
     
     // Actualizar estado de navegación
@@ -530,12 +516,18 @@ function updateContinueButton(stepNumber) {
 // Siguiente paso
 function nextStep() {
     if (currentStep < totalSteps) {
-        // Si estamos en una página de relleno, no validar
-        const isFillerPage = fillerPages.find(page => page.step === currentStep);
-        
-        if (isFillerPage || validateCurrentStep()) {
+        if (validateCurrentStep()) {
             currentStep++;
             showStep(currentStep);
+            
+            // Verificar si hay una página de relleno después de este paso
+            const fillerPage = fillerPages.find(page => page.afterStep === currentStep);
+            if (fillerPage) {
+                // Mostrar la página de relleno después de un breve delay
+                setTimeout(() => {
+                    showFillerPageAsPage(fillerPage);
+                }, 500);
+            }
             
             // Scroll al top
             window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -554,18 +546,44 @@ function previousStep() {
     }
 }
 
-// Mostrar página de relleno
-function showFillerPage(fillerPage) {
-    // Crear modal de página de relleno
-    const modal = document.createElement('div');
-    modal.className = 'filler-modal';
-    modal.innerHTML = generateFillerPageHTML(fillerPage);
+// Mostrar página de relleno como página independiente
+function showFillerPageAsPage(fillerPage) {
+    // Ocultar todos los pasos del test
+    const allSteps = document.querySelectorAll('.test-step');
+    allSteps.forEach(step => step.style.display = 'none');
     
-    // Añadir al body
-    document.body.appendChild(modal);
+    // Ocultar todas las páginas de relleno
+    const allFillerPages = document.querySelectorAll('.filler-page');
+    allFillerPages.forEach(page => page.style.display = 'none');
     
-    // Mostrar modal
-    setTimeout(() => modal.classList.add('active'), 10);
+    // Mostrar la página de relleno específica
+    const fillerPageId = `filler-after-${fillerPage.afterStep}`;
+    const fillerPageElement = document.getElementById(fillerPageId);
+    if (fillerPageElement) {
+        fillerPageElement.style.display = 'block';
+    }
+    
+    // Ocultar el botón de continuar del test
+    const continueSection = document.querySelector('.continue-section');
+    if (continueSection) {
+        continueSection.style.display = 'none';
+    }
+}
+
+// Función para continuar desde una página de relleno
+function continueFromFiller() {
+    // Ocultar la página de relleno
+    const allFillerPages = document.querySelectorAll('.filler-page');
+    allFillerPages.forEach(page => page.style.display = 'none');
+    
+    // Mostrar el botón de continuar del test
+    const continueSection = document.querySelector('.continue-section');
+    if (continueSection) {
+        continueSection.style.display = 'block';
+    }
+    
+    // Continuar con el siguiente paso del test
+    nextStep();
 }
 
 // Generar HTML de página de relleno
