@@ -28,7 +28,7 @@
                 
                 <div class="progress-container">
                     <div class="progress-text">
-                        <span id="currentStep">1</span>/<span id="totalSteps">17</span>
+                        <span id="currentStep">1</span>/<span id="totalSteps">15</span>
                     </div>
                     <div class="progress-bar">
                         <div class="progress-fill" id="progressFill"></div>
@@ -115,15 +115,14 @@
                         <div class="input-group">
                             <label for="birthDay">Día</label>
                             <select id="birthDay" name="birthDay" required>
-                                <option value="">1</option>
-                                <!-- Opciones del 1 al 31 se generan con JS -->
+                                <option value="">Selecciona día</option>
                             </select>
                         </div>
                         
                         <div class="input-group">
                             <label for="birthMonth">Mes</label>
                             <select id="birthMonth" name="birthMonth" required>
-                                <option value="">1</option>
+                                <option value="">Selecciona mes</option>
                                 <option value="1">Enero</option>
                                 <option value="2">Febrero</option>
                                 <option value="3">Marzo</option>
@@ -142,8 +141,7 @@
                         <div class="input-group">
                             <label for="birthYear">Año</label>
                             <select id="birthYear" name="birthYear" required>
-                                <option value="">1980</option>
-                                <!-- Opciones de años se generan con JS -->
+                                <option value="">Selecciona año</option>
                             </select>
                         </div>
                     </div>
@@ -159,8 +157,7 @@
                         <div class="input-group">
                             <label for="birthHour">Hora</label>
                             <select id="birthHour" name="birthHour" required>
-                                <option value="">12</option>
-                                <!-- Opciones de 0 a 23 se generan con JS -->
+                                <option value="">Selecciona hora</option>
                             </select>
                         </div>
                         
@@ -169,8 +166,7 @@
                         <div class="input-group">
                             <label for="birthMinute">Minuto</label>
                             <select id="birthMinute" name="birthMinute" required>
-                                <option value="">00</option>
-                                <!-- Opciones de 0 a 59 se generan con JS -->
+                                <option value="">Selecciona minuto</option>
                             </select>
                         </div>
                     </div>
@@ -358,7 +354,7 @@
                         
                         <div class="option-card" data-value="agua">
                             <div class="option-image">
-                                <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=200&h=200&fit=crop" alt="Agua">
+                                <img src="https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=200&h=200&fit=crop" alt="Agua">
                             </div>
                             <span class="option-text">Agua</span>
                         </div>
@@ -572,40 +568,8 @@
                 </div>
             </div>
 
-            <!-- Paso 13: Email -->
+            <!-- Paso 13: Objetivos -->
             <div class="test-step" id="step13" data-step="13" style="display: none;">
-                <div class="step-content">
-                    <h3 class="step-question">¿Cuál es su correo electrónico?</h3>
-                    
-                    <div class="input-group">
-                        <label for="email">Email</label>
-                        <input type="email" id="email" name="email" placeholder="su@email.com" required>
-                        <div class="error-message" id="emailError" style="display: none;">
-                            <i class="fas fa-exclamation-circle"></i>
-                            <span>Introduzca un email válido.</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Paso 14: Teléfono -->
-            <div class="test-step" id="step14" data-step="14" style="display: none;">
-                <div class="step-content">
-                    <h3 class="step-question">¿Cuál es su número de teléfono?</h3>
-                    
-                    <div class="input-group">
-                        <label for="phone">Teléfono</label>
-                        <input type="tel" id="phone" name="phone" placeholder="+34 600 000 000" required>
-                        <div class="error-message" id="phoneError" style="display: none;">
-                            <i class="fas fa-exclamation-circle"></i>
-                            <span>Introduzca un teléfono válido.</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Paso 15: Objetivos -->
-            <div class="test-step" id="step15" data-step="15" style="display: none;">
                 <div class="step-content">
                     <h3 class="step-question">¿Cuáles son sus principales objetivos en la vida?</h3>
                     
@@ -637,8 +601,8 @@
                 </div>
             </div>
 
-            <!-- Paso 16: Preferencias -->
-            <div class="test-step" id="step16" data-step="16" style="display: none;">
+            <!-- Paso 14: Preferencias -->
+            <div class="test-step" id="step14" data-step="14" style="display: none;">
                 <div class="step-content">
                     <h3 class="step-question">¿Qué tipo de contenido astrológico prefiere?</h3>
                     
@@ -670,21 +634,98 @@
                 </div>
             </div>
 
-            <!-- Paso 17: Finalización -->
-            <div class="test-step" id="step17" data-step="17" style="display: none;">
+            <!-- Paso 15: Solicitud de Email (Final) -->
+            <div class="test-step" id="step15" data-step="15" style="display: none;">
                 <div class="step-content">
-                    <h3 class="step-question">¡Perfecto! Hemos terminado el test</h3>
+                    <h3 class="step-question">Su carta natal está lista.</h3>
+                    <p class="step-subtitle">¿A qué dirección de correo electrónico debemos enviar la lectura?</p>
                     
-                    <div class="completion-message">
-                        <div class="completion-icon">
-                            <i class="fas fa-check-circle"></i>
+                    <div class="email-section">
+                        <div class="input-group email-input">
+                            <label for="finalEmail">Correo electrónico</label>
+                            <input type="email" id="finalEmail" name="finalEmail" placeholder="Su dirección de correo electrónico" required>
+                            <div class="error-message" id="finalEmailError" style="display: none;">
+                                <i class="fas fa-exclamation-circle"></i>
+                                <span>Introduzca un email válido.</span>
+                            </div>
                         </div>
-                        <p>Gracias por completar nuestro test astral completo. Ahora procederemos a analizar tus respuestas y generar tu carta astral personalizada.</p>
                         
-                        <div class="completion-summary">
-                            <h4>Resumen de tus respuestas:</h4>
-                            <div id="answersSummary">
-                                <!-- Se genera dinámicamente con JS -->
+                        <div class="privacy-notice">
+                            <p>Respetamos su privacidad y nos comprometemos a proteger sus datos personales. Le enviaremos por correo electrónico la interpretación de su carta natal.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="social-login-section">
+                        <div class="separator">
+                            <span>O</span>
+                        </div>
+                        <p class="social-subtitle">Rellene puntualmente</p>
+                        
+                        <div class="social-buttons">
+                            <button class="social-btn apple-btn">
+                                <i class="fab fa-apple"></i>
+                            </button>
+                            <button class="social-btn google-btn">
+                                <i class="fab fa-google"></i>
+                            </button>
+                            <button class="social-btn facebook-btn">
+                                <i class="fab fa-facebook-f"></i>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="testimonials-section">
+                        <h4>¿Qué piensan los usuarios?</h4>
+                        <div class="testimonials-grid">
+                            <div class="testimonial-card">
+                                <div class="user-avatar">
+                                    <img src="https://images.unsplash.com/photo-1494790108755-2616b612b786?w=100&h=100&fit=crop&crop=face" alt="Catalina">
+                                </div>
+                                <div class="user-info">
+                                    <h5>Catalina C.</h5>
+                                    <div class="rating">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                    </div>
+                                    <p>"Responder a las preguntas fue muy emocionante y..."</p>
+                                </div>
+                            </div>
+                            
+                            <div class="testimonial-card">
+                                <div class="user-avatar">
+                                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop&crop=face" alt="Rodrigo">
+                                </div>
+                                <div class="user-info">
+                                    <h5>Rodrigo M.</h5>
+                                    <div class="rating">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                    </div>
+                                    <p>"Una carta natal muy informativa y útil. Realmente te ayuda a..."</p>
+                                </div>
+                            </div>
+                            
+                            <div class="testimonial-card">
+                                <div class="user-avatar">
+                                    <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop&crop=face" alt="Mauricio">
+                                </div>
+                                <div class="user-info">
+                                    <h5>Mauricio C.</h5>
+                                    <div class="rating">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                    </div>
+                                    <p>"En comparación con otras cartas natales que he utilizado antes, ¡Ésta..."</p>
+                                </div>
                             </div>
                         </div>
                     </div>

@@ -2,7 +2,7 @@
 
 // Variables globales del test
 let currentStep = 1;
-const totalSteps = 17;
+const totalSteps = 15;
 let testAnswers = {};
 let selectedOptions = {};
 
@@ -39,10 +39,9 @@ function initializeTest() {
         compatibleSigns: [],
         lifeDifficulties: '',
         fullName: '',
-        email: '',
-        phone: '',
         lifeGoals: '',
-        astrologicalPreferences: ''
+        astrologicalPreferences: '',
+        finalEmail: ''
     };
     
     // Configurar opciones seleccionadas
@@ -433,34 +432,27 @@ function validateCurrentStep() {
             }
             break;
             
-        case 13: // Email
-            if (!testAnswers.email) {
-                showFieldError(document.getElementById('email'), 'Este campo es requerido');
-                return false;
-            }
-            if (!isValidEmail(testAnswers.email)) {
-                showFieldError(document.getElementById('email'), 'Introduzca un email válido');
-                return false;
-            }
-            break;
-            
-        case 14: // Teléfono
-            if (!testAnswers.phone) {
-                showFieldError(document.getElementById('phone'), 'Este campo es requerido');
-                return false;
-            }
-            break;
-            
-        case 15: // Objetivos
+        case 13: // Objetivos
             if (!testAnswers.lifeGoals) {
                 showNotification('Por favor selecciona tus principales objetivos', 'error');
                 return false;
             }
             break;
             
-        case 16: // Preferencias
+        case 14: // Preferencias
             if (!testAnswers.astrologicalPreferences) {
                 showNotification('Por favor selecciona tus preferencias astrológicas', 'error');
+                return false;
+            }
+            break;
+            
+        case 15: // Email final
+            if (!testAnswers.finalEmail) {
+                showFieldError(document.getElementById('finalEmail'), 'Este campo es requerido');
+                return false;
+            }
+            if (!isValidEmail(testAnswers.finalEmail)) {
+                showFieldError(document.getElementById('finalEmail'), 'Introduzca un email válido');
                 return false;
             }
             break;
@@ -490,10 +482,10 @@ function saveAnswer(step, value) {
         case '11':
             testAnswers.lifeDifficulties = value;
             break;
-        case '15':
+        case '13':
             testAnswers.lifeGoals = value;
             break;
-        case '16':
+        case '14':
             testAnswers.astrologicalPreferences = value;
             break;
     }
@@ -625,8 +617,7 @@ function validateField(field) {
     // Guardar valor en testAnswers
     const fieldName = field.name;
     if (fieldName === 'fullName') testAnswers.fullName = value;
-    if (fieldName === 'email') testAnswers.email = value;
-    if (fieldName === 'phone') testAnswers.phone = value;
+    if (fieldName === 'finalEmail') testAnswers.finalEmail = value;
     
     return true;
 }

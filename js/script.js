@@ -191,9 +191,9 @@ function setupModals() {
 
 // Cerrar modal
 function closeModal(modal) {
-    modal.style.display = 'none';
-    document.body.style.overflow = 'auto';
-}
+        modal.style.display = 'none';
+        document.body.style.overflow = 'auto';
+    }
 
 // Manejar envío del test astral
 function handleAstralTestSubmit(e) {
@@ -312,7 +312,7 @@ function handlePaymentSubmit(e) {
     submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Procesando...';
     submitBtn.disabled = true;
     
-    // Simular procesamiento de pago
+        // Simular procesamiento de pago
     setTimeout(() => {
         // Simular éxito del pago
         showNotification('¡Pago exitoso! Tu carta astral está desbloqueada.', 'success');
@@ -332,7 +332,7 @@ function handlePaymentSubmit(e) {
         
         // Iniciar periodo de prueba
         startTrialPeriod();
-    }, 3000);
+        }, 3000);
 }
 
 // Mostrar modal de resultado de carta astral
@@ -789,11 +789,11 @@ function showNotification(message, type = 'info') {
     // Auto-ocultar
     setTimeout(() => {
         notification.style.transform = 'translateX(100%)';
-        setTimeout(() => {
-            if (notification.parentNode) {
-                notification.remove();
-            }
-        }, 300);
+            setTimeout(() => {
+                if (notification.parentNode) {
+                    notification.remove();
+                }
+            }, 300);
     }, 5000);
 }
 
