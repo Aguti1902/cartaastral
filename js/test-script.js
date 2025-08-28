@@ -18,10 +18,15 @@ document.addEventListener('DOMContentLoaded', function() {
 function showStartScreen() {
     const startScreen = document.getElementById('startScreen');
     const testContainer = document.getElementById('testContainer');
+    const testHeader = document.getElementById('testHeader');
     
-    if (startScreen && testContainer) {
+    if (startScreen && testContainer && testHeader) {
         startScreen.style.display = 'flex';
         testContainer.style.display = 'none';
+        testHeader.style.display = 'none';
+        console.log('✅ Pantalla de inicio mostrada, header y test ocultos');
+    } else {
+        console.error('❌ No se encontraron elementos para la pantalla de inicio');
     }
 }
 
