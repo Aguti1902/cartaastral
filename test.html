@@ -1,0 +1,748 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Astral Completo - AstralCoach Pro</title>
+    <link rel="stylesheet" href="css/test-styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header del Test -->
+    <header class="test-header">
+        <div class="header-content">
+            <div class="logo">
+                <div class="logo-icon">
+                    <i class="fas fa-moon"></i>
+                    <i class="fas fa-star"></i>
+                </div>
+                <span>Astral Coach</span>
+            </div>
+            
+            <div class="progress-navigation">
+                <button class="nav-btn back-btn" onclick="previousStep()">
+                    <i class="fas fa-arrow-left"></i>
+                    <span>Atrás</span>
+                </button>
+                
+                <div class="progress-container">
+                    <div class="progress-text">
+                        <span id="currentStep">1</span>/<span id="totalSteps">17</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="progressFill"></div>
+                    </div>
+                </div>
+                
+                <button class="nav-btn skip-btn" onclick="skipStep()">
+                    <span>Saltar</span>
+                    <i class="fas fa-arrow-right"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Contenido Principal del Test -->
+    <main class="test-main">
+        <div class="test-container">
+            <!-- Paso 1: Sexo -->
+            <div class="test-step" id="step1" data-step="1">
+                <div class="step-content">
+                    <h2 class="step-title">Antes de empezar</h2>
+                    <h3 class="step-question">¿Cuál es tu sexo?</h3>
+                    
+                    <div class="options-grid">
+                        <div class="option-card" data-value="mujer">
+                            <div class="option-icon">
+                                <i class="fas fa-venus"></i>
+                            </div>
+                            <span class="option-text">Mujer</span>
+                        </div>
+                        
+                        <div class="option-card" data-value="hombre">
+                            <div class="option-icon">
+                                <i class="fas fa-mars"></i>
+                            </div>
+                            <span class="option-text">Hombre</span>
+                        </div>
+                        
+                        <div class="option-card" data-value="no-especificar">
+                            <div class="option-icon">
+                                <i class="fas fa-times"></i>
+                            </div>
+                            <span class="option-text">No quiero especificar</span>
+                        </div>
+                        
+                        <div class="option-card" data-value="lgbti">
+                            <div class="option-icon">
+                                <i class="fas fa-heart"></i>
+                            </div>
+                            <span class="option-text">LGBTI</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Paso 2: Fecha de Nacimiento -->
+            <div class="test-step" id="step2" data-step="2" style="display: none;">
+                <div class="step-content">
+                    <div class="info-card">
+                        <div class="info-illustration">
+                            <div class="person-figure">
+                                <div class="head"></div>
+                                <div class="body"></div>
+                            </div>
+                            <div class="celestial-elements">
+                                <div class="sun"></div>
+                                <div class="moon"></div>
+                                <div class="stars"></div>
+                            </div>
+                        </div>
+                        <div class="info-text">
+                            <h4>¿Qué nos ofrece Astralcoach?</h4>
+                            <ul>
+                                <li><i class="fas fa-plus"></i> Su Carta Natal</li>
+                                <li><i class="fas fa-plus"></i> Decisiones más importantes</li>
+                                <li><i class="fas fa-plus"></i> Matrimonio y relaciones</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <h3 class="step-question">¿Cuál es tu fecha de nacimiento?</h3>
+                    
+                    <div class="date-inputs">
+                        <div class="input-group">
+                            <label for="birthDay">Día</label>
+                            <select id="birthDay" name="birthDay" required>
+                                <option value="">1</option>
+                                <!-- Opciones del 1 al 31 se generan con JS -->
+                            </select>
+                        </div>
+                        
+                        <div class="input-group">
+                            <label for="birthMonth">Mes</label>
+                            <select id="birthMonth" name="birthMonth" required>
+                                <option value="">1</option>
+                                <option value="1">Enero</option>
+                                <option value="2">Febrero</option>
+                                <option value="3">Marzo</option>
+                                <option value="4">Abril</option>
+                                <option value="5">Mayo</option>
+                                <option value="6">Junio</option>
+                                <option value="7">Julio</option>
+                                <option value="8">Agosto</option>
+                                <option value="9">Septiembre</option>
+                                <option value="10">Octubre</option>
+                                <option value="11">Noviembre</option>
+                                <option value="12">Diciembre</option>
+                            </select>
+                        </div>
+                        
+                        <div class="input-group">
+                            <label for="birthYear">Año</label>
+                            <select id="birthYear" name="birthYear" required>
+                                <option value="">1980</option>
+                                <!-- Opciones de años se generan con JS -->
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Paso 3: Hora de Nacimiento -->
+            <div class="test-step" id="step3" data-step="3" style="display: none;">
+                <div class="step-content">
+                    <h3 class="step-question">Hora de nacimiento</h3>
+                    
+                    <div class="time-inputs">
+                        <div class="input-group">
+                            <label for="birthHour">Hora</label>
+                            <select id="birthHour" name="birthHour" required>
+                                <option value="">12</option>
+                                <!-- Opciones de 0 a 23 se generan con JS -->
+                            </select>
+                        </div>
+                        
+                        <span class="time-separator">:</span>
+                        
+                        <div class="input-group">
+                            <label for="birthMinute">Minuto</label>
+                            <select id="birthMinute" name="birthMinute" required>
+                                <option value="">00</option>
+                                <!-- Opciones de 0 a 59 se generan con JS -->
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="time-note">
+                        <a href="#" class="dont-know-link">No lo sé ></a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Paso 4: Lugar de Nacimiento -->
+            <div class="test-step" id="step4" data-step="4" style="display: none;">
+                <div class="step-content">
+                    <h3 class="step-question">¿Cuál es su lugar de nacimiento?</h3>
+                    
+                    <div class="input-group">
+                        <label for="birthPlace">Lugar de nacimiento</label>
+                        <select id="birthPlace" name="birthPlace" required>
+                            <option value="">Elija una ubicación</option>
+                            <option value="madrid">Madrid, España</option>
+                            <option value="barcelona">Barcelona, España</option>
+                            <option value="valencia">Valencia, España</option>
+                            <option value="sevilla">Sevilla, España</option>
+                            <option value="bilbao">Bilbao, España</option>
+                            <option value="mexico">Ciudad de México, México</option>
+                            <option value="buenos-aires">Buenos Aires, Argentina</option>
+                            <option value="bogota">Bogotá, Colombia</option>
+                            <option value="lima">Lima, Perú</option>
+                            <option value="santiago">Santiago, Chile</option>
+                            <option value="caracas">Caracas, Venezuela</option>
+                            <option value="nueva-york">Nueva York, Estados Unidos</option>
+                            <option value="londres">Londres, Reino Unido</option>
+                            <option value="paris">París, Francia</option>
+                            <option value="roma">Roma, Italia</option>
+                            <option value="berlin">Berlín, Alemania</option>
+                            <option value="tokio">Tokio, Japón</option>
+                            <option value="sydney">Sídney, Australia</option>
+                        </select>
+                        <div class="error-message" id="birthPlaceError" style="display: none;">
+                            <i class="fas fa-exclamation-circle"></i>
+                            <span>Este campo es requerido.</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Paso 5: Situación Sentimental -->
+            <div class="test-step" id="step5" data-step="5" style="display: none;">
+                <div class="step-content">
+                    <h3 class="step-question">¿Cuál es su situación sentimental?</h3>
+                    
+                    <div class="options-grid">
+                        <div class="option-card" data-value="casado">
+                            <div class="option-icon">
+                                <i class="fas fa-venus-mars"></i>
+                                <i class="fas fa-plus"></i>
+                            </div>
+                            <span class="option-text">Casado</span>
+                        </div>
+                        
+                        <div class="option-card" data-value="comprometido">
+                            <div class="option-icon">
+                                <i class="fas fa-ring"></i>
+                            </div>
+                            <span class="option-text">Comprometido</span>
+                        </div>
+                        
+                        <div class="option-card" data-value="en-relacion">
+                            <div class="option-icon">
+                                <i class="fas fa-heart"></i>
+                            </div>
+                            <span class="option-text">En una relación</span>
+                        </div>
+                        
+                        <div class="option-card" data-value="complicado">
+                            <div class="option-icon">
+                                <i class="fas fa-question"></i>
+                            </div>
+                            <span class="option-text">Complicado</span>
+                        </div>
+                        
+                        <div class="option-card" data-value="soltero">
+                            <div class="option-icon">
+                                <i class="fas fa-heart"></i>
+                            </div>
+                            <span class="option-text">Soltero/a</span>
+                        </div>
+                        
+                        <div class="option-card" data-value="divorciado">
+                            <div class="option-icon">
+                                <i class="fas fa-heart-broken"></i>
+                            </div>
+                            <span class="option-text">Divorciado</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Paso 6: Carta Natal Previa -->
+            <div class="test-step" id="step6" data-step="6" style="display: none;">
+                <div class="step-content">
+                    <h3 class="step-question">¿Se ha hecho alguna vez una carta natal?</h3>
+                    
+                    <div class="options-grid two-columns">
+                        <div class="option-card" data-value="si">
+                            <div class="option-icon">
+                                <i class="fas fa-check"></i>
+                            </div>
+                            <span class="option-text">Sí, me la han hecho.</span>
+                        </div>
+                        
+                        <div class="option-card" data-value="no">
+                            <div class="option-icon">
+                                <i class="fas fa-times"></i>
+                            </div>
+                            <span class="option-text">No, no me la he hecho.</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Paso 7: Temas de Pensamiento -->
+            <div class="test-step" id="step7" data-step="7" style="display: none;">
+                <div class="step-content">
+                    <h3 class="step-question">¿En qué temas has pensado últimamente?</h3>
+                    
+                    <div class="options-grid">
+                        <div class="option-card" data-value="finanzas">
+                            <div class="option-icon">
+                                <i class="fas fa-coins"></i>
+                            </div>
+                            <span class="option-text">Cuestiones financieras</span>
+                        </div>
+                        
+                        <div class="option-card" data-value="carrera">
+                            <div class="option-icon">
+                                <i class="fas fa-briefcase"></i>
+                            </div>
+                            <span class="option-text">Carrera</span>
+                        </div>
+                        
+                        <div class="option-card" data-value="amor">
+                            <div class="option-icon">
+                                <i class="fas fa-heart"></i>
+                            </div>
+                            <span class="option-text">Amor</span>
+                        </div>
+                        
+                        <div class="option-card" data-value="salud">
+                            <div class="option-icon">
+                                <i class="fas fa-heartbeat"></i>
+                            </div>
+                            <span class="option-text">Salud</span>
+                        </div>
+                        
+                        <div class="option-card" data-value="familia">
+                            <div class="option-icon">
+                                <i class="fas fa-users"></i>
+                            </div>
+                            <span class="option-text">Vida familiar</span>
+                        </div>
+                        
+                        <div class="option-card" data-value="amistades">
+                            <div class="option-icon">
+                                <i class="fas fa-handshake"></i>
+                            </div>
+                            <span class="option-text">Amistades</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Paso 8: Elementos -->
+            <div class="test-step" id="step8" data-step="8" style="display: none;">
+                <div class="step-content">
+                    <h3 class="step-question">¿Cuál de los cuatro elementos coincide con tu personalidad?</h3>
+                    
+                    <div class="options-grid four-columns">
+                        <div class="option-card" data-value="fuego">
+                            <div class="option-image">
+                                <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=200&h=200&fit=crop" alt="Fuego">
+                            </div>
+                            <span class="option-text">Fuego</span>
+                        </div>
+                        
+                        <div class="option-card" data-value="agua">
+                            <div class="option-image">
+                                <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=200&h=200&fit=crop" alt="Agua">
+                            </div>
+                            <span class="option-text">Agua</span>
+                        </div>
+                        
+                        <div class="option-card" data-value="tierra">
+                            <div class="option-image">
+                                <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=200&h=200&fit=crop" alt="Tierra">
+                            </div>
+                            <span class="option-text">Tierra</span>
+                        </div>
+                        
+                        <div class="option-card" data-value="aire">
+                            <div class="option-image">
+                                <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=200&h=200&fit=crop" alt="Aire">
+                            </div>
+                            <span class="option-text">Aire</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Paso 9: Rasgos de Personalidad -->
+            <div class="test-step" id="step9" data-step="9" style="display: none;">
+                <div class="step-content">
+                    <h3 class="step-question">¿Cuáles de los siguientes rasgos reflejan tu personalidad?</h3>
+                    <p class="step-instruction">Por favor, marque las mejores opciones para usted. Estos datos coincidirán con la información que se desprende de la carta natal.</p>
+                    
+                    <div class="options-grid personality-grid">
+                        <div class="option-card personality-trait" data-value="emocional">
+                            <span class="option-text">Emocional</span>
+                        </div>
+                        
+                        <div class="option-card personality-trait" data-value="logico">
+                            <span class="option-text">Lógico</span>
+                        </div>
+                        
+                        <div class="option-card personality-trait" data-value="inteligente">
+                            <span class="option-text">Inteligente</span>
+                        </div>
+                        
+                        <div class="option-card personality-trait" data-value="intimo">
+                            <span class="option-text">Íntimo</span>
+                        </div>
+                        
+                        <div class="option-card personality-trait" data-value="entusiasta">
+                            <span class="option-text">Entusiasta</span>
+                        </div>
+                        
+                        <div class="option-card personality-trait" data-value="mandon">
+                            <span class="option-text">Mandón</span>
+                        </div>
+                        
+                        <div class="option-card personality-trait" data-value="introvertido">
+                            <span class="option-text">Introvertido</span>
+                        </div>
+                        
+                        <div class="option-card personality-trait" data-value="leal">
+                            <span class="option-text">Leal</span>
+                        </div>
+                        
+                        <div class="option-card personality-trait" data-value="confiable">
+                            <span class="option-text">Confiable</span>
+                        </div>
+                        
+                        <div class="option-card personality-trait" data-value="malhumorado">
+                            <span class="option-text">Malhumorado</span>
+                        </div>
+                        
+                        <div class="option-card personality-trait" data-value="aesthetic">
+                            <span class="option-text">Aesthetic</span>
+                        </div>
+                        
+                        <div class="option-card personality-trait" data-value="honesto">
+                            <span class="option-text">Honesto</span>
+                        </div>
+                        
+                        <div class="option-card personality-trait" data-value="mente-abierta">
+                            <span class="option-text">De mente abierta</span>
+                        </div>
+                        
+                        <div class="option-card personality-trait" data-value="infantil">
+                            <span class="option-text">Infantil</span>
+                        </div>
+                        
+                        <div class="option-card personality-trait" data-value="positivo">
+                            <span class="option-text">Positivo</span>
+                        </div>
+                        
+                        <div class="option-card personality-trait" data-value="pesimista">
+                            <span class="option-text">Pesimista</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Paso 10: Compatibilidad con Signos -->
+            <div class="test-step" id="step10" data-step="10" style="display: none;">
+                <div class="step-content">
+                    <h3 class="step-question">¿Con qué signos te llevas bien? Elige 3 opciones como máximo.</h3>
+                    
+                    <div class="options-grid zodiac-grid">
+                        <div class="option-card zodiac-sign" data-value="aries">
+                            <div class="zodiac-symbol">♈</div>
+                            <span class="option-text">Aries</span>
+                        </div>
+                        
+                        <div class="option-card zodiac-sign" data-value="tauro">
+                            <div class="zodiac-symbol">♉</div>
+                            <span class="option-text">Tauro</span>
+                        </div>
+                        
+                        <div class="option-card zodiac-sign" data-value="gemini">
+                            <div class="zodiac-symbol">♊</div>
+                            <span class="option-text">Géminis</span>
+                        </div>
+                        
+                        <div class="option-card zodiac-sign" data-value="cancer">
+                            <div class="zodiac-symbol">♋</div>
+                            <span class="option-text">Cáncer</span>
+                        </div>
+                        
+                        <div class="option-card zodiac-sign" data-value="leo">
+                            <div class="zodiac-symbol">♌</div>
+                            <span class="option-text">Leo</span>
+                        </div>
+                        
+                        <div class="option-card zodiac-sign" data-value="virgo">
+                            <div class="zodiac-symbol">♍</div>
+                            <span class="option-text">Virgo</span>
+                        </div>
+                        
+                        <div class="option-card zodiac-sign" data-value="libra">
+                            <div class="zodiac-symbol">♎</div>
+                            <span class="option-text">Libra</span>
+                        </div>
+                        
+                        <div class="option-card zodiac-sign" data-value="escorpio">
+                            <div class="zodiac-symbol">♏</div>
+                            <span class="option-text">Escorpio</span>
+                        </div>
+                        
+                        <div class="option-card zodiac-sign" data-value="sagitario">
+                            <div class="zodiac-symbol">♐</div>
+                            <span class="option-text">Sagitario</span>
+                        </div>
+                        
+                        <div class="option-card zodiac-sign" data-value="capricornio">
+                            <div class="zodiac-symbol">♑</div>
+                            <span class="option-text">Capricornio</span>
+                        </div>
+                        
+                        <div class="option-card zodiac-sign" data-value="acuario">
+                            <div class="zodiac-symbol">♒</div>
+                            <span class="option-text">Acuario</span>
+                        </div>
+                        
+                        <div class="option-card zodiac-sign" data-value="piscis">
+                            <div class="zodiac-symbol">♓</div>
+                            <span class="option-text">Piscis</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Paso 11: Dificultades en la Vida -->
+            <div class="test-step" id="step11" data-step="11" style="display: none;">
+                <div class="step-content">
+                    <h3 class="step-question">¿Qué es lo que más te ha costado trabajo conseguir? ¿Qué es lo que más te ha costado en tu vida?</h3>
+                    
+                    <div class="options-grid">
+                        <div class="option-card" data-value="finanzas">
+                            <span class="option-text">Cuestiones financieras</span>
+                        </div>
+                        
+                        <div class="option-card" data-value="carrera">
+                            <span class="option-text">Carrera</span>
+                        </div>
+                        
+                        <div class="option-card" data-value="amor">
+                            <span class="option-text">Amor</span>
+                        </div>
+                        
+                        <div class="option-card" data-value="salud">
+                            <span class="option-text">Salud</span>
+                        </div>
+                        
+                        <div class="option-card" data-value="familia">
+                            <span class="option-text">Vida familiar</span>
+                        </div>
+                        
+                        <div class="option-card" data-value="amistades">
+                            <span class="option-text">Las amistades</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Paso 12: Información Personal -->
+            <div class="test-step" id="step12" data-step="12" style="display: none;">
+                <div class="step-content">
+                    <h3 class="step-question">¿Cuál es su nombre?</h3>
+                    
+                    <div class="input-group">
+                        <label for="fullName">Nombre Apellido</label>
+                        <input type="text" id="fullName" name="fullName" placeholder="Introduzca su nombre" required>
+                        <div class="error-message" id="fullNameError" style="display: none;">
+                            <i class="fas fa-exclamation-circle"></i>
+                            <span>Este campo es requerido.</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Paso 13: Email -->
+            <div class="test-step" id="step13" data-step="13" style="display: none;">
+                <div class="step-content">
+                    <h3 class="step-question">¿Cuál es su correo electrónico?</h3>
+                    
+                    <div class="input-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" placeholder="su@email.com" required>
+                        <div class="error-message" id="emailError" style="display: none;">
+                            <i class="fas fa-exclamation-circle"></i>
+                            <span>Introduzca un email válido.</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Paso 14: Teléfono -->
+            <div class="test-step" id="step14" data-step="14" style="display: none;">
+                <div class="step-content">
+                    <h3 class="step-question">¿Cuál es su número de teléfono?</h3>
+                    
+                    <div class="input-group">
+                        <label for="phone">Teléfono</label>
+                        <input type="tel" id="phone" name="phone" placeholder="+34 600 000 000" required>
+                        <div class="error-message" id="phoneError" style="display: none;">
+                            <i class="fas fa-exclamation-circle"></i>
+                            <span>Introduzca un teléfono válido.</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Paso 15: Objetivos -->
+            <div class="test-step" id="step15" data-step="15" style="display: none;">
+                <div class="step-content">
+                    <h3 class="step-question">¿Cuáles son sus principales objetivos en la vida?</h3>
+                    
+                    <div class="options-grid">
+                        <div class="option-card" data-value="exito-profesional">
+                            <span class="option-text">Éxito profesional</span>
+                        </div>
+                        
+                        <div class="option-card" data-value="felicidad-familiar">
+                            <span class="option-text">Felicidad familiar</span>
+                        </div>
+                        
+                        <div class="option-card" data-value="estabilidad-economica">
+                            <span class="option-text">Estabilidad económica</span>
+                        </div>
+                        
+                        <div class="option-card" data-value="crecimiento-personal">
+                            <span class="option-text">Crecimiento personal</span>
+                        </div>
+                        
+                        <div class="option-card" data-value="ayudar-otros">
+                            <span class="option-text">Ayudar a otros</span>
+                        </div>
+                        
+                        <div class="option-card" data-value="realizacion-espiritual">
+                            <span class="option-text">Realización espiritual</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Paso 16: Preferencias -->
+            <div class="test-step" id="step16" data-step="16" style="display: none;">
+                <div class="step-content">
+                    <h3 class="step-question">¿Qué tipo de contenido astrológico prefiere?</h3>
+                    
+                    <div class="options-grid">
+                        <div class="option-card" data-value="predicciones-diarias">
+                            <span class="option-text">Predicciones diarias</span>
+                        </div>
+                        
+                        <div class="option-card" data-value="analisis-compatibilidad">
+                            <span class="option-text">Análisis de compatibilidad</span>
+                        </div>
+                        
+                        <div class="option-card" data-value="consejos-personales">
+                            <span class="option-text">Consejos personales</span>
+                        </div>
+                        
+                        <div class="option-card" data-value="educacion-astrologica">
+                            <span class="option-text">Educación astrológica</span>
+                        </div>
+                        
+                        <div class="option-card" data-value="rituales-luna">
+                            <span class="option-text">Rituales de luna</span>
+                        </div>
+                        
+                        <div class="option-card" data-value="cristales-gemas">
+                            <span class="option-text">Cristales y gemas</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Paso 17: Finalización -->
+            <div class="test-step" id="step17" data-step="17" style="display: none;">
+                <div class="step-content">
+                    <h3 class="step-question">¡Perfecto! Hemos terminado el test</h3>
+                    
+                    <div class="completion-message">
+                        <div class="completion-icon">
+                            <i class="fas fa-check-circle"></i>
+                        </div>
+                        <p>Gracias por completar nuestro test astral completo. Ahora procederemos a analizar tus respuestas y generar tu carta astral personalizada.</p>
+                        
+                        <div class="completion-summary">
+                            <h4>Resumen de tus respuestas:</h4>
+                            <div id="answersSummary">
+                                <!-- Se genera dinámicamente con JS -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Botón de Continuar -->
+    <div class="continue-section">
+        <button class="continue-btn" id="continueBtn" onclick="nextStep()">
+            <span>Continuar</span>
+            <i class="fas fa-arrow-right"></i>
+        </button>
+    </div>
+
+    <!-- Modal de Confirmación de Hora -->
+    <div id="timeModal" class="modal">
+        <div class="modal-content">
+            <h3>Importante</h3>
+            <p>Debes tratar de elegir la hora exacta que se te ocurra para que te demos la mejor interpretación, de lo contrario no podemos garantizarte el resultado de la lectura.</p>
+            <div class="modal-buttons">
+                <button class="btn-secondary" onclick="editTime()">Editar</button>
+                <button class="btn-primary" onclick="confirmTime()">Continuar</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de Carga -->
+    <div id="loadingModal" class="modal">
+        <div class="modal-content">
+            <div class="loading-content">
+                <div class="loading-circle">
+                    <div class="loading-progress" id="loadingProgress">0%</div>
+                </div>
+                
+                <div class="loading-steps">
+                    <div class="loading-step completed">
+                        <i class="fas fa-check"></i>
+                        <span>Tus respuestas están siendo analizadas.</span>
+                    </div>
+                    <div class="loading-step completed">
+                        <i class="fas fa-check"></i>
+                        <span>Se calculan las posiciones del Sol, la Luna y los planetas.</span>
+                    </div>
+                    <div class="loading-step" id="step3">
+                        <i class="fas fa-spinner fa-spin"></i>
+                        <span>Se están preparando los resultados.</span>
+                    </div>
+                    <div class="loading-step" id="step4">
+                        <i class="fas fa-spinner fa-spin"></i>
+                        <span>Se está creando su cuenta.</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/test-script.js"></script>
+</body>
+</html>
