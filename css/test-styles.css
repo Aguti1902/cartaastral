@@ -1130,3 +1130,67 @@ body {
     font-size: 1.1rem;
     font-weight: 600;
 }
+
+/* Botones de Navegación */
+.step-navigation {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 3rem;
+    gap: 1rem;
+}
+
+.step-navigation .btn-secondary {
+    background: var(--light-color);
+    color: var(--text-color);
+    border: 2px solid var(--border-color);
+    padding: 1rem 1.5rem;
+    border-radius: var(--border-radius);
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.step-navigation .btn-secondary:hover {
+    background: var(--border-color);
+    transform: translateY(-2px);
+}
+
+.step-navigation .btn-primary {
+    background: var(--primary-color);
+    color: var(--white-color);
+    border: none;
+    padding: 1rem 1.5rem;
+    border-radius: var(--border-radius);
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.step-navigation .btn-primary:hover {
+    background: var(--primary-dark);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+}
+
+/* Responsive para botones */
+@media (max-width: 768px) {
+    .step-navigation {
+        flex-direction: column;
+        gap: 1rem;
+    }
+    
+    .step-navigation .btn-secondary,
+    .step-navigation .btn-primary {
+        width: 100%;
+        justify-content: center;
+    }
+}
