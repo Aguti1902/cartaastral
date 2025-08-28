@@ -2,7 +2,7 @@
 
 // Variables globales del test
 let currentStep = 1;
-const totalSteps = 15;
+const totalSteps = 14;
 let testAnswers = {};
 let selectedOptions = {};
 
@@ -21,15 +21,8 @@ function initializeTest() {
     // Configurar respuestas por defecto
     testAnswers = {
         gender: '',
-        birthDate: {
-            day: '',
-            month: '',
-            year: ''
-        },
-        birthTime: {
-            hour: '',
-            minute: ''
-        },
+        birthDate: { day: '', month: '', year: '' },
+        birthTime: { hour: '', minute: '' },
         birthPlace: '',
         relationshipStatus: '',
         hasNatalChart: '',
@@ -49,6 +42,15 @@ function initializeTest() {
         personalityTraits: [],
         compatibleSigns: []
     };
+    
+    // Configurar eventos
+    setupOptionCards();
+    setupTextInputs();
+    setupSpecialLinks();
+    setupLocationSearch();
+    
+    // Mostrar primer paso
+    showStep(1);
 }
 
 // Configurar event listeners
@@ -181,6 +183,90 @@ function setupSpecialLinks() {
             e.preventDefault();
             showTimeModal();
         });
+    }
+}
+
+// Configurar búsqueda de ubicación
+function setupLocationSearch() {
+    const locationInput = document.getElementById('birthPlace');
+    const searchResults = document.getElementById('searchResults');
+    
+    if (locationInput && searchResults) {
+        locationInput.addEventListener('input', function() {
+            const query = this.value.trim();
+            
+            if (query.length < 2) {
+                searchResults.style.display = 'none';
+                return;
+            }
+            
+            // Simular búsqueda de ciudades
+            const cities = searchCities(query);
+            displaySearchResults(cities, searchResults);
+        });
+        
+        // Ocultar resultados al hacer clic fuera
+        document.addEventListener('click', function(e) {
+            if (!locationInput.contains(e.target) && !searchResults.contains(e.target)) {
+                searchResults.style.display = 'none';
+            }
+        });
+    }
+}
+
+// Buscar ciudades (simulado)
+function searchCities(query) {
+    const allCities = [
+        'Madrid, España', 'Barcelona, España', 'Valencia, España', 'Sevilla, España',
+        'Buenos Aires, Argentina', 'Córdoba, Argentina', 'Rosario, Argentina',
+        'Ciudad de México, México', 'Guadalajara, México', 'Monterrey, México',
+        'Santiago, Chile', 'Valparaíso, Chile', 'Concepción, Chile',
+        'Bogotá, Colombia', 'Medellín, Colombia', 'Cali, Colombia',
+        'Lima, Perú', 'Arequipa, Perú', 'Trujillo, Perú',
+        'Caracas, Venezuela', 'Maracaibo, Venezuela', 'Valencia, Venezuela',
+        'Quito, Ecuador', 'Guayaquil, Ecuador', 'Cuenca, Ecuador',
+        'La Paz, Bolivia', 'Santa Cruz, Bolivia', 'Cochabamba, Bolivia',
+        'Asunción, Paraguay', 'Ciudad del Este, Paraguay',
+        'Montevideo, Uruguay', 'Salto, Uruguay',
+        'New York, USA', 'Los Angeles, USA', 'Chicago, USA',
+        'London, UK', 'Manchester, UK', 'Birmingham, UK',
+        'Paris, France', 'Lyon, France', 'Marseille, France',
+        'Berlin, Germany', 'Munich, Germany', 'Hamburg, Germany',
+        'Rome, Italy', 'Milan, Italy', 'Naples, Italy',
+        'Tokyo, Japan', 'Osaka, Japan', 'Kyoto, Japan'
+    ];
+    
+    return allCities.filter(city => 
+        city.toLowerCase().includes(query.toLowerCase())
+    ).slice(0, 10);
+}
+
+// Mostrar resultados de búsqueda
+function displaySearchResults(cities, container) {
+    if (cities.length === 0) {
+        container.style.display = 'none';
+        return;
+    }
+    
+    container.innerHTML = cities.map(city => 
+        `<div class="search-result-item" onclick="selectCity('${city}')">${city}</div>`
+    ).join('');
+    
+    container.style.display = 'block';
+}
+
+// Seleccionar ciudad
+function selectCity(city) {
+    const locationInput = document.getElementById('birthPlace');
+    const searchResults = document.getElementById('searchResults');
+    
+    if (locationInput) {
+        locationInput.value = city;
+        testAnswers.birthPlace = city;
+    }
+    
+    if (searchResults) {
+        searchResults.style.display = 'none';
     }
 }
 
@@ -445,17 +531,6 @@ function validateCurrentStep() {
                 return false;
             }
             break;
-            
-        case 15: // Email final
-            if (!testAnswers.finalEmail) {
-                showFieldError(document.getElementById('finalEmail'), 'Este campo es requerido');
-                return false;
-            }
-            if (!isValidEmail(testAnswers.finalEmail)) {
-                showFieldError(document.getElementById('finalEmail'), 'Introduzca un email válido');
-                return false;
-            }
-            break;
     }
     
     return true;
@@ -532,8 +607,8 @@ function simulateAnalysis() {
             // Ocultar modal de carga
             hideLoadingModal();
             
-            // Redirigir a la página principal con los resultados
-            redirectToMainPage();
+            // Mostrar modal de solicitud de email
+            showEmailModal();
         }
     }, 100);
 }
@@ -584,6 +659,49 @@ function confirmTime() {
     
     // Continuar al siguiente paso
     nextStep();
+}
+
+// Mostrar modal de solicitud de email
+function showEmailModal() {
+    const modal = document.getElementById('emailModal');
+    if (modal) {
+        modal.style.display = 'block';
+        document.body.style.overflow = 'hidden';
+    }
+}
+
+// Ocultar modal de email
+function hideEmailModal() {
+    const modal = document.getElementById('emailModal');
+    if (modal) {
+        modal.style.display = 'none';
+        document.body.style.overflow = 'auto';
+    }
+}
+
+// Enviar email y finalizar
+function submitEmail() {
+    const emailInput = document.getElementById('finalEmail');
+    const email = emailInput.value.trim();
+    
+    if (!email) {
+        showFieldError(emailInput, 'Este campo es requerido');
+        return;
+    }
+    
+    if (!isValidEmail(email)) {
+        showFieldError(emailInput, 'Introduzca un email válido');
+        return;
+    }
+    
+    // Guardar email
+    testAnswers.finalEmail = email;
+    
+    // Ocultar modal de email
+    hideEmailModal();
+    
+    // Redirigir a la página principal
+    redirectToMainPage();
 }
 
 // Redirigir a página principal

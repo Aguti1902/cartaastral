@@ -28,7 +28,7 @@
                 
                 <div class="progress-container">
                     <div class="progress-text">
-                        <span id="currentStep">1</span>/<span id="totalSteps">15</span>
+                        <span id="currentStep">1</span>/<span id="totalSteps">14</span>
                     </div>
                     <div class="progress-bar">
                         <div class="progress-fill" id="progressFill"></div>
@@ -184,27 +184,8 @@
                     
                     <div class="input-group">
                         <label for="birthPlace">Lugar de nacimiento</label>
-                        <select id="birthPlace" name="birthPlace" required>
-                            <option value="">Elija una ubicación</option>
-                            <option value="madrid">Madrid, España</option>
-                            <option value="barcelona">Barcelona, España</option>
-                            <option value="valencia">Valencia, España</option>
-                            <option value="sevilla">Sevilla, España</option>
-                            <option value="bilbao">Bilbao, España</option>
-                            <option value="mexico">Ciudad de México, México</option>
-                            <option value="buenos-aires">Buenos Aires, Argentina</option>
-                            <option value="bogota">Bogotá, Colombia</option>
-                            <option value="lima">Lima, Perú</option>
-                            <option value="santiago">Santiago, Chile</option>
-                            <option value="caracas">Caracas, Venezuela</option>
-                            <option value="nueva-york">Nueva York, Estados Unidos</option>
-                            <option value="londres">Londres, Reino Unido</option>
-                            <option value="paris">París, Francia</option>
-                            <option value="roma">Roma, Italia</option>
-                            <option value="berlin">Berlín, Alemania</option>
-                            <option value="tokio">Tokio, Japón</option>
-                            <option value="sydney">Sídney, Australia</option>
-                        </select>
+                        <input type="text" id="birthPlace" name="birthPlace" placeholder="Escriba para buscar su ciudad..." required>
+                        <div class="search-results" id="searchResults" style="display: none;"></div>
                         <div class="error-message" id="birthPlaceError" style="display: none;">
                             <i class="fas fa-exclamation-circle"></i>
                             <span>Este campo es requerido.</span>
@@ -633,104 +614,6 @@
                     </div>
                 </div>
             </div>
-
-            <!-- Paso 15: Solicitud de Email (Final) -->
-            <div class="test-step" id="step15" data-step="15" style="display: none;">
-                <div class="step-content">
-                    <h3 class="step-question">Su carta natal está lista.</h3>
-                    <p class="step-subtitle">¿A qué dirección de correo electrónico debemos enviar la lectura?</p>
-                    
-                    <div class="email-section">
-                        <div class="input-group email-input">
-                            <label for="finalEmail">Correo electrónico</label>
-                            <input type="email" id="finalEmail" name="finalEmail" placeholder="Su dirección de correo electrónico" required>
-                            <div class="error-message" id="finalEmailError" style="display: none;">
-                                <i class="fas fa-exclamation-circle"></i>
-                                <span>Introduzca un email válido.</span>
-                            </div>
-                        </div>
-                        
-                        <div class="privacy-notice">
-                            <p>Respetamos su privacidad y nos comprometemos a proteger sus datos personales. Le enviaremos por correo electrónico la interpretación de su carta natal.</p>
-                        </div>
-                    </div>
-                    
-                    <div class="social-login-section">
-                        <div class="separator">
-                            <span>O</span>
-                        </div>
-                        <p class="social-subtitle">Rellene puntualmente</p>
-                        
-                        <div class="social-buttons">
-                            <button class="social-btn apple-btn">
-                                <i class="fab fa-apple"></i>
-                            </button>
-                            <button class="social-btn google-btn">
-                                <i class="fab fa-google"></i>
-                            </button>
-                            <button class="social-btn facebook-btn">
-                                <i class="fab fa-facebook-f"></i>
-                            </button>
-                        </div>
-                    </div>
-                    
-                    <div class="testimonials-section">
-                        <h4>¿Qué piensan los usuarios?</h4>
-                        <div class="testimonials-grid">
-                            <div class="testimonial-card">
-                                <div class="user-avatar">
-                                    <img src="https://images.unsplash.com/photo-1494790108755-2616b612b786?w=100&h=100&fit=crop&crop=face" alt="Catalina">
-                                </div>
-                                <div class="user-info">
-                                    <h5>Catalina C.</h5>
-                                    <div class="rating">
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                    </div>
-                                    <p>"Responder a las preguntas fue muy emocionante y..."</p>
-                                </div>
-                            </div>
-                            
-                            <div class="testimonial-card">
-                                <div class="user-avatar">
-                                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop&crop=face" alt="Rodrigo">
-                                </div>
-                                <div class="user-info">
-                                    <h5>Rodrigo M.</h5>
-                                    <div class="rating">
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                    </div>
-                                    <p>"Una carta natal muy informativa y útil. Realmente te ayuda a..."</p>
-                                </div>
-                            </div>
-                            
-                            <div class="testimonial-card">
-                                <div class="user-avatar">
-                                    <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop&crop=face" alt="Mauricio">
-                                </div>
-                                <div class="user-info">
-                                    <h5>Mauricio C.</h5>
-                                    <div class="rating">
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                    </div>
-                                    <p>"En comparación con otras cartas natales que he utilizado antes, ¡Ésta..."</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
         </div>
     </main>
 
@@ -780,6 +663,108 @@
                         <span>Se está creando su cuenta.</span>
                     </div>
                 </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de Solicitud de Email (Después de la carga) -->
+    <div id="emailModal" class="modal">
+        <div class="modal-content email-modal-content">
+            <h3>Su carta natal está lista.</h3>
+            <p class="email-subtitle">¿A qué dirección de correo electrónico debemos enviar la lectura?</p>
+            
+            <div class="email-section">
+                <div class="input-group email-input">
+                    <label for="finalEmail">Correo electrónico</label>
+                    <input type="email" id="finalEmail" name="finalEmail" placeholder="Su dirección de correo electrónico" required>
+                    <div class="error-message" id="finalEmailError" style="display: none;">
+                        <i class="fas fa-exclamation-circle"></i>
+                        <span>Introduzca un email válido.</span>
+                    </div>
+                </div>
+                
+                <div class="privacy-notice">
+                    <p>Respetamos su privacidad y nos comprometemos a proteger sus datos personales. Le enviaremos por correo electrónico la interpretación de su carta natal.</p>
+                </div>
+            </div>
+            
+            <div class="social-login-section">
+                <div class="separator">
+                    <span>O</span>
+                </div>
+                <p class="social-subtitle">Rellene puntualmente</p>
+                
+                <div class="social-buttons">
+                    <button class="social-btn apple-btn">
+                        <i class="fab fa-apple"></i>
+                    </button>
+                    <button class="social-btn google-btn">
+                        <i class="fab fa-google"></i>
+                    </button>
+                    <button class="social-btn facebook-btn">
+                        <i class="fab fa-facebook-f"></i>
+                    </button>
+                </div>
+            </div>
+            
+            <div class="testimonials-section">
+                <h4>¿Qué piensan los usuarios?</h4>
+                <div class="testimonials-grid">
+                    <div class="testimonial-card">
+                        <div class="user-avatar">
+                            <img src="https://images.unsplash.com/photo-1494790108755-2616b612b786?w=100&h=100&fit=crop&crop=face" alt="Catalina">
+                        </div>
+                        <div class="user-info">
+                            <h5>Catalina C.</h5>
+                            <div class="rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <p>"Responder a las preguntas fue muy emocionante y..."</p>
+                        </div>
+                    </div>
+                    
+                    <div class="testimonial-card">
+                        <div class="user-avatar">
+                            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop&crop=face" alt="Rodrigo">
+                        </div>
+                        <div class="user-info">
+                            <h5>Rodrigo M.</h5>
+                            <div class="rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <p>"Una carta natal muy informativa y útil. Realmente te ayuda a..."</p>
+                        </div>
+                    </div>
+                    
+                    <div class="testimonial-card">
+                        <div class="user-avatar">
+                            <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop&crop=face" alt="Mauricio">
+                        </div>
+                        <div class="user-info">
+                            <h5>Mauricio C.</h5>
+                            <div class="rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <p>"En comparación con otras cartas natales que he utilizado antes, ¡Ésta..."</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="modal-buttons">
+                <button class="btn-primary" onclick="submitEmail()">Enviar Carta Natal</button>
             </div>
         </div>
     </div>
