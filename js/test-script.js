@@ -38,7 +38,11 @@ function startTest() {
         initializeTest();
         setupEventListeners();
         populateSelectOptions();
-        showStep(1);
+        
+        // Asegurar que el primer paso se muestre correctamente
+        setTimeout(() => {
+            showStep(1);
+        }, 100);
     }
 }
 
@@ -75,8 +79,7 @@ function initializeTest() {
     setupSpecialLinks();
     setupLocationSearch();
     
-    // Mostrar primer paso
-    showStep(1);
+    // No llamar showStep aquí, se llama desde startTest
 }
 
 // Configurar event listeners
@@ -345,8 +348,12 @@ function populateSelectOptions() {
 
 // Mostrar paso específico
 function showStep(stepNumber) {
+    console.log(`🔍 Mostrando paso ${stepNumber}`);
+    
     // Ocultar todos los pasos
     const allSteps = document.querySelectorAll('.test-step');
+    console.log(`📝 Pasos encontrados: ${allSteps.length}`);
+    
     allSteps.forEach(step => {
         step.style.display = 'none';
         step.classList.remove('active');
@@ -354,9 +361,14 @@ function showStep(stepNumber) {
     
     // Mostrar paso actual
     const currentStepElement = document.getElementById(`step${stepNumber}`);
+    console.log(`🎯 Elemento del paso ${stepNumber}:`, currentStepElement);
+    
     if (currentStepElement) {
         currentStepElement.style.display = 'block';
         currentStepElement.classList.add('active');
+        console.log(`✅ Paso ${stepNumber} mostrado correctamente`);
+    } else {
+        console.error(`❌ No se encontró el elemento step${stepNumber}`);
     }
     
     // Actualizar estado de navegación
