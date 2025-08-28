@@ -23,43 +23,73 @@
     </header>
 
     <!-- Contenido Principal -->
-    <main class="test-main">
-        <div class="test-container">
-            <div class="intro-content">
-                <!-- Ilustración mejorada -->
+    <main class="intro-main">
+        <div class="intro-container">
+            <!-- Columna Izquierda: Texto y UI -->
+            <div class="intro-left">
+                <div class="intro-content">
+                    <!-- Título principal -->
+                    <h1 class="intro-title">Por favor, no se apresure al responder a las preguntas.</h1>
+                    
+                    <!-- Descripción clara -->
+                    <p class="intro-description">
+                        Todas las respuestas nos ayudarán a conocerte y a sugerirte contenidos personalizados.
+                    </p>
+
+                    <!-- Botón de acción principal -->
+                    <div class="intro-button-container">
+                        <button class="intro-btn" onclick="startTest()">
+                            <span>Comencemos</span>
+                            <i class="fas fa-arrow-right"></i>
+                        </button>
+                    </div>
+
+                    <!-- Aviso de privacidad -->
+                    <div class="privacy-notice">
+                        <p>
+                            Garantizamos la <strong>privacidad</strong> de sus datos. Al continuar, usted acepta <strong>política de cancelación y reembolso de compras</strong>, los <strong>términos</strong> de las condiciones de Astralcoach.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Columna Derecha: Ilustración -->
+            <div class="intro-right">
                 <div class="intro-illustration">
-                    <div class="main-person">
+                    <!-- Persona central -->
+                    <div class="person-figure">
+                        <div class="person-hair"></div>
                         <div class="person-head"></div>
                         <div class="person-body"></div>
+                        <div class="person-arms"></div>
                     </div>
-                    <div class="floating-elements">
-                        <div class="element-1"></div>
-                        <div class="element-2"></div>
-                        <div class="element-3"></div>
+                    
+                    <!-- Elementos astrológicos -->
+                    <div class="astrological-elements">
+                        <div class="sun-moon-center">
+                            <div class="sun-core">
+                                <div class="sun-rays"></div>
+                            </div>
+                            <div class="moon-crescent"></div>
+                        </div>
+                        
+                        <div class="orbital-rings">
+                            <div class="orbit orbit-1">
+                                <div class="planet planet-1"></div>
+                                <div class="planet planet-2"></div>
+                            </div>
+                            <div class="orbit orbit-2">
+                                <div class="planet planet-3"></div>
+                                <div class="moon-phase"></div>
+                            </div>
+                            <div class="orbit orbit-3">
+                                <div class="star star-1"></div>
+                                <div class="star star-2"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="starburst-top"></div>
                     </div>
-                </div>
-
-                <!-- Título principal -->
-                <h1 class="intro-title">Por favor, no se apresure al responder a las preguntas.</h1>
-                
-                <!-- Descripción clara -->
-                <p class="intro-description">
-                    Todas las respuestas nos ayudarán a conocerte y a sugerirte contenidos personalizados.
-                </p>
-
-                <!-- Botón de acción principal -->
-                <div class="intro-button-container">
-                    <button class="intro-btn" onclick="startTest()">
-                        <span>Comencemos</span>
-                        <i class="fas fa-arrow-right"></i>
-                    </button>
-                </div>
-
-                <!-- Aviso de privacidad -->
-                <div class="privacy-notice">
-                    <p>
-                        Garantizamos la privacidad de sus datos. Al continuar, usted acepta política de cancelación y reembolso de compras, los términos de las condiciones de Astralcoach.
-                    </p>
                 </div>
             </div>
         </div>
