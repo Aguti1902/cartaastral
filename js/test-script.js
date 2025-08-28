@@ -27,27 +27,40 @@ function showStartScreen() {
 
 // Iniciar el test
 function startTest() {
+    console.log('🚀 Iniciando test...');
+    
     const startScreen = document.getElementById('startScreen');
     const testContainer = document.getElementById('testContainer');
+    const testHeader = document.getElementById('testHeader');
     
-    if (startScreen && testContainer) {
+    if (startScreen && testContainer && testHeader) {
+        // Ocultar pantalla de inicio
         startScreen.style.display = 'none';
+        
+        // Mostrar header del test
+        testHeader.style.display = 'block';
+        
+        // Mostrar contenedor del test
         testContainer.style.display = 'block';
+        
+        console.log('✅ Pantalla de inicio ocultada, test visible');
         
         // Inicializar el test
         initializeTest();
-        setupEventListeners();
-        populateSelectOptions();
         
-        // Asegurar que el primer paso se muestre correctamente
+        // Mostrar el primer paso
         setTimeout(() => {
             showStep(1);
         }, 100);
+    } else {
+        console.error('❌ No se encontraron elementos necesarios');
     }
 }
 
 // Inicializar el test
 function initializeTest() {
+    console.log('🔧 Inicializando test...');
+    
     // Configurar respuestas por defecto
     testAnswers = {
         gender: '',
@@ -78,8 +91,10 @@ function initializeTest() {
     setupTextInputs();
     setupSpecialLinks();
     setupLocationSearch();
+    setupEventListeners();
+    populateSelectOptions();
     
-    // No llamar showStep aquí, se llama desde startTest
+    console.log('✅ Test inicializado correctamente');
 }
 
 // Configurar event listeners
@@ -355,6 +370,7 @@ function showStep(stepNumber) {
     console.log(`📝 Pasos encontrados: ${allSteps.length}`);
     
     allSteps.forEach(step => {
+        step.style.display = 'none';
         step.classList.remove('active');
     });
     
@@ -363,8 +379,12 @@ function showStep(stepNumber) {
     console.log(`🎯 Elemento del paso ${stepNumber}:`, currentStepElement);
     
     if (currentStepElement) {
+        currentStepElement.style.display = 'block';
         currentStepElement.classList.add('active');
         console.log(`✅ Paso ${stepNumber} mostrado correctamente`);
+        
+        // Scroll al top
+        window.scrollTo({ top: 0, behavior: 'smooth' });
     } else {
         console.error(`❌ No se encontró el elemento step${stepNumber}`);
     }
