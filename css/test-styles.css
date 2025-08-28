@@ -310,9 +310,9 @@ body {
 
 .options-grid.zodiac-grid {
     grid-template-columns: repeat(6, 1fr);
-    max-width: 800px;
-    margin-left: auto;
-    margin-right: auto;
+    gap: 1.5rem;
+    max-width: 900px;
+    margin: 0 auto;
 }
 
 /* Tarjetas de Opción */
@@ -386,17 +386,41 @@ body {
 }
 
 .zodiac-sign {
-    min-height: 120px;
+    min-height: 140px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    background: white;
+    border: 2px solid #e5e7eb;
+    border-radius: 15px;
+    padding: 1.5rem 1rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.zodiac-sign:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+    border-color: #7c3aed;
+}
+
+.zodiac-sign .zodiac-symbol {
+    font-size: 2.5rem;
+    color: #7c3aed;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 60px;
 }
 
 .zodiac-sign .option-text {
     text-align: center;
-    font-size: 0.875rem;
+    font-size: 1rem;
+    font-weight: 600;
     line-height: 1.2;
+    color: #1f2937;
 }
 
 /* Rasgos de Personalidad */
@@ -765,7 +789,8 @@ body {
     }
     
     .options-grid.zodiac-grid {
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
     }
     
     .date-inputs {
