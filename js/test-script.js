@@ -448,8 +448,17 @@ function showStep(stepNumber) {
     const fillerPage = fillerPages.find(page => page.step === stepNumber);
     
     if (fillerPage) {
-        // Mostrar página de relleno
+        // Mostrar página de relleno como modal
         showFillerPage(fillerPage);
+        // Mostrar el paso anterior para que el usuario pueda ver el test
+        const previousStep = stepNumber - 1;
+        if (previousStep > 0) {
+            const previousStepElement = document.getElementById(`step${previousStep}`);
+            if (previousStepElement) {
+                previousStepElement.style.display = 'block';
+                previousStepElement.classList.add('active');
+            }
+        }
     } else {
         // Mostrar el paso normal del test
         const currentStepElement = document.getElementById(`step${stepNumber}`);
@@ -522,8 +531,10 @@ function updateContinueButton(stepNumber) {
 // Siguiente paso
 function nextStep() {
     if (currentStep < totalSteps) {
-        // Validar paso actual antes de continuar
-        if (validateCurrentStep()) {
+        // Si estamos en una página de relleno, no validar
+        const isFillerPage = fillerPages.find(page => page.step === currentStep);
+        
+        if (isFillerPage || validateCurrentStep()) {
             currentStep++;
             showStep(currentStep);
             
@@ -546,17 +557,26 @@ function previousStep() {
 
 // Mostrar página de relleno
 function showFillerPage(fillerPage) {
-    // Ocultar contenedor del test
-    const testContainer = document.querySelector('.test-container');
-    if (testContainer) {
-        testContainer.innerHTML = generateFillerPageHTML(fillerPage);
-    }
+    // Crear modal de página de relleno
+    const modal = document.createElement('div');
+    modal.className = 'filler-modal';
+    modal.innerHTML = generateFillerPageHTML(fillerPage);
+    
+    // Añadir al body
+    document.body.appendChild(modal);
+    
+    // Mostrar modal
+    setTimeout(() => modal.classList.add('active'), 10);
 }
 
 // Generar HTML de página de relleno
 function generateFillerPageHTML(fillerPage) {
     return `
-        <div class="filler-page">
+        <div class="filler-modal-content">
+            <button class="filler-close-btn" onclick="closeFillerModal()">
+                <i class="fas fa-times"></i>
+            </button>
+            
             <div class="filler-illustration ${fillerPage.illustration}">
                 ${generateIllustrationHTML(fillerPage.illustration)}
             </div>
@@ -566,7 +586,7 @@ function generateFillerPageHTML(fillerPage) {
             <p class="filler-description">${fillerPage.description}</p>
             
             <div class="filler-button-container">
-                <button class="filler-btn" onclick="nextStep()">
+                <button class="filler-btn" onclick="closeFillerModalAndContinue()">
                     <span>Continuar</span>
                     <i class="fas fa-arrow-right"></i>
                 </button>
@@ -620,6 +640,25 @@ function generateIllustrationHTML(type) {
                 <div class="body"></div>
             `;
     }
+}
+
+// Cerrar modal de página de relleno
+function closeFillerModal() {
+    const modal = document.querySelector('.filler-modal');
+    if (modal) {
+        modal.classList.remove('active');
+        setTimeout(() => {
+            modal.remove();
+        }, 300);
+    }
+}
+
+// Cerrar modal y continuar al siguiente paso
+function closeFillerModalAndContinue() {
+    closeFillerModal();
+    setTimeout(() => {
+        nextStep();
+    }, 100);
 }
 
 // Saltar paso
