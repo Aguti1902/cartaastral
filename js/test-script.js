@@ -6,6 +6,10 @@ const totalSteps = 14;
 let testAnswers = {};
 let selectedOptions = {};
 
+// Configuración de Mapbox
+const MAPBOX_ACCESS_TOKEN = 'pk.eyJ1IjoiYWd1dGkxOTAyIiwiYSI6ImNtZXV2YjEzNjBiNXoyaXM0cjhxYXE4NDQifQ.MuOAP6Uk69hrzJ1bZHz-6g';
+let geocoder = null;
+
 // Inicialización cuando se carga la página
 document.addEventListener('DOMContentLoaded', function() {
     console.log('🚀 Test Astral Completo iniciado');
@@ -31,6 +35,7 @@ function initializeTest() {
             minute: ''
         },
         birthPlace: '',
+        birthPlaceCoordinates: null,
         relationshipStatus: '',
         hasNatalChart: '',
         currentThoughts: '',
@@ -187,12 +192,15 @@ function setupSpecialLinks() {
     }
 }
 
-// Configurar búsqueda de ubicación
+// Configurar búsqueda de ubicación con Mapbox
 function setupLocationSearch() {
     const locationInput = document.getElementById('birthPlace');
     const searchResults = document.getElementById('searchResults');
     
     if (locationInput && searchResults) {
+        // Inicializar Mapbox
+        mapboxgl.accessToken = MAPBOX_ACCESS_TOKEN;
+        
         locationInput.addEventListener('input', function() {
             const query = this.value.trim();
             
@@ -201,9 +209,8 @@ function setupLocationSearch() {
                 return;
             }
             
-            // Simular búsqueda de ciudades
-            const cities = searchCities(query);
-            displaySearchResults(cities, searchResults);
+            // Usar Mapbox para búsqueda de ciudades
+            searchCitiesWithMapbox(query, searchResults);
         });
         
         // Ocultar resultados al hacer clic fuera
@@ -215,8 +222,34 @@ function setupLocationSearch() {
     }
 }
 
-// Buscar ciudades (simulado)
-function searchCities(query) {
+// Buscar ciudades con Mapbox
+async function searchCitiesWithMapbox(query, container) {
+    try {
+        const response = await fetch(
+            `https://api.mapbox.com/geocoding/v5/mapbox.places/${encodeURIComponent(query)}.json?access_token=${MAPBOX_ACCESS_TOKEN}&types=place&language=es&limit=10`
+        );
+        
+        if (!response.ok) {
+            throw new Error('Error en la búsqueda');
+        }
+        
+        const data = await response.json();
+        const cities = data.features.map(feature => ({
+            name: feature.place_name_es || feature.place_name,
+            coordinates: feature.center
+        }));
+        
+        displaySearchResults(cities, container);
+    } catch (error) {
+        console.error('Error buscando ciudades:', error);
+        // Fallback a búsqueda local si hay error
+        const fallbackCities = searchCitiesFallback(query);
+        displaySearchResults(fallbackCities, container);
+    }
+}
+
+// Búsqueda de respaldo (fallback)
+function searchCitiesFallback(query) {
     const allCities = [
         'Madrid, España', 'Barcelona, España', 'Valencia, España', 'Sevilla, España',
         'Buenos Aires, Argentina', 'Córdoba, Argentina', 'Rosario, Argentina',
@@ -239,7 +272,7 @@ function searchCities(query) {
     
     return allCities.filter(city => 
         city.toLowerCase().includes(query.toLowerCase())
-    ).slice(0, 10);
+    ).slice(0, 10).map(city => ({ name: city, coordinates: null }));
 }
 
 // Mostrar resultados de búsqueda
@@ -250,20 +283,24 @@ function displaySearchResults(cities, container) {
     }
     
     container.innerHTML = cities.map(city => 
-        `<div class="search-result-item" onclick="selectCity('${city}')">${city}</div>`
+        `<div class="search-result-item" onclick="selectCity('${city.name}', ${city.coordinates ? JSON.stringify(city.coordinates) : 'null'})">${city.name}</div>`
     ).join('');
     
     container.style.display = 'block';
 }
 
 // Seleccionar ciudad
-function selectCity(city) {
+function selectCity(city, coordinates) {
     const locationInput = document.getElementById('birthPlace');
     const searchResults = document.getElementById('searchResults');
     
     if (locationInput) {
         locationInput.value = city;
         testAnswers.birthPlace = city;
+        // Guardar coordenadas si están disponibles
+        if (coordinates) {
+            testAnswers.birthPlaceCoordinates = coordinates;
+        }
     }
     
     if (searchResults) {
