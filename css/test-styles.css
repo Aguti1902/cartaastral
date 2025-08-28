@@ -1110,6 +1110,16 @@ body {
     opacity: 1;
 }
 
+/* Estilo especial para códigos postales */
+.search-result-item[data-type="postcode"]::before {
+    content: '📮';
+    color: var(--secondary-color);
+}
+
+.search-result-item[data-type="postcode"]:hover::before {
+    color: white;
+}
+
 .input-group {
     position: relative;
 }

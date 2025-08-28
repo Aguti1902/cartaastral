@@ -36,6 +36,8 @@ function initializeTest() {
         },
         birthPlace: '',
         birthPlaceCoordinates: null,
+        birthPlaceType: '',
+        birthPlacePostcode: '',
         relationshipStatus: '',
         hasNatalChart: '',
         currentThoughts: '',
@@ -226,7 +228,7 @@ function setupLocationSearch() {
 async function searchCitiesWithMapbox(query, container) {
     try {
         const response = await fetch(
-            `https://api.mapbox.com/geocoding/v5/mapbox.places/${encodeURIComponent(query)}.json?access_token=${MAPBOX_ACCESS_TOKEN}&types=place&language=es&limit=10`
+            `https://api.mapbox.com/geocoding/v5/mapbox.places/${encodeURIComponent(query)}.json?access_token=${MAPBOX_ACCESS_TOKEN}&types=place,postcode&language=es&limit=15`
         );
         
         if (!response.ok) {
@@ -234,10 +236,24 @@ async function searchCitiesWithMapbox(query, container) {
         }
         
         const data = await response.json();
-        const cities = data.features.map(feature => ({
-            name: feature.place_name_es || feature.place_name,
-            coordinates: feature.center
-        }));
+        const cities = data.features.map(feature => {
+            let displayName = feature.place_name_es || feature.place_name;
+            
+            // Si es un código postal, formatear mejor
+            if (feature.place_type && feature.place_type.includes('postcode')) {
+                const context = feature.context || [];
+                const city = context.find(c => c.id && c.id.startsWith('place.'))?.text || '';
+                const country = context.find(c => c.id && c.id.startsWith('country.'))?.text || '';
+                displayName = `${feature.text} - ${city}, ${country}`;
+            }
+            
+            return {
+                name: displayName,
+                coordinates: feature.center,
+                type: feature.place_type ? feature.place_type[0] : 'place',
+                postcode: feature.place_type && feature.place_type.includes('postcode') ? feature.text : null
+            };
+        });
         
         displaySearchResults(cities, container);
     } catch (error) {
@@ -272,7 +288,12 @@ function searchCitiesFallback(query) {
     
     return allCities.filter(city => 
         city.toLowerCase().includes(query.toLowerCase())
-    ).slice(0, 10).map(city => ({ name: city, coordinates: null }));
+    ).slice(0, 10).map(city => ({ 
+        name: city, 
+        coordinates: null, 
+        type: 'place',
+        postcode: null 
+    }));
 }
 
 // Mostrar resultados de búsqueda
@@ -283,14 +304,14 @@ function displaySearchResults(cities, container) {
     }
     
     container.innerHTML = cities.map(city => 
-        `<div class="search-result-item" onclick="selectCity('${city.name}', ${city.coordinates ? JSON.stringify(city.coordinates) : 'null'})">${city.name}</div>`
+        `<div class="search-result-item" data-type="${city.type}" onclick="selectCity('${city.name}', ${city.coordinates ? JSON.stringify(city.coordinates) : 'null'}, '${city.type}', ${city.postcode ? `'${city.postcode}'` : 'null'})">${city.name}</div>`
     ).join('');
     
     container.style.display = 'block';
 }
 
 // Seleccionar ciudad
-function selectCity(city, coordinates) {
+function selectCity(city, coordinates, type, postcode) {
     const locationInput = document.getElementById('birthPlace');
     const searchResults = document.getElementById('searchResults');
     
@@ -301,6 +322,9 @@ function selectCity(city, coordinates) {
         if (coordinates) {
             testAnswers.birthPlaceCoordinates = coordinates;
         }
+        // Guardar tipo y código postal
+        testAnswers.birthPlaceType = type;
+        testAnswers.birthPlacePostcode = postcode;
     }
     
     if (searchResults) {
