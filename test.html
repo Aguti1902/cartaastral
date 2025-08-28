@@ -10,7 +10,7 @@
 </head>
 <body>
     <!-- Header del Test -->
-    <header class="test-header" id="testHeader" style="display: none;">
+    <header class="test-header">
         <div class="header-content">
             <div class="logo">
                 <div class="logo-icon">
@@ -45,59 +45,7 @@
 
     <!-- Contenido Principal del Test -->
     <main class="test-main">
-        <!-- Pantalla de Inicio -->
-        <div class="start-screen" id="startScreen">
-            <div class="start-content">
-                <div class="start-text">
-                    <h1 class="start-title">Por favor, no se apresure al responder a las preguntas.</h1>
-                    <p class="start-subtitle">Todas las respuestas nos ayudarán a conocerte y a sugerirte contenidos personalizados.</p>
-                    
-                    <button class="btn-start" onclick="startTest()">
-                        Comencemos
-                        <i class="fas fa-arrow-right"></i>
-                    </button>
-                    
-                    <div class="legal-notice">
-                        <p>Garantizamos la privacidad de sus datos. Al continuar, usted acepta <a href="#" class="legal-link">política de cancelación y reembolso de compras</a>, los <a href="#" class="legal-link">términos</a> de las condiciones de Astralcoach.</p>
-                    </div>
-                </div>
-                
-                <div class="start-illustration">
-                    <div class="woman-figure">
-                        <div class="woman-head"></div>
-                        <div class="woman-body">
-                            <div class="woman-top"></div>
-                            <div class="woman-pants"></div>
-                        </div>
-                    </div>
-                    
-                    <div class="astrological-elements">
-                        <div class="sun-moon">
-                            <div class="sun-circle"></div>
-                            <div class="moon-crescent"></div>
-                        </div>
-                        <div class="celestial-path">
-                            <div class="celestial-dot"></div>
-                            <div class="celestial-dot"></div>
-                            <div class="celestial-dot"></div>
-                            <div class="celestial-dot"></div>
-                            <div class="celestial-dot"></div>
-                            <div class="celestial-dot"></div>
-                            <div class="celestial-dot"></div>
-                            <div class="celestial-dot"></div>
-                        </div>
-                        <div class="floating-symbols">
-                            <div class="symbol star">★</div>
-                            <div class="symbol moon">☾</div>
-                            <div class="symbol diamond">◆</div>
-                            <div class="symbol circle">●</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="test-container" id="testContainer" style="display: none;">
+        <div class="test-container">
             <!-- Paso 1: Sexo -->
             <div class="test-step" id="step1" data-step="1">
                 <div class="step-content">
@@ -132,13 +80,6 @@
                             </div>
                             <span class="option-text">LGBTI</span>
                         </div>
-                    </div>
-                    
-                    <div class="step-navigation">
-                        <button class="btn-primary" id="continueBtn" onclick="nextStep()">
-                            Continuar
-                            <i class="fas fa-arrow-right"></i>
-                        </button>
                     </div>
                 </div>
             </div>
@@ -204,17 +145,6 @@
                             </select>
                         </div>
                     </div>
-                    
-                    <div class="step-navigation">
-                        <button class="btn-secondary back-btn" onclick="previousStep()">
-                            <i class="fas fa-arrow-left"></i>
-                            Atrás
-                        </button>
-                        <button class="btn-primary" id="continueBtn" onclick="nextStep()">
-                            Continuar
-                            <i class="fas fa-arrow-right"></i>
-                        </button>
-                    </div>
                 </div>
             </div>
 
@@ -244,17 +174,6 @@
                     <div class="time-note">
                         <a href="#" class="dont-know-link">No lo sé ></a>
                     </div>
-                    
-                    <div class="step-navigation">
-                        <button class="btn-secondary back-btn" onclick="previousStep()">
-                            <i class="fas fa-arrow-left"></i>
-                            Atrás
-                        </button>
-                        <button class="btn-primary" id="continueBtn" onclick="nextStep()">
-                            Continuar
-                            <i class="fas fa-arrow-right"></i>
-                        </button>
-                    </div>
                 </div>
             </div>
 
@@ -271,17 +190,6 @@
                             <i class="fas fa-exclamation-circle"></i>
                             <span>Este campo es requerido.</span>
                         </div>
-                    </div>
-                    
-                    <div class="step-navigation">
-                        <button class="btn-secondary back-btn" onclick="previousStep()">
-                            <i class="fas fa-arrow-left"></i>
-                            Atrás
-                        </button>
-                        <button class="btn-primary" id="continueBtn" onclick="nextStep()">
-                            Continuar
-                            <i class="fas fa-arrow-right"></i>
-                        </button>
                     </div>
                 </div>
             </div>
@@ -335,17 +243,6 @@
                             <span class="option-text">Divorciado</span>
                         </div>
                     </div>
-                    
-                    <div class="step-navigation">
-                        <button class="btn-secondary back-btn" onclick="previousStep()">
-                            <i class="fas fa-arrow-left"></i>
-                            Atrás
-                        </button>
-                        <button class="btn-primary" id="continueBtn" onclick="nextStep()">
-                            Continuar
-                            <i class="fas fa-arrow-right"></i>
-                        </button>
-                    </div>
                 </div>
             </div>
 
@@ -368,17 +265,6 @@
                             </div>
                             <span class="option-text">No, no me la he hecho.</span>
                         </div>
-                    </div>
-                    
-                    <div class="step-navigation">
-                        <button class="btn-secondary back-btn" onclick="previousStep()">
-                            <i class="fas fa-arrow-left"></i>
-                            Atrás
-                        </button>
-                        <button class="btn-primary" id="continueBtn" onclick="nextStep()">
-                            Continuar
-                            <i class="fas fa-arrow-right"></i>
-                        </button>
                     </div>
                 </div>
             </div>
@@ -431,17 +317,6 @@
                             <span class="option-text">Amistades</span>
                         </div>
                     </div>
-                    
-                    <div class="step-navigation">
-                        <button class="btn-secondary back-btn" onclick="previousStep()">
-                            <i class="fas fa-arrow-left"></i>
-                            Atrás
-                        </button>
-                        <button class="btn-primary" id="continueBtn" onclick="nextStep()">
-                            Continuar
-                            <i class="fas fa-arrow-right"></i>
-                        </button>
-                    </div>
                 </div>
             </div>
 
@@ -478,17 +353,6 @@
                             </div>
                             <span class="option-text">Aire</span>
                         </div>
-                    </div>
-                    
-                    <div class="step-navigation">
-                        <button class="btn-secondary back-btn" onclick="previousStep()">
-                            <i class="fas fa-arrow-left"></i>
-                            Atrás
-                        </button>
-                        <button class="btn-primary" id="continueBtn" onclick="nextStep()">
-                            Continuar
-                            <i class="fas fa-arrow-right"></i>
-                        </button>
                     </div>
                 </div>
             </div>
@@ -564,17 +428,6 @@
                             <span class="option-text">Pesimista</span>
                         </div>
                     </div>
-                    
-                    <div class="step-navigation">
-                        <button class="btn-secondary back-btn" onclick="previousStep()">
-                            <i class="fas fa-arrow-left"></i>
-                            Atrás
-                        </button>
-                        <button class="btn-primary" id="continueBtn" onclick="nextStep()">
-                            Continuar
-                            <i class="fas fa-arrow-right"></i>
-                        </button>
-                    </div>
                 </div>
             </div>
 
@@ -644,17 +497,6 @@
                             <span class="option-text">Piscis</span>
                         </div>
                     </div>
-                    
-                    <div class="step-navigation">
-                        <button class="btn-secondary back-btn" onclick="previousStep()">
-                            <i class="fas fa-arrow-left"></i>
-                            Atrás
-                        </button>
-                        <button class="btn-primary" id="continueBtn" onclick="nextStep()">
-                            Continuar
-                            <i class="fas fa-arrow-right"></i>
-                        </button>
-                    </div>
                 </div>
             </div>
 
@@ -688,17 +530,6 @@
                             <span class="option-text">Las amistades</span>
                         </div>
                     </div>
-                    
-                    <div class="step-navigation">
-                        <button class="btn-secondary back-btn" onclick="previousStep()">
-                            <i class="fas fa-arrow-left"></i>
-                            Atrás
-                        </button>
-                        <button class="btn-primary" id="continueBtn" onclick="nextStep()">
-                            Continuar
-                            <i class="fas fa-arrow-right"></i>
-                        </button>
-                    </div>
                 </div>
             </div>
 
@@ -714,17 +545,6 @@
                             <i class="fas fa-exclamation-circle"></i>
                             <span>Este campo es requerido.</span>
                         </div>
-                    </div>
-                    
-                    <div class="step-navigation">
-                        <button class="btn-secondary back-btn" onclick="previousStep()">
-                            <i class="fas fa-arrow-left"></i>
-                            Atrás
-                        </button>
-                        <button class="btn-primary" id="continueBtn" onclick="nextStep()">
-                            Continuar
-                            <i class="fas fa-arrow-right"></i>
-                        </button>
                     </div>
                 </div>
             </div>
@@ -759,17 +579,6 @@
                             <span class="option-text">Realización espiritual</span>
                         </div>
                     </div>
-                    
-                    <div class="step-navigation">
-                        <button class="btn-secondary back-btn" onclick="previousStep()">
-                            <i class="fas fa-arrow-left"></i>
-                            Atrás
-                        </button>
-                        <button class="btn-primary" id="continueBtn" onclick="nextStep()">
-                            Continuar
-                            <i class="fas fa-arrow-right"></i>
-                        </button>
-                    </div>
                 </div>
             </div>
 
@@ -803,21 +612,18 @@
                             <span class="option-text">Cristales y gemas</span>
                         </div>
                     </div>
-                    
-                    <div class="step-navigation">
-                        <button class="btn-secondary back-btn" onclick="previousStep()">
-                            <i class="fas fa-arrow-left"></i>
-                            Atrás
-                        </button>
-                        <button class="btn-primary" id="continueBtn" onclick="finishTest()">
-                            Finalizar Test
-                            <i class="fas fa-check"></i>
-                        </button>
-                    </div>
                 </div>
             </div>
         </div>
     </main>
+
+    <!-- Botón de Continuar -->
+    <div class="continue-section">
+        <button class="continue-btn" id="continueBtn" onclick="nextStep()">
+            <span>Continuar</span>
+            <i class="fas fa-arrow-right"></i>
+        </button>
+    </div>
 
     <!-- Modal de Confirmación de Hora -->
     <div id="timeModal" class="modal">
@@ -857,108 +663,6 @@
                         <span>Se está creando su cuenta.</span>
                     </div>
                 </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Modal de Solicitud de Email (Después de la carga) -->
-    <div id="emailModal" class="modal">
-        <div class="modal-content email-modal-content">
-            <h3>Su carta natal está lista.</h3>
-            <p class="email-subtitle">¿A qué dirección de correo electrónico debemos enviar la lectura?</p>
-            
-            <div class="email-section">
-                <div class="input-group email-input">
-                    <label for="finalEmail">Correo electrónico</label>
-                    <input type="email" id="finalEmail" name="finalEmail" placeholder="Su dirección de correo electrónico" required>
-                    <div class="error-message" id="finalEmailError" style="display: none;">
-                        <i class="fas fa-exclamation-circle"></i>
-                        <span>Introduzca un email válido.</span>
-                    </div>
-                </div>
-                
-                <div class="privacy-notice">
-                    <p>Respetamos su privacidad y nos comprometemos a proteger sus datos personales. Le enviaremos por correo electrónico la interpretación de su carta natal.</p>
-                </div>
-            </div>
-            
-            <div class="social-login-section">
-                <div class="separator">
-                    <span>O</span>
-                </div>
-                <p class="social-subtitle">Rellene puntualmente</p>
-                
-                <div class="social-buttons">
-                    <button class="social-btn apple-btn">
-                        <i class="fab fa-apple"></i>
-                    </button>
-                    <button class="social-btn google-btn">
-                        <i class="fab fa-google"></i>
-                    </button>
-                    <button class="social-btn facebook-btn">
-                        <i class="fab fa-facebook-f"></i>
-                    </button>
-                </div>
-            </div>
-            
-            <div class="testimonials-section">
-                <h4>¿Qué piensan los usuarios?</h4>
-                <div class="testimonials-grid">
-                    <div class="testimonial-card">
-                        <div class="user-avatar">
-                            <img src="https://images.unsplash.com/photo-1494790108755-2616b612b786?w=100&h=100&fit=crop&crop=face" alt="Catalina">
-                        </div>
-                        <div class="user-info">
-                            <h5>Catalina C.</h5>
-                            <div class="rating">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                            </div>
-                            <p>"Responder a las preguntas fue muy emocionante y..."</p>
-                        </div>
-                    </div>
-                    
-                    <div class="testimonial-card">
-                        <div class="user-avatar">
-                            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop&crop=face" alt="Rodrigo">
-                        </div>
-                        <div class="user-info">
-                            <h5>Rodrigo M.</h5>
-                            <div class="rating">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                            </div>
-                            <p>"Una carta natal muy informativa y útil. Realmente te ayuda a..."</p>
-                        </div>
-                    </div>
-                    
-                    <div class="testimonial-card">
-                        <div class="user-avatar">
-                            <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop&crop=face" alt="Mauricio">
-                        </div>
-                        <div class="user-info">
-                            <h5>Mauricio C.</h5>
-                            <div class="rating">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                            </div>
-                            <p>"En comparación con otras cartas natales que he utilizado antes, ¡Ésta..."</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="modal-buttons">
-                <button class="btn-primary" onclick="submitEmail()">Enviar Carta Natal</button>
             </div>
         </div>
     </div>

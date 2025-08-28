@@ -10,67 +10,26 @@ let selectedOptions = {};
 document.addEventListener('DOMContentLoaded', function() {
     console.log('🚀 Test Astral Completo iniciado');
     
-    // Mostrar pantalla de inicio por defecto
-    showStartScreen();
+    initializeTest();
+    setupEventListeners();
+    populateSelectOptions();
+    showStep(1);
 });
-
-// Mostrar pantalla de inicio
-function showStartScreen() {
-    const startScreen = document.getElementById('startScreen');
-    const testContainer = document.getElementById('testContainer');
-    const testHeader = document.getElementById('testHeader');
-    
-    if (startScreen && testContainer && testHeader) {
-        startScreen.style.display = 'flex';
-        testContainer.style.display = 'none';
-        testHeader.style.display = 'none';
-        console.log('✅ Pantalla de inicio mostrada, header y test ocultos');
-    } else {
-        console.error('❌ No se encontraron elementos para la pantalla de inicio');
-    }
-}
-
-// Iniciar el test
-function startTest() {
-    console.log('🚀 Iniciando test...');
-    
-    const startScreen = document.getElementById('startScreen');
-    const testContainer = document.getElementById('testContainer');
-    const testHeader = document.getElementById('testHeader');
-    
-    if (startScreen && testContainer && testHeader) {
-        // Ocultar pantalla de inicio
-        startScreen.style.display = 'none';
-        
-        // Mostrar header del test
-        testHeader.style.display = 'block';
-        
-        // Mostrar contenedor del test
-        testContainer.style.display = 'block';
-        
-        console.log('✅ Pantalla de inicio ocultada, test visible');
-        
-        // Inicializar el test
-        initializeTest();
-        
-        // Mostrar el primer paso
-        setTimeout(() => {
-            showStep(1);
-        }, 100);
-    } else {
-        console.error('❌ No se encontraron elementos necesarios');
-    }
-}
 
 // Inicializar el test
 function initializeTest() {
-    console.log('🔧 Inicializando test...');
-    
     // Configurar respuestas por defecto
     testAnswers = {
         gender: '',
-        birthDate: { day: '', month: '', year: '' },
-        birthTime: { hour: '', minute: '' },
+        birthDate: {
+            day: '',
+            month: '',
+            year: ''
+        },
+        birthTime: {
+            hour: '',
+            minute: ''
+        },
         birthPlace: '',
         relationshipStatus: '',
         hasNatalChart: '',
@@ -90,16 +49,6 @@ function initializeTest() {
         personalityTraits: [],
         compatibleSigns: []
     };
-    
-    // Configurar eventos
-    setupOptionCards();
-    setupTextInputs();
-    setupSpecialLinks();
-    setupLocationSearch();
-    setupEventListeners();
-    populateSelectOptions();
-    
-    console.log('✅ Test inicializado correctamente');
 }
 
 // Configurar event listeners
@@ -112,6 +61,9 @@ function setupEventListeners() {
     
     // Configurar enlaces especiales
     setupSpecialLinks();
+    
+    // Configurar búsqueda de ubicación
+    setupLocationSearch();
 }
 
 // Configurar selección de opciones
@@ -368,12 +320,8 @@ function populateSelectOptions() {
 
 // Mostrar paso específico
 function showStep(stepNumber) {
-    console.log(`🔍 Mostrando paso ${stepNumber}`);
-    
     // Ocultar todos los pasos
     const allSteps = document.querySelectorAll('.test-step');
-    console.log(`📝 Pasos encontrados: ${allSteps.length}`);
-    
     allSteps.forEach(step => {
         step.style.display = 'none';
         step.classList.remove('active');
@@ -381,17 +329,9 @@ function showStep(stepNumber) {
     
     // Mostrar paso actual
     const currentStepElement = document.getElementById(`step${stepNumber}`);
-    console.log(`🎯 Elemento del paso ${stepNumber}:`, currentStepElement);
-    
     if (currentStepElement) {
         currentStepElement.style.display = 'block';
         currentStepElement.classList.add('active');
-        console.log(`✅ Paso ${stepNumber} mostrado correctamente`);
-        
-        // Scroll al top
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-    } else {
-        console.error(`❌ No se encontró el elemento step${stepNumber}`);
     }
     
     // Actualizar estado de navegación
@@ -592,6 +532,17 @@ function validateCurrentStep() {
                 return false;
             }
             break;
+            
+        case 15: // Email final
+            if (!testAnswers.finalEmail) {
+                showFieldError(document.getElementById('finalEmail'), 'Este campo es requerido');
+                return false;
+            }
+            if (!isValidEmail(testAnswers.finalEmail)) {
+                showFieldError(document.getElementById('finalEmail'), 'Introduzca un email válido');
+                return false;
+            }
+            break;
     }
     
     return true;
@@ -668,8 +619,8 @@ function simulateAnalysis() {
             // Ocultar modal de carga
             hideLoadingModal();
             
-            // Mostrar modal de solicitud de email
-            showEmailModal();
+            // Redirigir a la página de email
+            redirectToEmailPage();
         }
     }, 100);
 }
@@ -722,49 +673,6 @@ function confirmTime() {
     nextStep();
 }
 
-// Mostrar modal de solicitud de email
-function showEmailModal() {
-    const modal = document.getElementById('emailModal');
-    if (modal) {
-        modal.style.display = 'block';
-        document.body.style.overflow = 'hidden';
-    }
-}
-
-// Ocultar modal de email
-function hideEmailModal() {
-    const modal = document.getElementById('emailModal');
-    if (modal) {
-        modal.style.display = 'none';
-        document.body.style.overflow = 'auto';
-    }
-}
-
-// Enviar email y finalizar
-function submitEmail() {
-    const emailInput = document.getElementById('finalEmail');
-    const email = emailInput.value.trim();
-    
-    if (!email) {
-        showFieldError(emailInput, 'Este campo es requerido');
-        return;
-    }
-    
-    if (!isValidEmail(email)) {
-        showFieldError(emailInput, 'Introduzca un email válido');
-        return;
-    }
-    
-    // Guardar email
-    testAnswers.finalEmail = email;
-    
-    // Ocultar modal de email
-    hideEmailModal();
-    
-    // Redirigir a la página principal
-    redirectToMainPage();
-}
-
 // Redirigir a página principal
 function redirectToMainPage() {
     // Guardar respuestas en localStorage
@@ -776,6 +684,20 @@ function redirectToMainPage() {
     // Redirigir después de 2 segundos
     setTimeout(() => {
         window.location.href = 'index.html';
+    }, 2000);
+}
+
+// Redirigir a la página de email
+function redirectToEmailPage() {
+    // Guardar respuestas en localStorage
+    localStorage.setItem('astralTestAnswers', JSON.stringify(testAnswers));
+    
+    // Mostrar notificación de éxito
+    showNotification('¡Test completado exitosamente! Redirigiendo a la página de email...', 'success');
+    
+    // Redirigir después de 2 segundos
+    setTimeout(() => {
+        window.location.href = 'email.html';
     }, 2000);
 }
 
