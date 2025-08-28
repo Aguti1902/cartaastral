@@ -1,0 +1,18 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://astralcoach.com/sitemap.xml
+
+# Disallow admin areas
+Disallow: /admin/
+Disallow: /api/
+Disallow: /private/
+
+# Allow important pages
+Allow: /inicio
+Allow: /servicios
+Allow: /precios
+Allow: /contacto
+Allow: /blog
+Allow: /about

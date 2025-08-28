@@ -1,0 +1,47 @@
+{
+  "name": "astralcoach-pro",
+  "version": "1.0.0",
+  "description": "Página web moderna para suscripciones de cartas astrales",
+  "main": "pages/index.html",
+  "scripts": {
+    "start": "live-server pages/",
+    "build": "npm run build:css && npm run build:js && npm run build:html",
+    "build:css": "sass css/styles.scss:build/dist/css/styles.min.css --style compressed",
+    "build:js": "uglifyjs js/script.js -o build/dist/js/script.min.js",
+    "build:html": "cp pages/index.html build/dist/",
+    "dev": "npm run start",
+    "test": "jest",
+    "lint": "eslint js/",
+    "format": "prettier --write \"**/*.{js,css,html,md}\""
+  },
+  "keywords": [
+    "astrologia",
+    "carta-astral",
+    "suscripciones",
+    "web-design",
+    "responsive"
+  ],
+  "author": "AstralCoach Pro Team",
+  "license": "MIT",
+  "devDependencies": {
+    "live-server": "^1.2.2",
+    "sass": "^1.69.0",
+    "uglify-js": "^3.17.4",
+    "jest": "^29.7.0",
+    "eslint": "^8.55.0",
+    "prettier": "^3.1.0"
+  },
+  "dependencies": {
+    "font-awesome": "^6.0.0"
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not dead"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/astralcoach/astralcoach-pro.git"
+  },
+  "homepage": "https://astralcoach.com"
+}
