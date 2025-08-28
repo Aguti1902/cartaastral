@@ -374,16 +374,7 @@ body {
     line-height: 1.4;
 }
 
-/* Símbolos del Zodiaco */
-.zodiac-symbol {
-    font-size: 3rem;
-    color: var(--primary-color);
-    margin-bottom: 0.5rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 60px;
-}
+/* Símbolos del Zodiaco - Estilos específicos en .zodiac-sign */
 
 .zodiac-sign {
     min-height: 140px;
