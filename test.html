@@ -45,7 +45,59 @@
 
     <!-- Contenido Principal del Test -->
     <main class="test-main">
-        <div class="test-container">
+        <!-- Pantalla de Inicio -->
+        <div class="start-screen" id="startScreen">
+            <div class="start-content">
+                <div class="start-text">
+                    <h1 class="start-title">Por favor, no se apresure al responder a las preguntas.</h1>
+                    <p class="start-subtitle">Todas las respuestas nos ayudarán a conocerte y a sugerirte contenidos personalizados.</p>
+                    
+                    <button class="btn-start" onclick="startTest()">
+                        Comencemos
+                        <i class="fas fa-arrow-right"></i>
+                    </button>
+                    
+                    <div class="legal-notice">
+                        <p>Garantizamos la privacidad de sus datos. Al continuar, usted acepta <a href="#" class="legal-link">política de cancelación y reembolso de compras</a>, los <a href="#" class="legal-link">términos</a> de las condiciones de Astralcoach.</p>
+                    </div>
+                </div>
+                
+                <div class="start-illustration">
+                    <div class="woman-figure">
+                        <div class="woman-head"></div>
+                        <div class="woman-body">
+                            <div class="woman-top"></div>
+                            <div class="woman-pants"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="astrological-elements">
+                        <div class="sun-moon">
+                            <div class="sun-circle"></div>
+                            <div class="moon-crescent"></div>
+                        </div>
+                        <div class="celestial-path">
+                            <div class="celestial-dot"></div>
+                            <div class="celestial-dot"></div>
+                            <div class="celestial-dot"></div>
+                            <div class="celestial-dot"></div>
+                            <div class="celestial-dot"></div>
+                            <div class="celestial-dot"></div>
+                            <div class="celestial-dot"></div>
+                            <div class="celestial-dot"></div>
+                        </div>
+                        <div class="floating-symbols">
+                            <div class="symbol star">★</div>
+                            <div class="symbol moon">☾</div>
+                            <div class="symbol diamond">◆</div>
+                            <div class="symbol circle">●</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="test-container" id="testContainer" style="display: none;">
             <!-- Paso 1: Sexo -->
             <div class="test-step" id="step1" data-step="1">
                 <div class="step-content">

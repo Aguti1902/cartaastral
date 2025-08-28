@@ -10,11 +10,37 @@ let selectedOptions = {};
 document.addEventListener('DOMContentLoaded', function() {
     console.log('🚀 Test Astral Completo iniciado');
     
-    initializeTest();
-    setupEventListeners();
-    populateSelectOptions();
-    showStep(1);
+    // Mostrar pantalla de inicio por defecto
+    showStartScreen();
 });
+
+// Mostrar pantalla de inicio
+function showStartScreen() {
+    const startScreen = document.getElementById('startScreen');
+    const testContainer = document.getElementById('testContainer');
+    
+    if (startScreen && testContainer) {
+        startScreen.style.display = 'flex';
+        testContainer.style.display = 'none';
+    }
+}
+
+// Iniciar el test
+function startTest() {
+    const startScreen = document.getElementById('startScreen');
+    const testContainer = document.getElementById('testContainer');
+    
+    if (startScreen && testContainer) {
+        startScreen.style.display = 'none';
+        testContainer.style.display = 'block';
+        
+        // Inicializar el test
+        initializeTest();
+        setupEventListeners();
+        populateSelectOptions();
+        showStep(1);
+    }
+}
 
 // Inicializar el test
 function initializeTest() {
