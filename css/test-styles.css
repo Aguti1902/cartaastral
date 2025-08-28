@@ -1225,23 +1225,23 @@ body {
     justify-content: center;
 }
 
-/* Persona central */
+/* Persona central - Diseño minimalista */
 .person-figure {
     position: relative;
-    width: 200px;
-    height: 200px;
+    width: 180px;
+    height: 180px;
     z-index: 10;
 }
 
-.person-hair {
+.person-body {
     position: absolute;
-    top: -10px;
+    bottom: 0;
     left: 50%;
     transform: translateX(-50%);
-    width: 60px;
-    height: 40px;
-    background: #1f2937;
-    border-radius: 30px 30px 0 0;
+    width: 80px;
+    height: 100px;
+    background: #6A40E8;
+    border-radius: 20px;
 }
 
 .person-head {
@@ -1249,35 +1249,57 @@ body {
     top: 20px;
     left: 50%;
     transform: translateX(-50%);
-    width: 50px;
+    width: 70px;
     height: 50px;
-    background: #fbbf24;
-    border-radius: 50%;
+    background: #F7C852;
+    border-radius: 35px;
 }
 
-.person-body {
+.person-hair {
     position: absolute;
-    top: 60px;
+    top: 10px;
     left: 50%;
     transform: translateX(-50%);
-    width: 80px;
-    height: 100px;
-    background: #8b5cf6;
-    border-radius: 20px;
+    width: 60px;
+    height: 30px;
+    background: #2B303A;
+    border-radius: 30px 30px 0 0;
 }
 
 .person-arms {
     position: absolute;
-    top: 70px;
+    top: 60px;
     left: 50%;
     transform: translateX(-50%);
-    width: 120px;
+    width: 140px;
     height: 4px;
-    background: #8b5cf6;
+    background: #6A40E8;
     border-radius: 2px;
 }
 
-/* Elementos astrológicos */
+.person-arms::before {
+    content: '';
+    position: absolute;
+    left: -30px;
+    top: 0;
+    width: 30px;
+    height: 4px;
+    background: #6A40E8;
+    border-radius: 2px;
+}
+
+.person-arms::after {
+    content: '';
+    position: absolute;
+    right: -30px;
+    top: 0;
+    width: 30px;
+    height: 4px;
+    background: #6A40E8;
+    border-radius: 2px;
+}
+
+/* Elementos astrológicos - Diseño minimalista */
 .astrological-elements {
     position: absolute;
     top: 0;
@@ -1286,49 +1308,32 @@ body {
     height: 100%;
 }
 
-.sun-moon-center {
+/* Círculo punteado principal */
+.astrological-elements::before {
+    content: '';
     position: absolute;
     top: 50%;
     right: 20%;
     transform: translateY(-50%);
     width: 120px;
     height: 120px;
-}
-
-.sun-core {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 60px;
-    height: 60px;
-    background: #fbbf24;
+    border: 2px dotted #F7C852;
     border-radius: 50%;
 }
 
-.sun-rays {
+/* Círculo punteado secundario */
+.astrological-elements::after {
+    content: '';
     position: absolute;
-    top: -10px;
-    left: -10px;
+    top: 30%;
+    right: 10%;
     width: 80px;
     height: 80px;
-    border: 3px solid #fbbf24;
+    border: 2px dotted #D3D3D3;
     border-radius: 50%;
 }
 
-.moon-crescent {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 40px;
-    height: 40px;
-    background: #fbbf24;
-    border-radius: 50%;
-    clip-path: polygon(50% 0%, 100% 0%, 100% 100%, 50% 100%, 0% 50%);
-}
-
-/* Anillos orbitales */
+/* Elementos decorativos minimalistas */
 .orbital-rings {
     position: absolute;
     top: 0;
@@ -1337,97 +1342,55 @@ body {
     height: 100%;
 }
 
-.orbit {
-    position: absolute;
-    border: 2px dotted #d1d5db;
-    border-radius: 50%;
-}
-
-.orbit-1 {
-    top: 20%;
-    left: 20%;
-    width: 120px;
-    height: 120px;
-}
-
-.orbit-2 {
-    top: 30%;
-    left: 30%;
-    width: 160px;
-    height: 160px;
-}
-
-.orbit-3 {
-    top: 40%;
-    left: 40%;
-    width: 200px;
-    height: 200px;
-}
-
-/* Planetas y estrellas */
-.planet {
-    position: absolute;
-    background: #1f2937;
-    border-radius: 50%;
-}
-
-.planet-1 {
-    width: 15px;
-    height: 15px;
-    top: 10%;
-    left: 50%;
-}
-
-.planet-2 {
-    width: 12px;
-    height: 12px;
-    top: 50%;
-    right: 10%;
-}
-
-.planet-3 {
-    width: 18px;
-    height: 18px;
-    bottom: 20%;
-    left: 20%;
-}
-
-.moon-phase {
-    position: absolute;
-    width: 20px;
-    height: 20px;
-    background: #1f2937;
-    border-radius: 50%;
-    top: 30%;
-    right: 30%;
-}
-
-.star {
+/* Puntos decorativos */
+.orbital-rings::before,
+.orbital-rings::after {
+    content: '';
     position: absolute;
     width: 8px;
     height: 8px;
-    background: #fbbf24;
+    background: #2B303A;
     border-radius: 50%;
 }
 
-.star-1 {
+.orbital-rings::before {
+    top: 25%;
+    left: 25%;
+}
+
+.orbital-rings::after {
     top: 60%;
     left: 60%;
 }
 
-.star-2 {
-    top: 20%;
+/* Puntos amarillos */
+.orbital-rings .star-1,
+.orbital-rings .star-2 {
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    background: #F7C852;
+    border-radius: 50%;
+}
+
+.orbital-rings .star-1 {
+    top: 40%;
+    right: 30%;
+}
+
+.orbital-rings .star-2 {
+    bottom: 30%;
     right: 20%;
 }
 
+/* Círculo objetivo en la esquina superior derecha */
 .starburst-top {
     position: absolute;
-    top: 10%;
-    right: 10%;
-    width: 30px;
-    height: 30px;
-    background: transparent;
-    border: 2px solid #1f2937;
+    top: 15%;
+    right: 15%;
+    width: 25px;
+    height: 25px;
+    background: #2B303A;
     border-radius: 50%;
 }
 
@@ -1437,9 +1400,9 @@ body {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 20px;
-    height: 20px;
-    background: #1f2937;
+    width: 12px;
+    height: 12px;
+    background: white;
     border-radius: 50%;
 }
 
