@@ -1137,6 +1137,9 @@ body {
     width: 300px;
     height: 300px;
     margin: 0 auto 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .intro-title {
@@ -1253,6 +1256,9 @@ body {
     width: 300px;
     height: 300px;
     margin: 0 auto 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .filler-title {
@@ -1300,35 +1306,97 @@ body {
 }
 
 /* Ilustraciones específicas para páginas de relleno */
+.person-figure {
+    position: relative;
+    width: 120px;
+    height: 120px;
+}
+
+.person-figure .head {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 40px;
+    height: 40px;
+    background: #8B6EE6;
+    border-radius: 50%;
+}
+
+.person-figure .body {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 60px;
+    background: #6A66E6;
+    border-radius: 20px;
+}
+
+.celestial-elements {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 120px;
+    height: 120px;
+}
+
+.celestial-elements .sun {
+    position: absolute;
+    top: 20%;
+    right: 20%;
+    width: 25px;
+    height: 25px;
+    background: #F2A640;
+    border-radius: 50%;
+}
+
+.celestial-elements .moon {
+    position: absolute;
+    top: 50%;
+    right: 40%;
+    width: 20px;
+    height: 20px;
+    background: #707070;
+    border-radius: 50%;
+}
+
+.celestial-elements .stars {
+    position: absolute;
+    bottom: 30%;
+    right: 10%;
+    width: 30px;
+    height: 30px;
+    background: #F2A640;
+    border-radius: 50%;
+}
+
 .astrology-circle {
     position: relative;
     width: 100%;
     height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .orbit-dots {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 200px;
-    height: 200px;
-    border: 2px dashed var(--primary-color);
+    position: relative;
+    width: 180px;
+    height: 180px;
+    border: 3px solid var(--primary-color);
     border-radius: 50%;
-    transform: translate(-50%, -50%);
-    animation: rotate 20s linear infinite;
+    opacity: 0.3;
 }
 
 .central-sun {
     position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 80px;
-    height: 80px;
-    background: linear-gradient(135deg, #fbbf24, #f59e0b);
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(135deg, #F2A640, #f59e0b);
     border-radius: 50%;
-    transform: translate(-50%, -50%);
-    box-shadow: 0 0 30px rgba(251, 191, 36, 0.6);
-    animation: pulse 2s ease-in-out infinite;
+    box-shadow: 0 4px 20px rgba(242, 166, 64, 0.4);
 }
 
 .planets {
@@ -1343,89 +1411,68 @@ body {
 .planets::after {
     content: '';
     position: absolute;
-    width: 25px;
-    height: 25px;
-    background: var(--primary-color);
     border-radius: 50%;
-    box-shadow: 0 0 15px rgba(99, 102, 241, 0.5);
 }
 
 .planets::before {
-    top: 15%;
-    left: 15%;
-    animation: float 3s ease-in-out infinite;
+    width: 20px;
+    height: 20px;
+    background: #F2A640;
+    top: 20%;
+    left: 20%;
 }
 
 .planets::after {
-    top: 65%;
-    left: 65%;
-    background: var(--secondary-color);
-    box-shadow: 0 0 15px rgba(139, 92, 246, 0.5);
-    animation: float 3s ease-in-out infinite reverse;
-}
-
-@keyframes rotate {
-    from { transform: translate(-50%, -50%) rotate(0deg); }
-    to { transform: translate(-50%, -50%) rotate(360deg); }
-}
-
-@keyframes pulse {
-    0%, 100% { transform: translate(-50%, -50%) scale(1); }
-    50% { transform: translate(-50%, -50%) scale(1.1); }
-}
-
-@keyframes float {
-    0%, 100% { transform: translateY(0px); }
-    50% { transform: translateY(-10px); }
+    width: 30px;
+    height: 30px;
+    background: #707070;
+    top: 60%;
+    left: 60%;
 }
 
 .potential-stars {
     position: relative;
     width: 100%;
     height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .star-group-1,
 .star-group-2,
 .star-group-3 {
     position: absolute;
-    width: 120px;
-    height: 120px;
+    width: 25px;
+    height: 25px;
+    background: #F2A640;
+    border-radius: 50%;
 }
 
 .star-group-1 {
-    top: 15%;
-    left: 15%;
-    background: radial-gradient(circle, var(--primary-color) 3px, transparent 3px);
-    background-size: 25px 25px;
-    animation: twinkle 2s ease-in-out infinite;
+    top: 25%;
+    left: 25%;
 }
 
 .star-group-2 {
-    top: 45%;
-    right: 15%;
-    background: radial-gradient(circle, var(--secondary-color) 3px, transparent 3px);
-    background-size: 30px 30px;
-    animation: twinkle 2s ease-in-out infinite 0.5s;
+    top: 50%;
+    right: 25%;
+    background: #8B6EE6;
 }
 
 .star-group-3 {
-    bottom: 15%;
-    left: 45%;
-    background: radial-gradient(circle, #fbbf24 3px, transparent 3px);
-    background-size: 20px 20px;
-    animation: twinkle 2s ease-in-out infinite 1s;
-}
-
-@keyframes twinkle {
-    0%, 100% { opacity: 0.3; transform: scale(1); }
-    50% { opacity: 1; transform: scale(1.2); }
+    bottom: 25%;
+    left: 50%;
+    background: #6A66E6;
 }
 
 .astral-path {
     position: relative;
     width: 100%;
     height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .path-line {
@@ -1433,12 +1480,10 @@ body {
     top: 50%;
     left: 20%;
     width: 60%;
-    height: 6px;
-    background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
-    border-radius: 3px;
+    height: 4px;
+    background: #8B6EE6;
+    border-radius: 2px;
     transform: translateY(-50%);
-    box-shadow: 0 0 20px rgba(99, 102, 241, 0.3);
-    animation: pathGlow 3s ease-in-out infinite;
 }
 
 .path-stars {
@@ -1451,51 +1496,33 @@ body {
 
 .path-stars::before,
 .path-stars::after {
-    content: '⭐';
+    content: '';
     position: absolute;
-    font-size: 1.5rem;
-    color: #fbbf24;
-    animation: starFloat 4s ease-in-out infinite;
+    width: 20px;
+    height: 20px;
+    background: #F2A640;
+    border-radius: 50%;
 }
 
 .path-stars::before {
     top: 30%;
     left: 40%;
-    animation-delay: 0s;
 }
 
 .path-stars::after {
     top: 60%;
     left: 70%;
-    animation-delay: 2s;
 }
 
 .path-destination {
     position: absolute;
     top: 50%;
     right: 20%;
-    width: 50px;
-    height: 50px;
-    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    width: 40px;
+    height: 40px;
+    background: #6A66E6;
     border-radius: 50%;
     transform: translateY(-50%);
-    box-shadow: 0 0 30px rgba(99, 102, 241, 0.6);
-    animation: destinationPulse 2s ease-in-out infinite;
-}
-
-@keyframes pathGlow {
-    0%, 100% { box-shadow: 0 0 20px rgba(99, 102, 241, 0.3); }
-    50% { box-shadow: 0 0 40px rgba(99, 102, 241, 0.6); }
-}
-
-@keyframes starFloat {
-    0%, 100% { transform: translateY(0px) rotate(0deg); }
-    50% { transform: translateY(-15px) rotate(180deg); }
-}
-
-@keyframes destinationPulse {
-    0%, 100% { transform: translateY(-50%) scale(1); }
-    50% { transform: translateY(-50%) scale(1.1); }
 }
 
 /* ===== LOGOS DE ELEMENTOS ===== */
