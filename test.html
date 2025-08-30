@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Test Astral Completo - AstralCoach Pro</title>
+    <title>Test Astral Completo - AstroKey</title>
     <link rel="stylesheet" href="css/test-styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -16,10 +16,9 @@
         <div class="header-content">
             <div class="logo">
                 <div class="logo-icon">
-                    <i class="fas fa-moon"></i>
-                    <i class="fas fa-star"></i>
+                    <img src="../images/Mask group (10).png" alt="AstroKey Logo" class="astrokey-logo-img">
                 </div>
-                <span>Astral Coach</span>
+                <span>AstroKey</span>
             </div>
             
             <div class="progress-navigation">
@@ -86,15 +85,37 @@
                 </div>
             </div>
 
-            <!-- Paso 2: Fecha de Nacimiento -->
+            <!-- Paso 2: Nombre y Apellidos -->
             <div class="test-step" id="step2" data-step="2" style="display: none;">
+                <div class="step-content">
+                    <h2 class="step-title">Información Personal</h2>
+                    <h3 class="step-question">¿Cuál es tu nombre y apellidos?</h3>
+                    
+                    <div class="input-container">
+                        <div class="input-group">
+                            <label for="firstName">Nombre</label>
+                            <input type="text" id="firstName" name="firstName" placeholder="Tu nombre" required>
+                        </div>
+                        
+                        <div class="input-group">
+                            <label for="lastName">Apellidos</label>
+                            <input type="text" id="lastName" name="lastName" placeholder="Tus apellidos" required>
+                        </div>
+                    </div>
+                    
+
+                </div>
+            </div>
+
+            <!-- Paso 3: Fecha de Nacimiento -->
+            <div class="test-step" id="step3" data-step="3" style="display: none;">
                 <div class="step-content">
                     <div class="info-card">
                         <div class="info-illustration">
                             <img src="images/Illustration of Astrology Horoscope.png" alt="Horóscopo astrológico" class="info-image">
                         </div>
                         <div class="info-text">
-                            <h4>¿Qué nos ofrece Astralcoach?</h4>
+                            <h4>¿Qué nos ofrece AstroKey?</h4>
                             <ul>
                                 <li><i class="fas fa-plus"></i> Su Carta Natal</li>
                                 <li><i class="fas fa-plus"></i> Decisiones más importantes</li>
@@ -142,8 +163,8 @@
                 </div>
             </div>
 
-            <!-- Paso 3: Hora de Nacimiento -->
-            <div class="test-step" id="step3" data-step="3" style="display: none;">
+            <!-- Paso 4: Hora de Nacimiento -->
+            <div class="test-step" id="step4" data-step="4" style="display: none;">
                 <div class="step-content">
                     <h3 class="step-question">Hora de nacimiento</h3>
                     
@@ -171,8 +192,8 @@
                 </div>
             </div>
 
-            <!-- Paso 4: Lugar de Nacimiento -->
-            <div class="test-step" id="step4" data-step="4" style="display: none;">
+            <!-- Paso 5: Lugar de Nacimiento -->
+            <div class="test-step" id="step5" data-step="5" style="display: none;">
                 <div class="step-content">
                     <h3 class="step-question">¿Cuál es su lugar de nacimiento?</h3>
                     
@@ -188,8 +209,8 @@
                 </div>
             </div>
 
-            <!-- Paso 5: Situación Sentimental -->
-            <div class="test-step" id="step5" data-step="5" style="display: none;">
+            <!-- Paso 6: Situación Sentimental -->
+            <div class="test-step" id="step6" data-step="6" style="display: none;">
                 <div class="step-content">
                     <h3 class="step-question">¿Cuál es su situación sentimental?</h3>
                     
@@ -240,8 +261,8 @@
                 </div>
             </div>
 
-            <!-- Paso 6: Carta Natal Previa -->
-            <div class="test-step" id="step6" data-step="6" style="display: none;">
+            <!-- Paso 7: Carta Natal Previa -->
+            <div class="test-step" id="step7" data-step="7" style="display: none;">
                 <div class="step-content">
                     <h3 class="step-question">¿Se ha hecho alguna vez una carta natal?</h3>
                     
@@ -263,8 +284,8 @@
                 </div>
             </div>
 
-            <!-- Paso 7: Temas de Pensamiento -->
-            <div class="test-step" id="step7" data-step="7" style="display: none;">
+            <!-- Paso 8: Temas de Pensamiento -->
+            <div class="test-step" id="step8" data-step="8" style="display: none;">
                 <div class="step-content">
                     <h3 class="step-question">¿En qué temas has pensado últimamente?</h3>
                     
@@ -314,8 +335,8 @@
                 </div>
             </div>
 
-            <!-- Paso 8: Elementos -->
-            <div class="test-step" id="step8" data-step="8" style="display: none;">
+            <!-- Paso 9: Elementos -->
+            <div class="test-step" id="step9" data-step="9" style="display: none;">
                 <div class="step-content">
                     <h3 class="step-question">¿Cuál de los cuatro elementos coincide con tu personalidad?</h3>
                     
@@ -351,11 +372,11 @@
                 </div>
             </div>
 
-            <!-- Paso 9: Rasgos de Personalidad -->
-            <div class="test-step" id="step9" data-step="9" style="display: none;">
+            <!-- Paso 10: Rasgos de Personalidad -->
+            <div class="test-step" id="step10" data-step="10" style="display: none;">
                 <div class="step-content">
                     <h3 class="step-question">¿Cuáles de los siguientes rasgos reflejan tu personalidad?</h3>
-                    <p class="step-instruction">Por favor, marque las mejores opciones para usted. Estos datos coincidirán con la información que se desprende de la carta natal.</p>
+                    <p class="step-instruction" style="text-align: center; margin: 0 auto 2rem auto; max-width: 600px;">Por favor, marque las mejores opciones para usted. Estos datos coincidirán con la información que se desprende de la carta natal.</p>
                     
                     <div class="options-grid personality-grid">
                         <div class="option-card personality-trait" data-value="emocional">
@@ -425,8 +446,8 @@
                 </div>
             </div>
 
-            <!-- Paso 10: Compatibilidad con Signos -->
-            <div class="test-step" id="step10" data-step="10" style="display: none;">
+            <!-- Paso 11: Compatibilidad con Signos -->
+            <div class="test-step" id="step11" data-step="11" style="display: none;">
                 <div class="step-content">
                     <h3 class="step-question">¿Con qué signos te llevas bien? Elige 3 opciones como máximo.</h3>
                     
@@ -518,8 +539,8 @@
                 </div>
             </div>
 
-            <!-- Paso 11: Dificultades en la Vida -->
-            <div class="test-step" id="step11" data-step="11" style="display: none;">
+            <!-- Paso 12: Dificultades en la Vida -->
+            <div class="test-step" id="step12" data-step="12" style="display: none;">
                 <div class="step-content">
                     <h3 class="step-question">¿Qué es lo que más te ha costado trabajo conseguir? ¿Qué es lo que más te ha costado en tu vida?</h3>
                     
@@ -546,22 +567,6 @@
                         
                         <div class="option-card" data-value="amistades">
                             <span class="option-text">Las amistades</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Paso 12: Información Personal -->
-            <div class="test-step" id="step12" data-step="12" style="display: none;">
-                <div class="step-content">
-                    <h3 class="step-question">¿Cuál es su nombre?</h3>
-                    
-                    <div class="input-group">
-                        <label for="fullName">Nombre Apellido</label>
-                        <input type="text" id="fullName" name="fullName" placeholder="Introduzca su nombre" required>
-                        <div class="error-message" id="fullNameError" style="display: none;">
-                            <i class="fas fa-exclamation-circle"></i>
-                            <span>Este campo es requerido.</span>
                         </div>
                     </div>
                 </div>
@@ -600,7 +605,7 @@
                 </div>
             </div>
 
-            <!-- Paso 14: Preferencias -->
+            <!-- Paso 14: Preferencias Astrológicas -->
             <div class="test-step" id="step14" data-step="14" style="display: none;">
                 <div class="step-content">
                     <h3 class="step-question">¿Qué tipo de contenido astrológico prefiere?</h3>
@@ -632,6 +637,8 @@
                     </div>
                 </div>
             </div>
+
+
         </div>
     </main>
 

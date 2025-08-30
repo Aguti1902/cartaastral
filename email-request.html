@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Solicitar Email - AstralCoach Pro</title>
+    <title>Solicitar Email - AstroKey</title>
     <link rel="stylesheet" href="css/test-styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -14,146 +14,109 @@
         <div class="header-content">
             <div class="logo">
                 <div class="logo-icon">
-                    <i class="fas fa-moon"></i>
-                    <i class="fas fa-star"></i>
+                    <img src="../images/Mask group (10).png" alt="AstroKey Logo" class="astrokey-logo-img">
                 </div>
-                <span>Astral Coach</span>
+                <span>AstroKey</span>
             </div>
         </div>
     </header>
 
     <!-- Contenido Principal -->
-    <main class="email-main">
-        <div class="email-container">
-            <!-- Ilustración de celebración -->
-            <div class="celebration-illustration">
-                <div class="celebration-circle">
-                    <i class="fas fa-star celebration-star"></i>
+    <main class="test-main">
+        <div class="test-container">
+                        <!-- Contenido Principal Minimalista -->
+            <div class="email-main-content">
+                <!-- Header Simple -->
+                <div class="email-header">
+                    <div class="completion-icon">
+                        <i class="fas fa-check"></i>
+                    </div>
+                    <h1>Su carta natal está lista</h1>
+                    <p>Introduzca su correo electrónico para recibir su interpretación personalizada</p>
                 </div>
-                <div class="floating-elements">
-                    <div class="floating-star star-1">⭐</div>
-                    <div class="floating-star star-2">✨</div>
-                    <div class="floating-star star-3">🌟</div>
-                </div>
-            </div>
-
-            <!-- Contenido principal -->
-            <div class="email-content">
-                <h1 class="celebration-title">¡Su carta natal está lista! 🎉</h1>
-                <p class="celebration-subtitle">Hemos analizado todas sus respuestas y su carta astral personalizada está preparada para ser enviada.</p>
                 
-                <!-- Sección de email -->
-                <div class="email-form-section">
-                    <div class="form-header">
-                        <i class="fas fa-envelope-open-text form-icon"></i>
-                        <h2>¿Dónde enviamos su carta natal?</h2>
-                        <p>Introduzca su dirección de correo electrónico para recibir su lectura personalizada</p>
+                <!-- Formulario Simple -->
+                <div class="email-form">
+                    <div class="input-field">
+                        <input type="email" id="finalEmail" name="finalEmail" placeholder="Su correo electrónico" required>
                     </div>
                     
-                    <div class="email-input-container">
-                        <div class="input-wrapper">
-                            <i class="fas fa-at input-icon"></i>
-                            <input type="email" id="finalEmail" name="finalEmail" placeholder="su.email@ejemplo.com" required>
-                            <div class="input-focus-border"></div>
-                        </div>
-                        <div class="error-message" id="finalEmailError" style="display: none;">
-                            <i class="fas fa-exclamation-circle"></i>
-                            <span>Por favor, introduzca un email válido</span>
-                        </div>
-                    </div>
-                    
-                    <div class="privacy-assurance">
-                        <i class="fas fa-shield-alt privacy-icon"></i>
-                        <div class="privacy-text">
-                            <h4>100% Privado y Seguro</h4>
-                            <p>Sus datos están protegidos con encriptación de nivel bancario. Solo utilizamos su email para enviar su carta natal.</p>
-                        </div>
+                    <div class="privacy-text">
+                        <p>Sus datos están protegidos y solo se utilizarán para enviar su carta natal</p>
                     </div>
                 </div>
                 
-                <!-- Sección de login social -->
-                <div class="social-section">
-                    <div class="section-divider">
-                        <span class="divider-line"></span>
-                        <span class="divider-text">O continúe con</span>
-                        <span class="divider-line"></span>
+                <!-- Botones Sociales Simples -->
+                <div class="social-options">
+                    <div class="divider">
+                        <span>o</span>
                     </div>
                     
-                    <div class="social-buttons">
-                        <button class="social-btn apple-btn">
-                            <i class="fab fa-apple"></i>
-                            <span>Apple</span>
-                        </button>
-                        <button class="social-btn google-btn">
+                    <div class="social-btns">
+                        <button class="social-btn">
                             <i class="fab fa-google"></i>
-                            <span>Google</span>
+                            Google
                         </button>
-                        <button class="social-btn facebook-btn">
-                            <i class="fab fa-facebook-f"></i>
-                            <span>Facebook</span>
+                        <button class="social-btn">
+                            <i class="fab fa-apple"></i>
+                            Apple
                         </button>
                     </div>
                 </div>
                 
-                <!-- Testimonios mejorados -->
-                <div class="testimonials-section">
-                    <h3 class="testimonials-title">Lo que dicen nuestros usuarios</h3>
-                    <div class="testimonials-grid">
-                        <div class="testimonial-card">
-                            <div class="testimonial-header">
+                <!-- Testimonios Mejorados -->
+                <div class="user-reviews">
+                    <h3>Lo que dicen nuestros usuarios</h3>
+                    <div class="reviews">
+                        <div class="review">
+                            <div class="review-header">
                                 <div class="user-avatar">
-                                    <img src="https://images.unsplash.com/photo-1494790108755-2616b612b786?w=80&h=80&fit=crop&crop=face" alt="Catalina">
+                                    <img src="images/Captura de pantalla 2025-08-29 a las 0.15.00.png" alt="George L.">
                                 </div>
                                 <div class="user-info">
-                                    <h5>Catalina C.</h5>
-                                    <div class="rating">
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                    </div>
+                                    <h5>George L.</h5>
+                                    <div class="stars">★★★★★</div>
                                 </div>
                             </div>
-                            <p class="testimonial-text">"La precisión de mi carta natal me sorprendió completamente. Cada detalle coincidía perfectamente con mi personalidad."</p>
+                            <p class="review-text">"Increíblemente preciso y útil. La carta natal me ayudó a entender aspectos de mi personalidad que nunca había considerado antes. Realmente transformó mi perspectiva."</p>
+                            <div class="review-meta">
+                                <span class="location">Madrid, España</span>
+                                <span class="date">Hace 2 días</span>
+                            </div>
                         </div>
                         
-                        <div class="testimonial-card">
-                            <div class="testimonial-header">
+                        <div class="review">
+                            <div class="review-header">
                                 <div class="user-avatar">
-                                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=80&h=80&fit=crop&crop=face" alt="Rodrigo">
+                                    <img src="images/Captura de pantalla 2025-08-29 a las 0.14.30.png" alt="Carlos M.">
                                 </div>
                                 <div class="user-info">
-                                    <h5>Rodrigo M.</h5>
-                                    <div class="rating">
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                    </div>
+                                    <h5>Carlos M.</h5>
+                                    <div class="stars">★★★★★</div>
                                 </div>
                             </div>
-                            <p class="testimonial-text">"Gracias a mi carta natal, he podido tomar decisiones más conscientes en mi vida personal y profesional."</p>
+                            <p class="review-text">"Me ayudó a entenderme mejor y a tomar decisiones más conscientes en mi vida personal y profesional diaria. Ahora veo las cosas de manera diferente."</p>
+                            <div class="review-meta">
+                                <span class="location">Barcelona, España</span>
+                                <span class="date">Hace 1 semana</span>
+                            </div>
                         </div>
                         
-                        <div class="testimonial-card">
-                            <div class="testimonial-header">
+                        <div class="review">
+                            <div class="review-header">
                                 <div class="user-avatar">
-                                    <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=80&h=80&fit=crop&crop=face" alt="Mauricio">
+                                    <img src="images/Captura de pantalla 2025-08-29 a las 0.14.13.png" alt="Ana R.">
                                 </div>
                                 <div class="user-info">
-                                    <h5>Mauricio C.</h5>
-                                    <div class="rating">
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                    </div>
+                                    <h5>Ana R.</h5>
+                                    <div class="stars">★★★★★</div>
                                 </div>
                             </div>
-                            <p class="testimonial-text">"La interpretación fue clara y fácil de entender. Me ayudó a comprender mejor mis fortalezas y áreas de crecimiento."</p>
+                            <p class="review-text">"La interpretación fue muy clara y me dio insights valiosos sobre mis relaciones y propósito en la vida actual. Me siento más segura de mí misma."</p>
+                            <div class="review-meta">
+                                <span class="location">Valencia, España</span>
+                                <span class="date">Hace 3 días</span>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -161,14 +124,42 @@
         </div>
     </main>
 
-    <!-- Botón de Continuar -->
+    <!-- Botón Simple -->
     <div class="continue-section">
         <button class="continue-btn" id="continueBtn" onclick="submitEmail()">
-            <span>Continuar</span>
-            <i class="fas fa-arrow-right"></i>
+            Continuar
         </button>
     </div>
 
-    <script src="js/email-request.js"></script>
+    <script>
+        // Función simple para continuar al pago
+        function submitEmail() {
+            const email = document.getElementById('finalEmail').value;
+            
+            if (!email) {
+                alert('Por favor introduce tu email');
+                return;
+            }
+            
+            // Guardar email en localStorage
+            const testAnswers = JSON.parse(localStorage.getItem('astralTestAnswers') || '{}');
+            testAnswers.finalEmail = email;
+            localStorage.setItem('astralTestAnswers', JSON.stringify(testAnswers));
+            
+            // Redirigir a la página de pago
+            window.location.href = 'payment.html';
+        }
+        
+        // Añadir event listener al formulario
+        document.addEventListener('DOMContentLoaded', function() {
+            const emailInput = document.getElementById('finalEmail');
+            
+            emailInput.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    submitEmail();
+                }
+            });
+        });
+    </script>
 </body>
 </html>

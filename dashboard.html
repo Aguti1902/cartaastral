@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - AstroKey</title>
+    <link rel="stylesheet" href="css/test-styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header del Dashboard -->
+    <header class="dashboard-header">
+        <div class="header-content">
+            <div class="logo">
+                <div class="logo-icon">
+                    <img src="images/ChatGPT Image 30 ago 2025, 01_46_33 1.png" alt="AstroKey Logo" class="astrokey-logo-img">
+                </div>
+                <span>AstroKey</span>
+            </div>
+            
+            <div class="user-menu">
+                <div class="user-info">
+                    <span id="dashboardUserName">Usuario</span>
+                    <div class="trial-status">
+                        <i class="fas fa-clock"></i>
+                        <span id="trialCountdown">2 días restantes</span>
+                    </div>
+                </div>
+                <div class="user-avatar">
+                    <i class="fas fa-user"></i>
+                </div>
+                <button class="logout-btn" onclick="logout()">
+                    <i class="fas fa-sign-out-alt"></i>
+                    <span>Cerrar Sesión</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navegación Principal -->
+    <nav class="dashboard-nav">
+        <div class="nav-container">
+            <ul class="nav-menu">
+                <li class="nav-item active">
+                    <a href="#overview" class="nav-link">
+                        <i class="fas fa-home"></i>
+                        <span>Resumen</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#predictions" class="nav-link">
+                        <i class="fas fa-magic"></i>
+                        <span>Predicciones</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#chart" class="nav-link">
+                        <i class="fas fa-chart-pie"></i>
+                        <span>Carta Natal</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#compatibility" class="nav-link">
+                        <i class="fas fa-heart"></i>
+                        <span>Compatibilidad</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#transits" class="nav-link">
+                        <i class="fas fa-satellite"></i>
+                        <span>Tránsitos</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#settings" class="nav-link">
+                        <i class="fas fa-cog"></i>
+                        <span>Configuración</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Contenido Principal del Dashboard -->
+    <main class="dashboard-main">
+        <!-- Sección de Resumen -->
+        <section id="overview" class="dashboard-section active">
+            <div class="section-header">
+                <h1>Bienvenido a tu Dashboard Astrológico</h1>
+                <p>Aquí tienes todo lo que necesitas para tu viaje astrológico personal</p>
+            </div>
+
+            <!-- Tarjetas de Resumen -->
+            <div class="summary-cards">
+                <div class="summary-card">
+                    <div class="card-icon">
+                        <i class="fas fa-sun"></i>
+                    </div>
+                    <div class="card-content">
+                        <h3>Signo Solar</h3>
+                        <p id="summarySunSign">Aries</p>
+                        <span class="card-description">Tu esencia fundamental</span>
+                    </div>
+                </div>
+
+                <div class="summary-card">
+                    <div class="card-icon">
+                        <i class="fas fa-moon"></i>
+                    </div>
+                    <div class="card-content">
+                        <h3>Signo Lunar</h3>
+                        <p id="summaryMoonSign">Cáncer</p>
+                        <span class="card-description">Tu mundo emocional</span>
+                    </div>
+                </div>
+
+                <div class="summary-card">
+                    <div class="card-icon">
+                        <i class="fas fa-arrow-up"></i>
+                    </div>
+                    <div class="card-content">
+                        <h3>Ascendente</h3>
+                        <p id="summaryAscendant">Libra</p>
+                        <span class="card-description">Tu presentación al mundo</span>
+                    </div>
+                </div>
+
+                <div class="summary-card">
+                    <div class="card-icon">
+                        <i class="fas fa-fire"></i>
+                    </div>
+                    <div class="card-content">
+                        <h3>Elemento</h3>
+                        <p id="summaryElement">Fuego</p>
+                        <span class="card-description">Tu energía dominante</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Próximos Eventos Astrológicos -->
+            <div class="upcoming-events">
+                <h2>Próximos Eventos Astrológicos</h2>
+                <div class="events-grid">
+                    <div class="event-card">
+                        <div class="event-date">
+                            <span class="day">15</span>
+                            <span class="month">ENE</span>
+                        </div>
+                        <div class="event-content">
+                            <h4>Luna Nueva en Capricornio</h4>
+                            <p>Momento ideal para establecer metas profesionales y financieras</p>
+                            <span class="event-time">En 3 días</span>
+                        </div>
+                    </div>
+
+                    <div class="event-card">
+                        <div class="event-date">
+                            <span class="day">22</span>
+                            <span class="month">ENE</span>
+                        </div>
+                        <div class="event-content">
+                            <h4>Sol entra en Acuario</h4>
+                            <p>Período de innovación, amistades y proyectos grupales</p>
+                            <span class="event-time">En 10 días</span>
+                        </div>
+                    </div>
+
+                    <div class="event-card">
+                        <div class="event-date">
+                            <span class="day">29</span>
+                            <span class="month">ENE</span>
+                        </div>
+                        <div class="event-content">
+                            <h4>Luna Llena en Leo</h4>
+                            <p>Expresión creativa y reconocimiento personal</p>
+                            <span class="event-time">En 17 días</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sección de Predicciones -->
+        <section id="predictions" class="dashboard-section">
+            <div class="section-header">
+                <h2>Predicciones Personalizadas</h2>
+                <p>Basadas en tu carta natal y los tránsitos actuales</p>
+            </div>
+
+            <div class="predictions-container">
+                <!-- Predicción Diaria -->
+                <div class="prediction-card daily">
+                    <div class="prediction-header">
+                        <h3>Predicción del Día</h3>
+                        <span class="date" id="todayDate">15 de Enero, 2024</span>
+                    </div>
+                    <div class="prediction-content">
+                        <p>Hoy es un día excelente para <strong>iniciar nuevos proyectos</strong>. La Luna en tu signo solar te da energía extra y claridad mental. Aprovecha esta energía para avanzar en tus objetivos personales.</p>
+                        <div class="prediction-mood">
+                            <span class="mood-label">Estado de ánimo:</span>
+                            <span class="mood-value positive">Muy positivo</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Predicción Semanal -->
+                <div class="prediction-card weekly">
+                    <div class="prediction-header">
+                        <h3>Predicción Semanal</h3>
+                        <span class="period">15-21 Enero, 2024</span>
+                    </div>
+                    <div class="prediction-content">
+                        <p>Esta semana trae <strong>oportunidades profesionales</strong> importantes. Mercurio en trígono con tu Sol natal facilita la comunicación y los acuerdos. Es momento de expresar tus ideas con confianza.</p>
+                        <div class="prediction-areas">
+                            <span class="area-label">Áreas destacadas:</span>
+                            <div class="areas">
+                                <span class="area">Carrera</span>
+                                <span class="area">Comunicación</span>
+                                <span class="area">Relaciones</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Predicción Mensual -->
+                <div class="prediction-card monthly">
+                    <div class="prediction-header">
+                        <h3>Predicción Mensual</h3>
+                        <span class="period">Enero 2024</span>
+                    </div>
+                    <div class="prediction-content">
+                        <p>Enero será un mes de <strong>transformación personal</strong>. Plutón en trígono con tu Luna natal trae profundos cambios emocionales que te llevarán a un nuevo nivel de autoconocimiento.</p>
+                        <div class="prediction-themes">
+                            <span class="theme-label">Temas principales:</span>
+                            <div class="themes">
+                                <span class="theme">Transformación</span>
+                                <span class="theme">Crecimiento</span>
+                                <span class="theme">Renovación</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sección de Carta Natal -->
+        <section id="chart" class="dashboard-section">
+            <div class="section-header">
+                <h2>Tu Carta Natal Completa</h2>
+                <p>Explora todos los detalles de tu configuración astrológica</p>
+            </div>
+
+            <div class="chart-container">
+                <!-- Información de la Carta Natal -->
+                <div class="natal-info">
+                    <div class="info-header">
+                        <h3>Información de tu Carta Natal</h3>
+                        <p>Basada en tu fecha, hora y lugar de nacimiento</p>
+                    </div>
+                    
+                    <!-- Resumen de la Carta -->
+                    <div class="chart-summary">
+                        <div class="summary-item">
+                            <div class="summary-icon">🌍</div>
+                            <div class="summary-content">
+                                <h4>Lugar de Nacimiento</h4>
+                                <p id="birthPlaceDisplay">Madrid, España</p>
+                            </div>
+                        </div>
+                        <div class="summary-item">
+                            <div class="summary-icon">📅</div>
+                            <div class="summary-content">
+                                <h4>Fecha de Nacimiento</h4>
+                                <p id="birthDateDisplay">15 de Marzo, 1990</p>
+                            </div>
+                        </div>
+                        <div class="summary-item">
+                            <div class="summary-icon">⏰</div>
+                            <div class="summary-content">
+                                <h4>Hora de Nacimiento</h4>
+                                <p id="birthTimeDisplay">14:30</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Detalles de Planetas -->
+                <div class="planets-details">
+                    <h3>Posiciones Planetarias</h3>
+                    <div class="planet-list">
+                        <div class="planet-item">
+                            <span class="planet-symbol">☀️</span>
+                            <div class="planet-info">
+                                <h4>Sol</h4>
+                                <p id="sunPosition">En Aries, Casa 1</p>
+                                <span class="planet-meaning">Esencia fundamental y propósito de vida</span>
+                            </div>
+                        </div>
+                        <div class="planet-item">
+                            <span class="planet-symbol">🌙</span>
+                            <div class="planet-info">
+                                <h4>Luna</h4>
+                                <p id="moonPosition">En Cáncer, Casa 4</p>
+                                <span class="planet-meaning">Emociones y mundo interior</span>
+                            </div>
+                        </div>
+                        <div class="planet-item">
+                            <span class="planet-symbol">☿</span>
+                            <div class="planet-info">
+                                <h4>Mercurio</h4>
+                                <p id="mercuryPosition">En Piscis, Casa 12</p>
+                                <span class="planet-meaning">Comunicación y pensamiento</span>
+                            </div>
+                        </div>
+                        <div class="planet-item">
+                            <span class="planet-symbol">♀</span>
+                            <div class="planet-info">
+                                <h4>Venus</h4>
+                                <p id="venusPosition">En Tauro, Casa 2</p>
+                                <span class="planet-meaning">Amor, valores y belleza</span>
+                            </div>
+                        </div>
+                        <div class="planet-item">
+                            <span class="planet-symbol">♂</span>
+                            <div class="planet-info">
+                                <h4>Marte</h4>
+                                <p id="marsPosition">En Aries, Casa 1</p>
+                                <span class="planet-meaning">Energía, acción y coraje</span>
+                            </div>
+                        </div>
+                        <div class="planet-item">
+                            <span class="planet-symbol">♃</span>
+                            <div class="planet-info">
+                                <h4>Júpiter</h4>
+                                <p id="jupiterPosition">En Sagitario, Casa 9</p>
+                                <span class="planet-meaning">Expansión, sabiduría y fe</span>
+                            </div>
+                        </div>
+                        <div class="planet-item">
+                            <span class="planet-symbol">♄</span>
+                            <div class="planet-info">
+                                <h4>Saturno</h4>
+                                <p id="saturnPosition">En Capricornio, Casa 10</p>
+                                <span class="planet-meaning">Responsabilidad, estructura y karma</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sección de Compatibilidad -->
+        <section id="compatibility" class="dashboard-section">
+            <div class="section-header">
+                <h2>Compatibilidad Astrológica</h2>
+                <p>Descubre qué signos son más compatibles contigo</p>
+            </div>
+
+            <div class="compatibility-container">
+                <div class="compatibility-calculator">
+                    <h3>Calcula tu Compatibilidad</h3>
+                    <div class="compatibility-form">
+                        <div class="form-group">
+                            <label for="partnerName">Nombre de tu pareja</label>
+                            <input type="text" id="partnerName" placeholder="Introduce el nombre">
+                        </div>
+                        <div class="form-group">
+                            <label for="partnerBirthDate">Fecha de nacimiento</label>
+                            <input type="date" id="partnerBirthDate">
+                        </div>
+                        <div class="form-group">
+                            <label for="partnerBirthTime">Hora de nacimiento (opcional)</label>
+                            <input type="time" id="partnerBirthTime">
+                        </div>
+                        <button class="calculate-btn" onclick="calculateCompatibility()">
+                            <i class="fas fa-heart"></i>
+                            Calcular Compatibilidad
+                        </button>
+                    </div>
+                </div>
+
+                <div class="compatibility-results" id="compatibilityResults" style="display: none;">
+                    <h3>Resultados de Compatibilidad</h3>
+                    <div class="compatibility-score">
+                        <div class="score-circle">
+                            <span class="score-number" id="compatibilityScore">85%</span>
+                            <span class="score-label">Compatibilidad</span>
+                        </div>
+                    </div>
+                    <div class="compatibility-details">
+                        <div class="detail-item">
+                            <span class="detail-label">Comunicación:</span>
+                            <div class="detail-bar">
+                                <div class="bar-fill" style="width: 90%"></div>
+                            </div>
+                            <span class="detail-value">90%</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">Emocional:</span>
+                            <div class="detail-bar">
+                                <div class="bar-fill" style="width: 85%"></div>
+                            </div>
+                            <span class="detail-value">85%</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">Física:</span>
+                            <div class="detail-bar">
+                                <div class="bar-fill" style="width: 80%"></div>
+                            </div>
+                            <span class="detail-value">80%</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sección de Tránsitos -->
+        <section id="transits" class="dashboard-section">
+            <div class="section-header">
+                <h2>Tránsitos Planetarios</h2>
+                <p>Cómo los planetas actuales afectan tu carta natal</p>
+            </div>
+
+            <div class="transits-container">
+                <div class="transits-timeline">
+                    <div class="transit-item active">
+                        <div class="transit-date">
+                            <span class="month">ENE</span>
+                            <span class="day">15</span>
+                        </div>
+                        <div class="transit-content">
+                            <h4>Mercurio en Trígono con tu Sol</h4>
+                            <p>Excelente para comunicación y proyectos. Momento ideal para expresar tus ideas.</p>
+                            <span class="transit-duration">Duración: 3 días</span>
+                        </div>
+                    </div>
+
+                    <div class="transit-item">
+                        <div class="transit-date">
+                            <span class="month">ENE</span>
+                            <span class="day">22</span>
+                        </div>
+                        <div class="transit-content">
+                            <h4>Venus en Cuadratura con tu Luna</h4>
+                            <p>Desafíos en relaciones personales. Trabaja en la comunicación emocional.</p>
+                            <span class="transit-duration">Duración: 5 días</span>
+                        </div>
+                    </div>
+
+                    <div class="transit-item">
+                        <div class="transit-date">
+                            <span class="month">ENE</span>
+                            <span class="day">29</span>
+                        </div>
+                        <div class="transit-content">
+                            <h4>Marte en Sextil con tu Ascendente</h4>
+                            <p>Energía extra para proyectos personales. Momento de acción y iniciativa.</p>
+                            <span class="transit-duration">Duración: 4 días</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sección de Settings -->
+        <section id="settings" class="dashboard-section">
+            <div class="section-header">
+                <h2>Configuración</h2>
+                <p>Gestiona tu perfil y suscripción</p>
+            </div>
+
+            <div class="settings-simple">
+                <!-- Perfil -->
+                <div class="setting-card">
+                    <h3>Perfil</h3>
+                    <div class="setting-content">
+                        <div class="input-row">
+                            <input type="text" id="profileName" placeholder="Nombre completo">
+                            <input type="email" id="profileEmail" placeholder="Email">
+                        </div>
+                        <div class="input-row">
+                            <input type="date" id="profileBirthDate">
+                            <input type="time" id="profileBirthTime">
+                        </div>
+                        <input type="text" id="profileBirthPlace" placeholder="Lugar de nacimiento">
+                        <button class="btn-primary" onclick="saveProfile()">Guardar</button>
+                    </div>
+                </div>
+
+                <!-- Suscripción -->
+                <div class="setting-card">
+                    <h3>Suscripción</h3>
+                    <div class="setting-content">
+                        <div class="subscription-simple">
+                            <div class="plan-info">
+                                <span class="plan-name">AstroKey</span>
+                                <span class="plan-price">19,99€/mes</span>
+                            </div>
+                            <div class="plan-actions">
+                                <button class="btn-danger" onclick="cancelSubscription()">Cancelar Suscripción</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Preferencias -->
+                <div class="setting-card">
+                    <h3>Notificaciones</h3>
+                    <div class="setting-content">
+                        <div class="toggle-row">
+                            <span>Email</span>
+                            <label class="toggle-simple">
+                                <input type="checkbox" id="emailNotifications" checked>
+                                <span class="toggle"></span>
+                            </label>
+                        </div>
+                        <div class="toggle-row">
+                            <span>Push</span>
+                            <label class="toggle-simple">
+                                <input type="checkbox" id="pushNotifications" checked>
+                                <span class="toggle"></span>
+                            </label>
+                        </div>
+                        <button class="btn-primary" onclick="savePreferences()">Guardar</button>
+                    </div>
+                </div>
+
+                <!-- Datos y Privacidad -->
+                <div class="setting-card">
+                    <h3>Datos y Privacidad</h3>
+                    <div class="setting-content">
+                        <button class="btn-secondary" onclick="exportUserData()">
+                            <i class="fas fa-download"></i>
+                            Exportar Mis Datos
+                        </button>
+                        <button class="btn-danger" onclick="deleteUserAccount()">
+                            <i class="fas fa-trash"></i>
+                            Eliminar Cuenta
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer del Dashboard -->
+    <footer class="dashboard-footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                                    <h4>AstroKey</h4>
+                <p>Tu guía personal en el viaje astrológico</p>
+            </div>
+            <div class="footer-section">
+                <h4>Enlaces Útiles</h4>
+                <ul>
+                    <li><a href="#" onclick="showHelp()">Ayuda</a></li>
+                    <li><a href="#" onclick="showSupport()">Soporte</a></li>
+                    <li><a href="#" onclick="showPrivacy()">Privacidad</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Contacto</h4>
+                                        <p>Email: support@astrokey.com</p>
+                <p>Horario: 24/7</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 AstroKey. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <script src="js/dashboard.js"></script>
+</body>
+</html>

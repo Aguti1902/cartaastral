@@ -1,4 +1,4 @@
-// ===== ASTRALCOACH PRO - MODELO DE NEGOCIO INTELIGENTE =====
+// ===== ASTROKEY - MODELO DE NEGOCIO INTELIGENTE =====
 
 // Variables globales
 let selectedPlan = null;
@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 // Inicializar la aplicación
 function initializeApp() {
-    console.log('🚀 AstralCoach Pro - Modelo de Negocio Inteligente iniciado');
+    console.log('🚀 AstroKey - Modelo de Negocio Inteligente iniciado');
     
     // Añadir efectos de parallax al header
     window.addEventListener('scroll', handleHeaderScroll);
@@ -37,6 +37,9 @@ function initializeApp() {
     
     // Verificar si hay un periodo de prueba activo
     checkActiveTrial();
+    
+    // Verificar si mostrar el botón del dashboard
+    checkDashboardAccess();
 }
 
 // Configurar event listeners
@@ -220,7 +223,7 @@ function handleAstralTestSubmit(e) {
     submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Generando...';
     submitBtn.disabled = true;
     
-    // Simular generación de carta astral
+            // Simular generación de carta astral
     setTimeout(() => {
         // Generar carta astral
         const chartData = generateAstralChart(testData);
@@ -313,7 +316,7 @@ function handlePaymentSubmit(e) {
     submitBtn.disabled = true;
     
         // Simular procesamiento de pago
-    setTimeout(() => {
+            setTimeout(() => {
         // Simular éxito del pago
         showNotification('¡Pago exitoso! Tu carta astral está desbloqueada.', 'success');
         
@@ -385,6 +388,60 @@ function checkActiveTrial() {
             // Periodo de prueba expirado, activar suscripción
             activateSubscription();
         }
+    }
+}
+
+// Verificar acceso al dashboard
+function checkDashboardAccess() {
+    try {
+        const testAnswers = localStorage.getItem('astralTestAnswers');
+        const userEmail = localStorage.getItem('userEmail');
+        const loginBtn = document.querySelector('.btn-login');
+        
+        if (loginBtn) {
+            if (testAnswers && userEmail) {
+                // Usuario tiene acceso al dashboard
+                loginBtn.style.display = 'flex';
+                loginBtn.classList.add('login-available');
+                
+                // Verificar si el periodo de prueba está activo
+                const trialStart = localStorage.getItem('trialStartTime');
+                if (trialStart) {
+                    const trialStartTime = parseInt(trialStart);
+                    const currentTime = Date.now();
+                    const trialEndTime = trialStartTime + (2 * 24 * 60 * 60 * 1000);
+                    
+                    if (currentTime < trialEndTime) {
+                        loginBtn.innerHTML = `
+                            <i class="fas fa-sign-in-alt"></i>
+                            <span>Entrar</span>
+                        `;
+                        loginBtn.classList.remove('login-expired');
+                        loginBtn.classList.add('login-available');
+    } else {
+                        loginBtn.innerHTML = `
+                            <i class="fas fa-exclamation-triangle"></i>
+                            <span>Prueba Expirada</span>
+                        `;
+                        loginBtn.classList.remove('login-available');
+                        loginBtn.classList.add('login-expired');
+                    }
+                }
+            } else {
+                // Usuario no tiene acceso al dashboard
+                loginBtn.style.display = 'flex';
+                loginBtn.innerHTML = `
+                    <i class="fas fa-sign-in-alt"></i>
+                    <span>Entrar</span>
+                `;
+                loginBtn.classList.remove('login-available', 'login-expired');
+            }
+        }
+        
+        console.log('🔍 Estado del login verificado');
+        
+    } catch (error) {
+        console.error('Error al verificar acceso al dashboard:', error);
     }
 }
 
@@ -757,8 +814,8 @@ function showNotification(message, type = 'info') {
             <i class="${getNotificationIcon(type)}"></i>
             <span>${message}</span>
             <button class="notification-close" onclick="this.parentElement.parentElement.remove()">
-                <i class="fas fa-times"></i>
-            </button>
+            <i class="fas fa-times"></i>
+        </button>
         </div>
     `;
     
@@ -827,6 +884,11 @@ window.shareChart = shareChart;
 window.explorePlatform = function() {
     showNotification('🚀 ¡Explora toda la plataforma! Tienes acceso completo por 2 días.', 'success');
 };
+window.openLoginModal = openLoginModal;
+window.closeLoginModal = closeLoginModal;
+window.handleLogin = handleLogin;
+window.goToTest = goToTest;
+window.showHelp = showHelp;
 
 // Descargar carta
 function downloadChart() {
@@ -842,8 +904,8 @@ function downloadChart() {
 function shareChart() {
     if (navigator.share) {
         navigator.share({
-            title: 'Mi Carta Astral - AstralCoach Pro',
-            text: 'Descubre tu destino astral con AstralCoach Pro',
+            title: 'Mi Carta Astral - AstroKey',
+            text: 'Descubre tu destino astral con AstroKey',
             url: window.location.href
         });
     } else {
@@ -853,6 +915,134 @@ function shareChart() {
             showNotification('¡Enlace copiado al portapapeles!', 'success');
         });
     }
+}
+
+// Función para abrir modal de login
+function openLoginModal() {
+    try {
+        const loginModal = document.getElementById('loginModal');
+        if (loginModal) {
+            loginModal.style.display = 'block';
+            
+            // Limpiar formulario
+            document.getElementById('loginForm').reset();
+            
+            // Enfocar en el primer campo
+            document.getElementById('loginEmail').focus();
+            
+            console.log('🔐 Modal de login abierto');
+        }
+    } catch (error) {
+        console.error('Error al abrir modal de login:', error);
+        showNotification('❌ Error al abrir el formulario de login', 'error');
+    }
+}
+
+// Función para cerrar modal de login
+function closeLoginModal() {
+    try {
+        const loginModal = document.getElementById('loginModal');
+        if (loginModal) {
+            loginModal.style.display = 'none';
+            console.log('🔐 Modal de login cerrado');
+        }
+    } catch (error) {
+        console.error('Error al cerrar modal de login:', error);
+    }
+}
+
+// Función para manejar el login
+function handleLogin(event) {
+    event.preventDefault();
+    
+    try {
+        const email = document.getElementById('loginEmail').value.trim();
+        const password = document.getElementById('loginPassword').value.trim();
+        
+        // Validar campos
+        if (!email || !password) {
+            showNotification('❌ Por favor completa todos los campos', 'error');
+            return;
+        }
+        
+        // Validar formato de email
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(email)) {
+            showNotification('❌ Formato de email inválido', 'error');
+            return;
+        }
+        
+        // Verificar si el usuario existe y tiene acceso
+        const testAnswers = localStorage.getItem('astralTestAnswers');
+        const storedEmail = localStorage.getItem('userEmail');
+        
+        if (!testAnswers || !storedEmail) {
+            showNotification('❌ No hay usuarios registrados. Completa el test primero.', 'error');
+            setTimeout(() => {
+                closeLoginModal();
+                window.location.href = 'intro.html';
+            }, 2000);
+            return;
+        }
+        
+        // Verificar si el email coincide
+        if (email !== storedEmail) {
+            showNotification('❌ Email no encontrado. Usa el email con el que completaste el test.', 'error');
+            return;
+        }
+        
+        // Verificar contraseña (simulada - en producción sería hash)
+        if (password !== 'astral123') { // Contraseña por defecto
+            showNotification('❌ Contraseña incorrecta. Intenta con: astral123', 'error');
+            return;
+        }
+        
+        // Verificar si el periodo de prueba está activo
+        const trialStart = localStorage.getItem('trialStartTime');
+        if (trialStart) {
+            const trialStartTime = parseInt(trialStart);
+            const currentTime = Date.now();
+            const trialEndTime = trialStartTime + (2 * 24 * 60 * 60 * 1000); // 2 días
+            
+            if (currentTime > trialEndTime) {
+                showNotification('⚠️ Tu periodo de prueba ha expirado. Completa el test nuevamente.', 'warning');
+                setTimeout(() => {
+                    closeLoginModal();
+                    window.location.href = 'intro.html';
+                }, 2000);
+                return;
+            }
+        }
+        
+        // Login exitoso
+        showNotification('✅ Login exitoso. Redirigiendo al dashboard...', 'success');
+        
+        // Marcar como logueado
+        localStorage.setItem('isLoggedIn', 'true');
+        
+        // Cerrar modal y redirigir
+        setTimeout(() => {
+            closeLoginModal();
+            window.location.href = 'dashboard.html';
+        }, 1500);
+        
+        console.log('✅ Login exitoso para:', email);
+        
+    } catch (error) {
+        console.error('Error en el login:', error);
+        showNotification('❌ Error durante el login', 'error');
+    }
+}
+
+// Función para ir al test
+function goToTest() {
+    closeLoginModal();
+    window.location.href = 'intro.html';
+}
+
+// Función para mostrar ayuda
+function showHelp() {
+            showNotification('📧 Contacta con soporte: support@astrokey.com', 'info');
 }
 
 // Exportar para uso en módulos

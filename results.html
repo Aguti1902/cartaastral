@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tu Carta Astral - AstroKey</title>
+    <link rel="stylesheet" href="css/test-styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="test-header">
+        <div class="header-content">
+            <div class="logo">
+                <div class="logo-icon">
+                    <img src="../images/Mask group (10).png" alt="AstroKey Logo" class="astrokey-img">
+                </div>
+                <span>AstroKey</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Contenido Principal -->
+    <main class="results-main">
+        <div class="results-container">
+            <!-- Mensaje de Bienvenida -->
+            <div class="welcome-section">
+                <div class="success-icon">
+                    <i class="fas fa-check-circle"></i>
+                </div>
+                <h1>¡Tu Carta Astral Está Lista!</h1>
+                <p class="welcome-text">Has completado exitosamente tu test astrológico. Aquí tienes tu lectura personalizada.</p>
+            </div>
+
+            <!-- Información del Usuario -->
+            <div class="user-info-section">
+                <div class="user-profile-card">
+                    <div class="profile-header">
+                        <div class="profile-avatar">
+                            <div class="avatar-circle">
+                                <i class="fas fa-user"></i>
+                            </div>
+                        </div>
+                        <div class="profile-badge">
+                            <i class="fas fa-star"></i>
+                            <span>Perfil Verificado</span>
+                        </div>
+                    </div>
+                    
+                    <div class="profile-content">
+                        <h2 id="userName" class="profile-name">Usuario</h2>
+                        
+                        <div class="profile-info-grid">
+                            <div class="info-item">
+                                <div class="info-icon">
+                                    <i class="fas fa-calendar-alt"></i>
+                                </div>
+                                <div class="info-content">
+                                    <span class="info-label">Fecha de Nacimiento</span>
+                                    <span id="userBirthInfo" class="info-value">Fecha no disponible</span>
+                                </div>
+                            </div>
+                            
+                            <div class="info-item">
+                                <div class="info-icon">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                </div>
+                                <div class="info-content">
+                                    <span class="info-label">Lugar de Nacimiento</span>
+                                    <span id="userBirthPlace" class="info-value">Lugar no disponible</span>
+                                </div>
+                            </div>
+                            
+                            <div class="info-item">
+                                <div class="info-icon">
+                                    <i class="fas fa-envelope"></i>
+                                </div>
+                                <div class="info-content">
+                                    <span class="info-label">Email</span>
+                                    <span id="userEmail" class="info-value">Email no disponible</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Resultados del Test -->
+            <div class="results-grid">
+                <!-- Signo Solar -->
+                <div class="result-card">
+                    <div class="card-header">
+                        <img src="images/aries.svg" alt="Sol" class="header-icon">
+                        <h3>Signo Solar</h3>
+                    </div>
+                    <div class="card-content">
+                        <div class="zodiac-sign" id="sunSign">
+                            <img src="images/aries.svg" alt="Aries" class="sign-image">
+                            <span class="sign-name">Aries</span>
+                        </div>
+                        <p class="sign-description">Tu signo solar representa tu esencia fundamental y personalidad básica.</p>
+                    </div>
+                </div>
+
+                <!-- Elemento Dominante -->
+                <div class="result-card">
+                    <div class="card-header">
+                        <i class="fas fa-fire header-icon"></i>
+                        <h3>Elemento Dominante</h3>
+                    </div>
+                    <div class="card-content">
+                        <div class="element-display" id="dominantElement">
+                            <i class="fas fa-fire sign-image" style="color: #f97316; font-size: 3rem;"></i>
+                            <span class="element-name">Fuego</span>
+                        </div>
+                        <p class="element-description">Tu elemento dominante influye en tu forma de interactuar con el mundo.</p>
+                    </div>
+                </div>
+
+                <!-- Ascendente -->
+                <div class="result-card">
+                    <div class="card-header">
+                        <img src="images/libra.svg" alt="Ascendente" class="header-icon">
+                        <h3>Ascendente</h3>
+                    </div>
+                    <div class="card-content">
+                        <div class="zodiac-sign" id="ascendant">
+                            <img src="images/libra.svg" alt="Libra" class="sign-image">
+                            <span class="sign-name">Libra</span>
+                        </div>
+                        <p class="ascendant-description">Tu ascendente revela cómo te presentas al mundo y tu primera impresión.</p>
+                    </div>
+                </div>
+
+                <!-- Luna -->
+                <div class="result-card">
+                    <div class="card-header">
+                        <img src="images/cancer.svg" alt="Luna" class="header-icon">
+                        <h3>Signo Lunar</h3>
+                    </div>
+                    <div class="card-content">
+                        <div class="zodiac-sign" id="moonSign">
+                            <img src="images/cancer.svg" alt="Cáncer" class="sign-image">
+                            <span class="sign-name">Cáncer</span>
+                        </div>
+                        <p class="moon-description">Tu signo lunar representa tus emociones y tu mundo interior.</p>
+                    </div>
+                </div>
+
+                <!-- Casa Astrológica -->
+                <div class="result-card">
+                    <div class="card-header">
+                        <i class="fas fa-home header-icon"></i>
+                        <h3>Casa Astrológica</h3>
+                    </div>
+                    <div class="card-content">
+                        <div class="house-display" id="astralHouse">
+                            <i class="fas fa-home sign-image" style="color: #6366f1; font-size: 3rem;"></i>
+                            <span class="house-name">Casa 10</span>
+                        </div>
+                        <p class="house-description">Tu casa astrológica principal determina tu enfoque vital y propósito.</p>
+                    </div>
+                </div>
+
+                <!-- Planeta Dominante -->
+                <div class="result-card">
+                    <div class="card-header">
+                        <i class="fas fa-globe header-icon"></i>
+                        <h3>Planeta Dominante</h3>
+                    </div>
+                    <div class="card-content">
+                        <div class="planet-display" id="dominantPlanet">
+                            <i class="fas fa-globe sign-image" style="color: #dc2626; font-size: 3rem;"></i>
+                            <span class="planet-name">Marte</span>
+                        </div>
+                        <p class="planet-description">Tu planeta dominante influye en tu energía y motivaciones principales.</p>
+                    </div>
+                </div>
+
+                <!-- Aspectos Planetarios -->
+                <div class="result-card">
+                    <div class="card-header">
+                        <i class="fas fa-star header-icon"></i>
+                        <h3>Aspectos Planetarios</h3>
+                    </div>
+                    <div class="card-content">
+                        <div class="aspects-display" id="planetaryAspects">
+                            <i class="fas fa-star sign-image" style="color: #fbbf24; font-size: 3rem;"></i>
+                            <span class="aspects-name">Trígono</span>
+                        </div>
+                        <p class="aspects-description">Los aspectos entre planetas revelan dinámicas internas importantes.</p>
+                    </div>
+                </div>
+
+                <!-- Nodos Lunares -->
+                <div class="result-card">
+                    <div class="card-header">
+                        <i class="fas fa-moon header-icon"></i>
+                        <h3>Nodos Lunares</h3>
+                    </div>
+                    <div class="card-content">
+                        <div class="nodes-display" id="lunarNodes">
+                            <i class="fas fa-moon sign-image" style="color: #7c3aed; font-size: 3rem;"></i>
+                            <span class="nodes-name">Nodo Norte</span>
+                        </div>
+                        <p class="nodes-description">Los nodos lunares indican tu camino de evolución y destino.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Interpretación Personalizada -->
+            <div class="interpretation-section">
+                <h2>Interpretación Personalizada</h2>
+                <div class="interpretation-content">
+                    <div class="interpretation-block">
+                        <h3>🎯 Tu Esencia Fundamental</h3>
+                        <p>Basándome en tu carta astral, eres una persona con una naturaleza <strong>dinámica y carismática</strong> que destaca en cualquier entorno. Tu elemento de fuego te impulsa a tomar acción inmediata y liderar situaciones con confianza natural. Posees una energía magnética que atrae a otros hacia ti, y tu presencia en una habitación nunca pasa desapercibida.</p>
+                        
+                        <p>Tu signo solar te otorga una <strong>determinación inquebrantable</strong> y la capacidad de superar obstáculos que para otros serían insuperables. Eres el tipo de persona que ve los desafíos como oportunidades para crecer y demostrar tu valía. Tu espíritu pionero te lleva a explorar territorios desconocidos, tanto en el mundo físico como en el intelectual.</p>
+                    </div>
+
+                    <div class="interpretation-block">
+                        <h3>🔥 Tu Elemento Dominante</h3>
+                        <p>El fuego que arde en tu interior no es solo una metáfora astrológica, sino una realidad energética que se manifiesta en todos los aspectos de tu vida. Tu elemento dominante te confiere <strong>pasión intensa</strong> por todo lo que haces, desde las tareas más simples hasta los proyectos más ambiciosos. Esta energía ígnea te permite transformar ideas en realidad con una velocidad y eficiencia admirables.</p>
+                        
+                        <p>Sin embargo, es importante que aprendas a <strong>canalizar esta energía</strong> de manera constructiva. A veces tu entusiasmo puede ser tan intenso que puede abrumar a otros o consumirte a ti mismo. El equilibrio está en aprender a dosificar tu fuego interior, encendiéndolo cuando sea necesario y atenuándolo cuando la situación requiera más sutileza.</p>
+                    </div>
+
+                    <div class="interpretation-block">
+                        <h3>⚖️ Tu Ascendente y Presentación</h3>
+                        <p>Tu ascendente en Libra te convierte en una persona naturalmente <strong>diplomática y socialmente hábil</strong>. Tienes un don innato para leer las dinámicas sociales y adaptarte a diferentes entornos con gracia y elegancia. Tu primera impresión siempre es positiva, y sabes exactamente cómo presentarte para causar el impacto deseado.</p>
+                        
+                        <p>Esta combinación de fuego interior y diplomacia exterior te hace <strong>extremadamente efectivo en situaciones de liderazgo</strong>. Puedes ser enérgico y directo cuando es necesario, pero también sabes cuándo ser suave y conciliador. Esta dualidad te permite navegar por complejas dinámicas sociales y profesionales con una habilidad excepcional.</p>
+                    </div>
+
+                    <div class="interpretation-block">
+                        <h3>🌙 Tu Mundo Emocional</h3>
+                        <p>Tu Luna en Cáncer revela un <strong>mundo emocional rico y complejo</strong>. Posees una intuición extraordinariamente desarrollada que te permite percibir las emociones de otros incluso antes de que ellos mismos las reconozcan. Esta sensibilidad emocional es tanto una bendición como un desafío, ya que te permite conectar profundamente con los demás, pero también puede hacerte vulnerable a absorber energías negativas.</p>
+                        
+                        <p>Tu <strong>memoria emocional es excepcional</strong>, y tiendes a recordar no solo los hechos de una situación, sino también cómo te hicieron sentir. Esto te convierte en una persona muy empática y comprensiva, pero también significa que las heridas emocionales pueden tardar más en sanar. Tu hogar es tu santuario, y necesitas un espacio donde puedas recargar tus energías emocionales.</p>
+                    </div>
+
+                    <div class="interpretation-block">
+                        <h3>🏠 Tu Casa Astrológica y Propósito</h3>
+                        <p>Tu casa astrológica principal indica que tu <strong>propósito en esta vida está fuertemente ligado a tu identidad personal</strong> y a cómo te presentas al mundo. Eres alguien que está destinado a ser un ejemplo para otros, mostrando el camino a través de tu propia evolución y crecimiento personal. Tu casa astrológica sugiere que tu misión incluye <strong>desarrollar y expresar tu individualidad única</strong> de manera que inspire a otros a hacer lo mismo.</p>
+                        
+                        <p>Esta posición también indica que <strong>tus logros personales tendrán un impacto colectivo</strong>. No estás aquí solo para tu propio crecimiento, sino para ser un faro que guíe a otros hacia su propio potencial. Tu casa astrológica te confiere una responsabilidad especial: la de vivir auténticamente y mostrar a otros que es posible ser fiel a uno mismo mientras se contribuye al bienestar colectivo.</p>
+                    </div>
+
+                    <div class="interpretation-block">
+                        <h3>🪐 Tu Planeta Dominante</h3>
+                        <p>Tu planeta dominante actúa como el <strong>director de orquesta de tu personalidad</strong>, influyendo en cómo expresas tu energía y qué te motiva más profundamente. Este planeta te otorga características específicas que se manifiestan en todos los aspectos de tu vida, desde tus relaciones personales hasta tu carrera profesional.</p>
+                        
+                        <p>La influencia de este planeta también determina <strong>cómo manejas los desafíos y las oportunidades</strong>. Te da fortalezas específicas que puedes aprovechar para superar obstáculos, así como áreas de crecimiento que requieren atención consciente. Comprender la naturaleza de tu planeta dominante te permitirá alinearte mejor con tu propósito de vida y maximizar tu potencial.</p>
+                    </div>
+
+                    <div class="interpretation-block">
+                        <h3>✨ Aspectos Planetarios y Dinámicas Internas</h3>
+                        <p>Los aspectos entre planetas en tu carta natal revelan <strong>dinámicas internas complejas</strong> que influyen en cómo te relacionas contigo mismo y con el mundo exterior. Estos aspectos crean patrones de comportamiento que pueden ser tanto fortalezas como áreas de crecimiento, dependiendo de cómo los manejes conscientemente.</p>
+                        
+                        <p>Tu aspecto planetario dominante sugiere que tienes una <strong>capacidad natural para integrar diferentes aspectos de tu personalidad</strong> de manera armoniosa. Esto te permite ser flexible y adaptable sin perder tu autenticidad. Sin embargo, también indica que a veces puedes sentir tensiones internas cuando diferentes partes de ti buscan expresarse simultáneamente.</p>
+                    </div>
+
+                    <div class="interpretation-block">
+                        <h3>🌊 Nodos Lunares y Tu Camino de Evolución</h3>
+                        <p>Los nodos lunares en tu carta natal son como <strong>brújulas cósmicas</strong> que indican la dirección de tu evolución personal y espiritual. Tu nodo norte representa las cualidades que estás destinado a desarrollar en esta encarnación, mientras que tu nodo sur muestra las habilidades que ya dominaste en vidas pasadas y que ahora debes trascender.</p>
+                        
+                        <p>Tu posición nodal sugiere que tu <strong>camino de crecimiento incluye desarrollar cualidades que pueden parecer opuestas a tu naturaleza actual</strong>. Esto no significa que debas cambiar completamente, sino que debes expandir tu repertorio de respuestas y comportamientos. Tu evolución implica encontrar el equilibrio entre tu naturaleza innata y las nuevas capacidades que estás destinado a cultivar.</p>
+                    </div>
+
+                    <div class="interpretation-block">
+                        <h3>🎭 Integración y Síntesis</h3>
+                        <p>La verdadera magia de tu carta astral reside en cómo <strong>todos estos elementos se integran para crear una personalidad única y multifacética</strong>. No eres solo tu signo solar, ni solo tu elemento, ni solo tu ascendente. Eres la síntesis perfecta de todas estas influencias, cada una aportando su color único al lienzo de tu ser.</p>
+                        
+                        <p>Tu desafío y tu oportunidad es <strong>honrar todas estas partes de ti mismo</strong> sin dejar que ninguna domine completamente. Cuando logras el equilibrio entre tu fuego interior, tu diplomacia exterior, tu sensibilidad emocional y tu propósito evolutivo, te conviertes en una fuerza verdaderamente transformadora en el mundo. Tu carta astral no es un destino fijo, sino un mapa que te guía hacia tu máximo potencial.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Próximos Pasos -->
+            <div class="next-steps-section">
+                <h2>Próximos Pasos</h2>
+                <div class="steps-grid">
+                    <div class="step-item">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <h4>Explora tu Carta Completa</h4>
+                            <p>Accede a todos los detalles de tu carta natal en tu dashboard personal.</p>
+                        </div>
+                    </div>
+                    <div class="step-item">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <h4>Recibe Predicciones Mensuales</h4>
+                            <p>Obtén insights personalizados sobre los próximos eventos astrológicos.</p>
+                        </div>
+                    </div>
+                    <div class="step-item">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <h4>Consulta con Astrólogos</h4>
+                            <p>Resuelve dudas específicas con nuestros expertos certificados.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Acceso al Dashboard -->
+            <div class="dashboard-access">
+                <a href="dashboard.html" class="dashboard-btn">
+                    <i class="fas fa-chart-line"></i>
+                    <span>Acceder a mi Dashboard</span>
+                </a>
+                <p class="trial-info">Tu período de prueba de 2 días ha comenzado. Accede a todo el contenido premium.</p>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="results-footer">
+        <div class="footer-content">
+            <p>¿Necesitas ayuda? <a href="#" onclick="showHelp()">Contacta con nuestro equipo</a></p>
+            <p>© 2024 AstroKey. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Cargar datos del usuario cuando se cargue la página
+        document.addEventListener('DOMContentLoaded', function() {
+            // Cargar datos del usuario
+            loadUserData();
+        });
+    </script>
+</body>
+</html>

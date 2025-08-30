@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel de Administración - AstroKey</title>
+    <link rel="stylesheet" href="css/admin-styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="admin-container">
+        <!-- Header del Panel -->
+        <header class="admin-header">
+            <div class="header-content">
+                <div class="logo-section">
+                    <h1>Panel de Administración</h1>
+                    <p>Gestiona usuarios, pagos, emails y configuración de AstroKey</p>
+                </div>
+                <div class="admin-info">
+                    <span class="admin-name">Admin AstroKey</span>
+                    <button class="logout-btn" onclick="logout()">
+                        <i class="fas fa-sign-out-alt"></i> Salir
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <!-- Contenido Principal -->
+        <main class="admin-main">
+            <!-- Grid de Tarjetas de Administración -->
+            <div class="admin-grid">
+                
+                <!-- Gestión de Usuarios -->
+                <div class="admin-card">
+                    <div class="card-header">
+                        <i class="fas fa-users card-icon"></i>
+                        <h3>Gestión de Usuarios</h3>
+                    </div>
+                    <p class="card-description">Administra cuentas activas, suscripciones y permisos</p>
+                    <div class="card-data">
+                        <div class="data-item">
+                            <span class="data-label">Usuarios activos:</span>
+                            <span class="data-value" id="activeUsers">0</span>
+                        </div>
+                        <div class="data-item">
+                            <span class="data-label">Suscripciones premium:</span>
+                            <span class="data-value" id="premiumSubs">0</span>
+                        </div>
+                    </div>
+                    <button class="card-btn primary" onclick="openModal('users')">
+                        Gestionar Usuarios
+                    </button>
+                </div>
+
+                <!-- Configuración Stripe -->
+                <div class="admin-card">
+                    <div class="card-header">
+                        <i class="fas fa-credit-card card-icon"></i>
+                        <h3>Configuración Stripe</h3>
+                    </div>
+                    <p class="card-description">Gestiona claves de API y cuentas de Stripe</p>
+                    <div class="card-data">
+                        <div class="data-item">
+                            <span class="data-label">Estado:</span>
+                            <span class="data-value status-connected" id="stripeStatus">Desconectado</span>
+                        </div>
+                        <div class="data-item">
+                            <span class="data-label">Entorno:</span>
+                            <span class="data-value" id="stripeEnv">Test</span>
+                        </div>
+                    </div>
+                    <button class="card-btn primary" onclick="openModal('stripe')">
+                        Configurar Stripe
+                    </button>
+                </div>
+
+                <!-- Configuración EmailJS -->
+                <div class="admin-card">
+                    <div class="card-header">
+                        <i class="fas fa-envelope card-icon"></i>
+                        <h3>Configuración EmailJS</h3>
+                    </div>
+                    <p class="card-description">Gestiona claves de API y templates de EmailJS</p>
+                    <div class="card-data">
+                        <div class="data-item">
+                            <span class="data-label">Estado:</span>
+                            <span class="data-value status-connected" id="emailjsStatus">Desconectado</span>
+                        </div>
+                        <div class="data-item">
+                            <span class="data-label">Templates:</span>
+                            <span class="data-value" id="emailjsTemplates">0</span>
+                        </div>
+                    </div>
+                    <button class="card-btn primary" onclick="openModal('emailjs')">
+                        Configurar EmailJS
+                    </button>
+                </div>
+
+                <!-- Configuración Google OAuth -->
+                <div class="admin-card">
+                    <div class="card-header">
+                        <i class="fab fa-google card-icon"></i>
+                        <h3>Configuración Google OAuth</h3>
+                    </div>
+                    <p class="card-description">Gestiona autenticación con Google</p>
+                    <div class="card-data">
+                        <div class="data-item">
+                            <span class="data-label">Estado:</span>
+                            <span class="data-value status-pending" id="googleStatus">Pendiente</span>
+                        </div>
+                        <div class="data-item">
+                            <span class="data-label">Client ID:</span>
+                            <span class="data-value" id="googleClientId">No configurado</span>
+                        </div>
+                    </div>
+                    <button class="card-btn primary" onclick="openModal('google')">
+                        Configurar Google
+                    </button>
+                </div>
+
+                <!-- Precios y Planes -->
+                <div class="admin-card">
+                    <div class="card-header">
+                        <i class="fas fa-tags card-icon"></i>
+                        <h3>Precios y Planes</h3>
+                    </div>
+                    <p class="card-description">Modifica precios y sincroniza con Stripe</p>
+                    <div class="card-data">
+                        <div class="data-item">
+                            <span class="data-label">Precio test:</span>
+                            <span class="data-value">€0.50</span>
+                        </div>
+                        <div class="data-item">
+                            <span class="data-label">Plan mensual:</span>
+                            <span class="data-value">€19.99</span>
+                        </div>
+                    </div>
+                    <button class="card-btn secondary" onclick="openModal('pricing')">
+                        Gestionar Precios
+                    </button>
+                </div>
+
+                <!-- Contenido Legal -->
+                <div class="admin-card">
+                    <div class="card-header">
+                        <i class="fas fa-shield-alt card-icon"></i>
+                        <h3>Contenido Legal</h3>
+                    </div>
+                    <p class="card-description">Edita términos de servicio y políticas</p>
+                    <div class="card-data">
+                        <div class="data-item">
+                            <span class="data-label">Última actualización:</span>
+                            <span class="data-value" id="legalUpdate">No configurado</span>
+                        </div>
+                    </div>
+                    <button class="card-btn secondary" onclick="openModal('legal')">
+                        Editor Legal
+                    </button>
+                </div>
+
+                <!-- Estadísticas -->
+                <div class="admin-card">
+                    <div class="card-header">
+                        <i class="fas fa-chart-bar card-icon"></i>
+                        <h3>Estadísticas</h3>
+                    </div>
+                    <p class="card-description">Métricas y análisis de la plataforma</p>
+                    <div class="card-data">
+                        <div class="data-item">
+                            <span class="data-label">Tests completados hoy:</span>
+                            <span class="data-value" id="testsToday">0</span>
+                        </div>
+                        <div class="data-item">
+                            <span class="data-label">Ingresos del mes:</span>
+                            <span class="data-value" id="monthlyIncome">€0</span>
+                        </div>
+                    </div>
+                    <button class="card-btn secondary" onclick="openModal('stats')">
+                        Ver Estadísticas
+                    </button>
+                </div>
+
+                <!-- Variables de Entorno -->
+                <div class="admin-card">
+                    <div class="card-header">
+                        <i class="fas fa-cog card-icon"></i>
+                        <h3>Variables de Entorno</h3>
+                    </div>
+                    <p class="card-description">Configura claves de API y variables del sistema</p>
+                    <div class="card-data">
+                        <div class="data-item">
+                            <span class="data-label">Stripe:</span>
+                            <span class="data-value status-connected" id="envStripe">Configurado</span>
+                        </div>
+                        <div class="data-item">
+                            <span class="data-label">EmailJS:</span>
+                            <span class="data-value status-pending" id="envEmailjs">Pendiente</span>
+                        </div>
+                    </div>
+                    <button class="card-btn secondary" onclick="openModal('environment')">
+                        Configurar Variables
+                    </button>
+                </div>
+
+            </div>
+        </main>
+    </div>
+
+    <!-- Modales -->
+    <div id="modalOverlay" class="modal-overlay" onclick="closeModal()"></div>
+    
+    <!-- Modal de Usuarios -->
+    <div id="usersModal" class="modal">
+        <div class="modal-header">
+            <h3>Gestión de Usuarios</h3>
+            <button class="close-btn" onclick="closeModal()">&times;</button>
+        </div>
+        <div class="modal-content">
+            <div class="users-list">
+                <div class="user-item">
+                    <div class="user-info">
+                        <span class="user-name">Usuario Ejemplo</span>
+                        <span class="user-email">usuario@email.com</span>
+                        <span class="user-status active">Activo</span>
+                    </div>
+                    <div class="user-actions">
+                        <button class="btn-small">Ver</button>
+                        <button class="btn-small danger">Suspender</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de Stripe -->
+    <div id="stripeModal" class="modal">
+        <div class="modal-header">
+            <h3>Configuración Stripe</h3>
+            <button class="close-btn" onclick="closeModal()">&times;</button>
+        </div>
+        <div class="modal-content">
+            <form id="stripeForm" class="config-form">
+                <div class="form-group">
+                    <label for="stripePublishableKey">Clave Pública (Publishable Key)</label>
+                    <input type="text" id="stripePublishableKey" placeholder="pk_test_...">
+                </div>
+                <div class="form-group">
+                    <label for="stripeSecretKey">Clave Secreta (Secret Key)</label>
+                    <input type="password" id="stripeSecretKey" placeholder="sk_test_...">
+                </div>
+                <div class="form-group">
+                    <label for="stripeWebhookSecret">Webhook Secret</label>
+                    <input type="password" id="stripeWebhookSecret" placeholder="whsec_...">
+                </div>
+                <div class="form-group">
+                    <label>
+                        <input type="checkbox" id="stripeLiveMode"> Modo Producción
+                    </label>
+                </div>
+                <button type="submit" class="btn-primary">Guardar Configuración</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal de EmailJS -->
+    <div id="emailjsModal" class="modal">
+        <div class="modal-header">
+            <h3>Configuración EmailJS</h3>
+            <button class="close-btn" onclick="closeModal()">&times;</button>
+        </div>
+        <div class="modal-content">
+            <form id="emailjsForm" class="config-form">
+                <div class="form-group">
+                    <label for="emailjsServiceId">Service ID</label>
+                    <input type="text" id="emailjsServiceId" placeholder="service_astrokey">
+                </div>
+                <div class="form-group">
+                    <label for="emailjsUserId">User ID</label>
+                    <input type="text" id="emailjsUserId" placeholder="user_astrokey">
+                </div>
+                <div class="form-group">
+                    <label for="emailjsTemplateId">Template ID</label>
+                    <input type="text" id="emailjsTemplateId" placeholder="template_premium_welcome">
+                </div>
+                <button type="submit" class="btn-primary">Guardar Configuración</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal de Google OAuth -->
+    <div id="googleModal" class="modal">
+        <div class="modal-header">
+            <h3>Configuración Google OAuth</h3>
+            <button class="close-btn" onclick="closeModal()">&times;</button>
+        </div>
+        <div class="modal-content">
+            <form id="googleForm" class="config-form">
+                <div class="form-group">
+                    <label for="googleClientId">Client ID</label>
+                    <input type="text" id="googleClientId" placeholder="123456789-...">
+                </div>
+                <div class="form-group">
+                    <label for="googleClientSecret">Client Secret</label>
+                    <input type="password" id="googleClientSecret" placeholder="GOCSPX-...">
+                </div>
+                <div class="form-group">
+                    <label for="googleRedirectUri">Redirect URI</label>
+                    <input type="text" id="googleRedirectUri" placeholder="https://tuweb.com/auth/google/callback">
+                </div>
+                <button type="submit" class="btn-primary">Guardar Configuración</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal de Precios -->
+    <div id="pricingModal" class="modal">
+        <div class="modal-header">
+            <h3>Gestión de Precios</h3>
+            <button class="close-btn" onclick="closeModal()">&times;</button>
+        </div>
+        <div class="modal-content">
+            <form id="pricingForm" class="config-form">
+                <div class="form-group">
+                    <label for="testPrice">Precio del Test (€)</label>
+                    <input type="number" id="testPrice" step="0.01" min="0" value="0.50">
+                </div>
+                <div class="form-group">
+                    <label for="monthlyPrice">Precio Mensual (€)</label>
+                    <input type="number" id="monthlyPrice" step="0.01" min="0" value="19.99">
+                </div>
+                <div class="form-group">
+                    <label for="trialDays">Días de Prueba</label>
+                    <input type="number" id="trialDays" min="1" max="30" value="2">
+                </div>
+                <button type="submit" class="btn-primary">Guardar Precios</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal de Contenido Legal -->
+    <div id="legalModal" class="modal">
+        <div class="modal-header">
+            <h3>Editor de Contenido Legal</h3>
+            <button class="close-btn" onclick="closeModal()">&times;</button>
+        </div>
+        <div class="modal-content">
+            <form id="legalForm" class="config-form">
+                <div class="form-group">
+                    <label for="legalType">Tipo de Documento</label>
+                    <select id="legalType">
+                        <option value="terms">Términos de Servicio</option>
+                        <option value="privacy">Política de Privacidad</option>
+                        <option value="cookies">Política de Cookies</option>
+                        <option value="refund">Política de Reembolso</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="legalContent">Contenido</label>
+                    <textarea id="legalContent" rows="15" placeholder="Escribe aquí el contenido legal..."></textarea>
+                </div>
+                <button type="submit" class="btn-primary">Guardar Contenido</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal de Estadísticas -->
+    <div id="statsModal" class="modal">
+        <div class="modal-header">
+            <h3>Estadísticas de la Plataforma</h3>
+            <button class="close-btn" onclick="closeModal()">&times;</button>
+        </div>
+        <div class="modal-content">
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <h4>Usuarios</h4>
+                    <div class="stat-number" id="statsTotalUsers">1,247</div>
+                    <div class="stat-change positive">+12% este mes</div>
+                </div>
+                <div class="stat-card">
+                    <h4>Suscripciones</h4>
+                    <div class="stat-number" id="statsTotalSubs">342</div>
+                    <div class="stat-change positive">+8% este mes</div>
+                </div>
+                <div class="stat-card">
+                    <h4>Ingresos</h4>
+                    <div class="stat-number" id="statsTotalIncome">€2,847</div>
+                    <div class="stat-change positive">+15% este mes</div>
+                </div>
+                <div class="stat-card">
+                    <h4>Tests Completados</h4>
+                    <div class="stat-number" id="statsTotalTests">89</div>
+                    <div class="stat-change positive">+23% hoy</div>
+                </div>
+            </div>
+            <div class="stats-actions">
+                <button class="btn-secondary" onclick="exportStats()">Exportar Datos</button>
+                <button class="btn-secondary" onclick="refreshStats()">Actualizar</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de Variables de Entorno -->
+    <div id="environmentModal" class="modal">
+        <div class="modal-header">
+            <h3>Variables de Entorno</h3>
+            <button class="close-btn" onclick="closeModal()">&times;</button>
+        </div>
+        <div class="modal-content">
+            <div class="env-status">
+                <div class="env-item">
+                    <span class="env-label">Stripe:</span>
+                    <span class="env-value status-connected" id="envStripeStatus">Configurado</span>
+                </div>
+                <div class="env-item">
+                    <span class="env-label">EmailJS:</span>
+                    <span class="env-value status-pending" id="envEmailjsStatus">Pendiente</span>
+                </div>
+                <div class="env-item">
+                    <span class="env-label">Google OAuth:</span>
+                    <span class="env-value status-disconnected" id="envGoogleStatus">No configurado</span>
+                </div>
+                <div class="env-item">
+                    <span class="env-label">Mapbox:</span>
+                    <span class="env-value status-disconnected" id="envMapboxStatus">No configurado</span>
+                </div>
+            </div>
+            <div class="env-actions">
+                <button class="btn-primary" onclick="exportConfig()">Exportar Configuración</button>
+                <button class="btn-secondary" onclick="importConfig()">Importar Configuración</button>
+                <button class="btn-danger" onclick="clearConfig()">Limpiar Todo</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/auth-check.js"></script>
+    <script src="js/admin.js"></script>
+</body>
+</html>

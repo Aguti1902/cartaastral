@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pago - AstroKey</title>
+    <link rel="stylesheet" href="css/test-styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="test-header">
+        <div class="header-content">
+            <div class="logo">
+                <div class="logo-icon">
+                    <img src="../images/Mask group (10).png" alt="AstroKey Logo" class="astrokey-logo-img">
+                </div>
+                <span>AstroKey</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Contenido Principal -->
+    <main class="payment-main">
+        <div class="payment-container">
+            <!-- Panel Izquierdo: Oferta y Producto -->
+            <div class="left-panel">
+                <!-- Oferta Flash -->
+                <div class="flash-offer">
+                    <div class="flash-badge">
+                        <i class="fas fa-bolt"></i>
+                        <span>OFERTA FLASH</span>
+                    </div>
+                    <h2 class="flash-title">¡ÚLTIMA OPORTUNIDAD!</h2>
+                    <div class="price-comparison">
+                        <span class="old-price">19,99€</span>
+                        <span class="new-price">0,50€</span>
+                    </div>
+                    <p class="flash-description">Solo por tiempo limitado, obtén tu carta astral con un descuento increíble</p>
+                </div>
+
+                <div class="offer-timer">
+                    <h3>Queda tiempo para aprovechar esta oferta:</h3>
+                    <div class="countdown" id="countdown">
+                        <div class="time-display">
+                            <div class="time-block">
+                                <span class="number" id="minutes">04</span>
+                                <span class="label">MINUTOS</span>
+                            </div>
+                            <div class="time-separator">:</div>
+                            <div class="time-block">
+                                <span class="number" id="seconds">54</span>
+                                <span class="label">SEGUNDOS</span>
+                            </div>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" id="progress-fill"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-illustration">
+                    <img src="images/Illustration of Astrology Horoscope.png" alt="Horóscopo astrológico" class="product-image">
+                </div>
+
+                <div class="product-description">
+                    <p>Con esta compra, obtendrá la lectura de su carta natal y leerá contenidos especiales creados por nuestros astrólogos sobre los acontecimientos astrológicos mensuales y cómo pueden afectarle.</p>
+                </div>
+            </div>
+
+            <!-- Panel Derecho: Formulario de Pago -->
+            <div class="right-panel">
+                <div class="payment-form">
+                    <h2>Métodos de pago</h2>
+                    
+                    <div class="payment-methods">
+                        <div class="payment-method">
+                            <input type="radio" id="credit-card" name="payment-method" value="credit-card" checked>
+                            <label for="credit-card">
+                                <span class="method-label">Tarjeta de crédito</span>
+                                <div class="card-logos">
+                                    <span class="card-logo">VISA</span>
+                                    <span class="card-logo">AMERICAN EXPRESS</span>
+                                </div>
+                            </label>
+                        </div>
+
+                        <div class="payment-method">
+                            <input type="radio" id="paypal" name="payment-method" value="paypal">
+                            <label for="paypal">
+                                <span class="method-label">PayPal</span>
+                                <i class="fab fa-paypal"></i>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="credit-card-fields" id="credit-card-fields">
+                        <div class="input-group">
+                            <input type="text" id="card-number" placeholder="Número de tarjeta" maxlength="19">
+                        </div>
+                        <div class="input-group">
+                            <input type="text" id="cardholder-name" placeholder="Nombre del titular de la tarjeta">
+                        </div>
+                        <div class="input-row">
+                            <div class="input-group">
+                                <input type="text" id="expiry-date" placeholder="Fecha de caducidad" maxlength="5">
+                            </div>
+                            <div class="input-group">
+                                <input type="text" id="cvv" placeholder="CVV" maxlength="4">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="total-section">
+                        <div class="total-line">
+                            <span>Total</span>
+                            <span class="total-amount">0.50 EUR</span>
+                        </div>
+                    </div>
+
+                    <button class="payment-btn" onclick="processPayment()">
+                        <span>Obtenga su Carta Natal</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </button>
+
+                    <div class="subscription-info">
+                        <p>Su período de prueba terminará después de 2 días y su suscripción comenzará automáticamente Mensual por 19.99 EUR. Puedes cancelar tu suscripción cuando quieras.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="payment-footer">
+        <div class="footer-content">
+            <p class="contact-info">Siempre puedes ponerte en contacto con nosotros. <a href="#" onclick="showHelp()">Click para obtener ayuda.</a></p>
+            <p class="legal-info">Una vez que complete el pago seguro, usted acepta nuestra <a href="#">Términos y Condiciones</a>, <a href="#">Política de Cancelación y Reembolso de Compras</a>, <a href="#">Política de Privacidad</a>, <a href="#">Política de Investigación</a>. Zotlo Pay gestiona los pagos. <a href="#">Reportar un problema</a></p>
+            <p class="zotlo-link"><a href="https://zotlo.com/contact-us" target="_blank">https://zotlo.com/contact-us</a></p>
+        </div>
+    </footer>
+
+    <!-- Scripts de EmailJS -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script src="js/emailjs-config.js"></script>
+    <script src="js/email-service.js"></script>
+    
+    <script>
+        // Función para procesar el pago y enviar email premium
+        async function processPayment() {
+            try {
+                // Obtener datos del usuario
+                const testAnswers = JSON.parse(localStorage.getItem('astralTestAnswers') || '{}');
+                
+                const userData = {
+                    email: testAnswers.finalEmail || 'usuario@email.com',
+                    firstName: testAnswers.firstName || 'Usuario',
+                    lastName: testAnswers.lastName || '',
+                    id: `user_${Date.now()}`
+                };
+                
+                // Obtener resultados del test
+                const testResults = {
+                    sunSign: testAnswers.sunSign || 'Aries',
+                    dominantElement: testAnswers.dominantElement || 'Fuego',
+                    ascendant: testAnswers.ascendant || 'Libra',
+                    moonSign: testAnswers.moonSign || 'Cáncer'
+                };
+                
+                // Simular procesamiento de pago
+                console.log('💳 Procesando pago...');
+                
+                // Enviar email premium de bienvenida
+                const result = await emailService.sendPremiumWelcomeEmail(userData, testResults);
+                
+                if (result.success) {
+                    // Guardar estado de pago
+                    localStorage.setItem('paymentCompleted', 'true');
+                    localStorage.setItem('paymentDate', new Date().toISOString());
+                    
+                    // Redirigir a resultados
+                    window.location.href = 'results.html';
+                } else {
+                    alert('Error al enviar email. Inténtalo de nuevo.');
+                }
+                
+            } catch (error) {
+                console.error('Error:', error);
+                // Continuar de todas formas
+                window.location.href = 'results.html';
+            }
+        }
+        
+        // Añadir event listener al botón de pago
+        document.addEventListener('DOMContentLoaded', function() {
+            const submitBtn = document.querySelector('.btn-pay');
+            
+            if (submitBtn) {
+                submitBtn.addEventListener('click', processPayment);
+            }
+        });
+    </script>
+</body>
+</html>

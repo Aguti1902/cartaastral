@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AstralCoach Pro - Descubre tu Destino Astral</title>
+    <title>AstroKey - Descubre tu Destino Astral</title>
     <link rel="stylesheet" href="css/styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -14,16 +14,20 @@
         <nav class="nav">
             <div class="nav-logo">
                 <div class="logo-icon">
-                    <i class="fas fa-star"></i>
-                    <div class="logo-glow"></div>
+                    <img src="images/ChatGPT Image 30 ago 2025, 01_46_33 1.png" alt="AstroKey Logo" class="astrokey-logo-img">
                 </div>
-                <span>AstralCoach Pro</span>
+                <span>AstroKey</span>
             </div>
             <ul class="nav-menu">
                 <li><a href="#inicio">Inicio</a></li>
-                <li><a href="#test">Test Gratuito</a></li>
+                <li><a href="intro.html">Test</a></li>
                 <li><a href="#precios">Precios</a></li>
-                <li><a href="#contacto">Contacto</a></li>
+                <li class="dashboard-nav-item">
+                    <button class="btn-login" onclick="openLoginModal()">
+                        <i class="fas fa-sign-in-alt"></i>
+                        <span>Entrar</span>
+                    </button>
+                </li>
             </ul>
             <div class="nav-toggle">
                 <span></span>
@@ -50,219 +54,151 @@
                 <h1 class="hero-title">
                     <span class="title-line">Descubre tu</span>
                     <span class="title-line gradient-text">Destino Astral</span>
-                    <span class="title-line">en 2 Minutos</span>
+                    <span class="title-line">en Solo 2 Minutos</span>
                 </h1>
                 <p class="hero-subtitle">
-                    Completa nuestro test gratuito y descubre tu carta astral personalizada. 
-                    Solo €0.50 para ver tu destino y 2 días de acceso completo a toda la plataforma.
+                    <strong>OFERTA ESPECIAL LIMITADA:</strong> Test astrológico + Carta personalizada. 
+                    <span class="highlight-text">¡Acceso completo incluido!</span>
                 </p>
                 <div class="hero-features">
                     <div class="feature">
-                        <i class="fas fa-check-circle"></i>
-                        <span>Test 100% Gratuito</span>
+                        <i class="fas fa-star"></i>
+                        <span>Test Astrológico Completo</span>
                     </div>
                     <div class="feature">
-                        <i class="fas fa-check-circle"></i>
-                        <span>Solo €0.50 para ver tu carta</span>
+                        <i class="fas fa-gift"></i>
+                        <span>¡Oferta Especial Limitada!</span>
                     </div>
                     <div class="feature">
-                        <i class="fas fa-check-circle"></i>
-                        <span>2 días de acceso completo</span>
+                        <i class="fas fa-crown"></i>
+                        <span>Acceso Premium Completo</span>
                     </div>
                 </div>
-                <div class="hero-buttons">
-                    <button class="btn btn-primary" onclick="window.location.href='intro.html'">
-                        <i class="fas fa-magic"></i>
-                        <span>Hacer Test Gratuito</span>
-                        <div class="btn-glow"></div>
-                    </button>
-                    <button class="btn btn-secondary" onclick="openVideoModal()">
-                        <i class="fas fa-play"></i>
-                        <span>Ver Demo</span>
-                    </button>
-                </div>
+                                  <div class="hero-buttons">
+                      <button class="btn btn-primary" onclick="window.location.href='intro.html'">
+                          <i class="fas fa-magic"></i>
+                          <span>Hacer Test</span>
+                          <div class="btn-glow"></div>
+                      </button>
+                  </div>
             </div>
             
-            <div class="hero-visual">
-                <div class="zodiac-universe">
-                    <div class="universe-center">
-                        <div class="sun-core">
-                            <i class="fas fa-sun"></i>
-                        </div>
-                        <div class="orbit orbit-1">
-                            <div class="planet-mercury"></div>
-                        </div>
-                        <div class="orbit orbit-2">
-                            <div class="planet-venus"></div>
-                        </div>
-                        <div class="orbit orbit-3">
-                            <div class="planet-earth"></div>
-                        </div>
-                    </div>
-                    <div class="zodiac-constellation">
-                        <div class="constellation-line line-1"></div>
-                        <div class="constellation-line line-2"></div>
-                        <div class="constellation-line line-3"></div>
-                        <div class="zodiac-points">
-                            <span class="zodiac-point" data-sign="aries">♈</span>
-                            <span class="zodiac-point" data-sign="taurus">♉</span>
-                            <span class="zodiac-point" data-sign="gemini">♊</span>
-                            <span class="zodiac-point" data-sign="cancer">♋</span>
-                            <span class="zodiac-point" data-sign="leo">♌</span>
-                            <span class="zodiac-point" data-sign="virgo">♍</span>
-                            <span class="zodiac-point" data-sign="libra">♎</span>
-                            <span class="zodiac-point" data-sign="scorpio">♏</span>
-                            <span class="zodiac-point" data-sign="sagittarius">♐</span>
-                            <span class="zodiac-point" data-sign="capricorn">♑</span>
-                            <span class="zodiac-point" data-sign="aquarius">♒</span>
-                            <span class="zodiac-point" data-sign="pisces">♓</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
+                          <div class="hero-visual">
+                  <div class="hero-illustration">
+                      <div class="astral-elements">
+                          <div class="element element-fire">
+                              <i class="fas fa-fire"></i>
+                          </div>
+                          <div class="element element-earth">
+                              <i class="fas fa-mountain"></i>
+                          </div>
+                          <div class="element element-air">
+                              <i class="fas fa-wind"></i>
+                          </div>
+                          <div class="element element-water">
+                              <i class="fas fa-water"></i>
+                          </div>
+                      </div>
+                      
+                      <div class="central-symbol">
+                          <div class="symbol-ring outer-ring"></div>
+                          <div class="symbol-ring middle-ring"></div>
+                          <div class="symbol-ring inner-ring"></div>
+                          <div class="symbol-center">
+                              <i class="fas fa-star"></i>
+                          </div>
+                      </div>
+                      
+                      <div class="floating-elements">
+                          <div class="floating-element" style="--delay: 0s">
+                              <i class="fas fa-moon"></i>
+                          </div>
+                          <div class="floating-element" style="--delay: 1s">
+                              <i class="fas fa-sun"></i>
+                          </div>
+                          <div class="floating-element" style="--delay: 2s">
+                              <i class="fas fa-gem"></i>
+                          </div>
+                          <div class="floating-element" style="--delay: 3s">
+                              <i class="fas fa-heart"></i>
+                          </div>
+                      </div>
+                  </div>
+                  
+
+              </div>
         </div>
         
-        <div class="scroll-indicator">
-            <div class="scroll-arrow"></div>
-            <span>Haz tu test gratuito ahora</span>
-        </div>
+
     </section>
 
-    <!-- Test Gratuito Section -->
-    <section id="test" class="test-section">
+    <!-- Cómo Funciona Section -->
+    <section id="como-funciona" class="how-it-works">
         <div class="container">
             <div class="section-header">
-                <h2 class="section-title">Test Astral Gratuito</h2>
-                <p class="section-subtitle">Descubre tu destino astral en solo 2 minutos. Completa el test y obtén tu carta personalizada por solo €0.50</p>
+                <h2 class="section-title">¿Cómo Funciona?</h2>
+                <p class="section-subtitle">Descubre tu destino astral en 3 simples pasos</p>
             </div>
             
-            <div class="test-container">
-                <div class="test-info">
-                    <div class="test-benefits">
-                        <h3>✨ ¿Qué obtienes con este test?</h3>
-                        <ul>
-                            <li><i class="fas fa-star"></i> <strong>Tu carta astral completa</strong> con análisis detallado</li>
-                            <li><i class="fas fa-moon"></i> <strong>Signo solar, lunar y ascendente</strong> personalizados</li>
-                            <li><i class="fas fa-heart"></i> <strong>Análisis de compatibilidad</strong> para relaciones</li>
-                            <li><i class="fas fa-calendar"></i> <strong>Predicciones personalizadas</strong> para tu futuro</li>
-                            <li><i class="fas fa-gift"></i> <strong>2 días de acceso completo</strong> a toda la plataforma</li>
-                        </ul>
+            <div class="steps-container">
+                <div class="step-card">
+                    <div class="step-number">1</div>
+                    <div class="step-icon">
+                        <i class="fas fa-user-astronaut"></i>
                     </div>
-                    
-                    <div class="test-pricing">
-                        <div class="pricing-highlight">
-                            <div class="price-badge">
-                                <span class="original-price">€19.99</span>
-                                <span class="current-price">€0.50</span>
-                            </div>
-                            <p>Para ver tu carta astral + 2 días de prueba</p>
-                        </div>
-                        
-                        <div class="trial-info">
-                            <h4>🎁 Periodo de Prueba de 2 Días</h4>
-                            <p>Después de los 2 días, tu suscripción se activará automáticamente por solo <strong>€19.99/mes</strong></p>
-                            <p class="trial-note">Puedes cancelar en cualquier momento sin compromiso</p>
-                        </div>
+                    <h3>Haz tu Test</h3>
+                    <p>Completa nuestro test astrológico personalizado con tus datos de nacimiento.</p>
+                    <div class="step-features">
+                        <span class="feature-tag">Rápido</span>
+                        <span class="feature-tag">Personal</span>
+                        <span class="feature-tag">Fácil</span>
                     </div>
                 </div>
                 
-                <div class="test-form-container">
-                    <form id="astralTestForm" class="form premium-form test-form">
-                        <div class="form-header">
-                            <div class="form-icon">
-                                <i class="fas fa-user-astronaut"></i>
-                            </div>
-                            <h3>Test Astral Personalizado</h3>
-                            <p>Completa tus datos para generar tu carta astral</p>
-                        </div>
-                        
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label for="testName">
-                                    <i class="fas fa-user"></i>
-                                    Nombre Completo
-                                </label>
-                                <input type="text" id="testName" name="name" required placeholder="Tu nombre completo">
-                                <div class="input-glow"></div>
-                            </div>
-                            <div class="form-group">
-                                <label for="testEmail">
-                                    <i class="fas fa-envelope"></i>
-                                    Email
-                                </label>
-                                <input type="email" id="testEmail" name="email" required placeholder="tu@email.com">
-                                <div class="input-glow"></div>
-                            </div>
-                        </div>
-                        
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label for="testBirthDate">
-                                    <i class="fas fa-calendar"></i>
-                                    Fecha de Nacimiento
-                                </label>
-                                <input type="date" id="testBirthDate" name="birthDate" required>
-                                <div class="input-glow"></div>
-                            </div>
-                            <div class="form-group">
-                                <label for="testBirthTime">
-                                    <i class="fas fa-clock"></i>
-                                    Hora de Nacimiento
-                                </label>
-                                <input type="time" id="testBirthTime" name="birthTime" required>
-                                <div class="input-glow"></div>
-                            </div>
-                        </div>
-                        
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label for="testBirthCity">
-                                    <i class="fas fa-map-marker-alt"></i>
-                                    Ciudad de Nacimiento
-                                </label>
-                                <input type="text" id="testBirthCity" name="birthCity" required placeholder="Tu ciudad natal">
-                                <div class="input-glow"></div>
-                            </div>
-                            <div class="form-group">
-                                <label for="testBirthCountry">
-                                    <i class="fas fa-globe"></i>
-                                    País de Nacimiento
-                                </label>
-                                <select id="testBirthCountry" name="birthCountry" required>
-                                    <option value="">Selecciona tu país</option>
-                                    <option value="ES">🇪🇸 España</option>
-                                    <option value="MX">🇲🇽 México</option>
-                                    <option value="AR">🇦🇷 Argentina</option>
-                                    <option value="CO">🇨🇴 Colombia</option>
-                                    <option value="PE">🇵🇪 Perú</option>
-                                    <option value="CL">🇨🇱 Chile</option>
-                                    <option value="VE">🇻🇪 Venezuela</option>
-                                    <option value="US">🇺🇸 Estados Unidos</option>
-                                    <option value="CA">🇨🇦 Canadá</option>
-                                </select>
-                                <div class="input-glow"></div>
-                            </div>
-                        </div>
-                        
-                        <div class="form-actions">
-                            <button type="submit" class="btn btn-generate">
-                                <i class="fas fa-magic"></i>
-                                <span>Generar mi Carta Astral</span>
-                                <div class="btn-glow"></div>
-                            </button>
-                        </div>
-                        
-                        <div class="form-footer">
-                            <p class="security-note">
-                                <i class="fas fa-shield-alt"></i>
-                                Tus datos están protegidos y solo se usan para generar tu carta astral
-                            </p>
-                        </div>
-                    </form>
+                <div class="step-card">
+                    <div class="step-number">2</div>
+                    <div class="step-icon">
+                        <i class="fas fa-wallet"></i>
+                    </div>
+                    <h3>Paga Solo €0.50</h3>
+                    <p>Para ver tus resultados completos, solo pagas €0.50.</p>
+                    <div class="step-features">
+                        <span class="feature-tag">€0.50</span>
+                        <span class="feature-tag">Acceso</span>
+                        <span class="feature-tag">Completo</span>
+                    </div>
+                </div>
+                
+                <div class="step-card">
+                    <div class="step-number">3</div>
+                    <div class="step-icon">
+                        <i class="fas fa-chart-pie"></i>
+                    </div>
+                    <h3>Disfruta tu Carta</h3>
+                    <p>Recibe tu carta astral personalizada con análisis detallado y predicciones.</p>
+                    <div class="step-features">
+                        <span class="feature-tag">Personal</span>
+                        <span class="feature-tag">Análisis</span>
+                        <span class="feature-tag">Detallado</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="cta-container">
+                <div class="cta-content">
+                    <h3>¿Listo para descubrir tu destino?</h3>
+                    <p>Descubre tu verdadero potencial astrológico</p>
+                    <button class="btn btn-primary" onclick="window.location.href='intro.html'">
+                        <i class="fas fa-rocket"></i>
+                        <span>Empezar Ahora</span>
+                        <div class="btn-glow"></div>
+                    </button>
                 </div>
             </div>
         </div>
     </section>
+
+
 
     <!-- Servicios Section Premium -->
     <section id="servicios" class="services">
@@ -364,107 +300,52 @@
     <section id="precios" class="pricing">
         <div class="container">
             <div class="section-header">
-                <h2 class="section-title">Modelo de Suscripción Inteligente</h2>
-                <p class="section-subtitle">Empieza con €0.50 y disfruta de 2 días completos de acceso premium</p>
+                <h2 class="section-title">Tu Carta Astral en 3 Pasos</h2>
+                <p class="section-subtitle">Descubre tu destino astral de forma rápida y personalizada</p>
             </div>
             
-            <div class="pricing-showcase">
-                <div class="pricing-card ultra-premium">
-                    <div class="card-glow"></div>
-                    <div class="pricing-header">
-                        <div class="plan-badge">
-                            <i class="fas fa-rocket"></i>
-                            <span>Modelo Inteligente</span>
+            <div class="simple-pricing">
+                <div class="pricing-left">
+                    <div class="trial-info">
+                        <h3>Accede a todas las funciones durante 2 días de prueba</h3>
+                        <div class="price-display">
+                            <span class="trial-price">0.50€</span>
                         </div>
-                        <h3>AstralCoach Pro</h3>
-                        <div class="pricing-flow">
-                            <div class="flow-step">
-                                <div class="step-number">1</div>
-                                <div class="step-content">
-                                    <h4>Test Gratuito</h4>
-                                    <p>Completa el test sin costo</p>
-                                </div>
-                            </div>
-                            <div class="flow-arrow">→</div>
-                            <div class="flow-step">
-                                <div class="step-number">2</div>
-                                <div class="step-content">
-                                    <h4>€0.50 para Ver</h4>
-                                    <p>Paga solo para ver tu carta</p>
-                                </div>
-                            </div>
-                            <div class="flow-arrow">→</div>
-                            <div class="flow-step">
-                                <div class="step-number">3</div>
-                                <div class="step-content">
-                                    <h4>2 Días Gratis</h4>
-                                    <p>Acceso completo sin límites</p>
-                                </div>
-                            </div>
-                            <div class="flow-arrow">→</div>
-                            <div class="flow-step">
-                                <div class="step-number">4</div>
-                                <div class="step-content">
-                                    <h4>€19.99/mes</h4>
-                                    <p>Solo si no cancelas</p>
-                                </div>
-                            </div>
+                        <p>Después del periodo de prueba, la suscripción mensual de</p>
+                        <div class="price-display">
+                            <span class="monthly-price">19.99€</span>
                         </div>
                     </div>
-                    
-                    <div class="pricing-features">
-                        <div class="feature-group">
-                            <h4>✨ Con tu Test de €0.50 obtienes:</h4>
-                            <ul>
-                                <li><i class="fas fa-check"></i> Carta astral completa y detallada</li>
-                                <li><i class="fas fa-check"></i> Análisis de personalidad profundo</li>
-                                <li><i class="fas fa-check"></i> Predicciones personalizadas</li>
-                                <li><i class="fas fa-check"></i> Compatibilidad astrológica</li>
-                            </ul>
-                        </div>
-                        
-                        <div class="feature-group">
-                            <h4>🚀 En los 2 días de prueba:</h4>
-                            <ul>
-                                <li><i class="fas fa-check"></i> Acceso a toda la plataforma</li>
-                                <li><i class="fas fa-check"></i> Consultas holográficas</li>
-                                <li><i class="fas fa-check"></i> Predicciones neurales</li>
-                                <li><i class="fas fa-check"></i> Soporte premium 24/7</li>
-                            </ul>
-                        </div>
-                        
-                        <div class="feature-group">
-                            <h4>👑 Después de la prueba:</h4>
-                            <ul>
-                                <li><i class="fas fa-check"></i> Suscripción automática €19.99/mes</li>
-                                <li><i class="fas fa-check"></i> Cancelación gratuita en cualquier momento</li>
-                                <li><i class="fas fa-check"></i> Sin compromisos ni penalizaciones</li>
-                                <li><i class="fas fa-check"></i> Acceso continuo a todas las funciones</li>
-                            </ul>
-                        </div>
-                    </div>
-                    
-                                         <button class="btn btn-ultra-premium" onclick="window.location.href='test.html'">
-                         <i class="fas fa-magic"></i>
-                         <span>Comenzar Test Gratuito</span>
-                         <div class="btn-glow"></div>
-                     </button>
+                </div>
+                
+                <div class="pricing-right">
+                    <h3>Con AstroKey puedes</h3>
+                    <ul class="features-list">
+                        <li><i class="fas fa-check"></i> Conocer tu carta astral completa</li>
+                        <li><i class="fas fa-check"></i> Descargar en PDF</li>
+                        <li><i class="fas fa-check"></i> Compartir en redes sociales</li>
+                        <li><i class="fas fa-check"></i> Descargas ilimitadas</li>
+                        <li><i class="fas fa-check"></i> Guardar tus tests en tu cuenta</li>
+                        <li><i class="fas fa-check"></i> Invitar amigos a hacer tests</li>
+                    </ul>
                 </div>
             </div>
+            
+
             
             <div class="trial-offer">
                 <div class="trial-content">
                     <h3>🎁 ¡Prueba por Solo €0.50!</h3>
                     <p>Descubre tu destino astral y disfruta de 2 días completos de acceso premium</p>
                     <div class="trial-features">
-                        <span>✓ Test 100% gratuito</span>
+                        <span>✓ Test completo</span>
                         <span>✓ Solo €0.50 para ver tu carta</span>
                         <span>✓ 2 días de acceso completo</span>
-                        <span>✓ Cancelación gratuita</span>
+                        <span>✓ Cancelación sin costos</span>
                     </div>
                                          <button class="btn btn-trial" onclick="window.location.href='intro.html'">
                          <i class="fas fa-magic"></i>
-                         <span>Hacer Test Gratuito Ahora</span>
+                         <span>Hacer Test Ahora</span>
                      </button>
                 </div>
             </div>
@@ -483,7 +364,7 @@
                 <div class="testimonial-card premium">
                     <div class="testimonial-header">
                         <div class="user-avatar">
-                            <img src="https://images.unsplash.com/photo-1494790108755-2616b612b786?w=100&h=100&fit=crop&crop=face" alt="María">
+                            <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop&crop=face" alt="María">
                         </div>
                         <div class="user-info">
                             <h4>María González</h4>
@@ -524,20 +405,20 @@
                         </div>
                     </div>
                     <div class="testimonial-content">
-                        <p>"El test fue súper fácil y por €0.50 vi mi carta astral. Los 2 días gratis me dieron tiempo para decidir. ¡Me encantó!"</p>
+                        <p>"El test fue súper fácil y por €0.50 vi mi carta astral. Los 2 días de prueba me dieron tiempo para decidir. ¡Me encantó!"</p>
                     </div>
                     <div class="testimonial-tags">
                         <span class="tag">Fácil Test</span>
-                        <span class="tag">2 Días Gratis</span>
+                        <span class="tag">2 Días Prueba</span>
                     </div>
                 </div>
                 
-                <div class="testimonial-card premium">
-                    <div class="testimonial-header">
-                        <div class="user-avatar">
-                            <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop&crop=face" alt="Ana">
-                        </div>
-                        <div class="user-info">
+                                                <div class="testimonial-card premium">
+                                    <div class="testimonial-header">
+                                        <div class="user-avatar">
+                                            <img src="images/ana-foto.jpg" alt="Ana">
+                                        </div>
+                                        <div class="user-info">
                             <h4>Ana Martínez</h4>
                             <span>Valencia, España</span>
                             <div class="rating">
@@ -568,10 +449,9 @@
                 <div class="footer-section main">
                     <div class="footer-logo">
                         <div class="logo-icon">
-                            <i class="fas fa-star"></i>
-                            <div class="logo-glow"></div>
+                            <img src="images/ChatGPT Image 30 ago 2025, 01_46_33 1.png" alt="AstroKey Logo" class="astrokey-logo-img footer-logo-img">
                         </div>
-                        <span>AstralCoach Pro</span>
+                        <span>AstroKey</span>
                     </div>
                     <p>Tu portal al universo astrológico personalizado. Descubre tu destino con tecnología de vanguardia y expertos certificados.</p>
                     <div class="social-links">
@@ -626,7 +506,7 @@
             
             <div class="footer-bottom">
                 <div class="footer-info">
-                    <p>&copy; 2024 AstralCoach Pro. Todos los derechos reservados.</p>
+                    <p>&copy; 2024 AstroKey. Todos los derechos reservados.</p>
                     <div class="footer-badges">
                         <span class="badge">🔒 SSL Seguro</span>
                         <span class="badge">⭐ 5.0 Rating</span>
@@ -649,12 +529,42 @@
         <div class="modal-content premium">
             <span class="close">&times;</span>
             <div class="modal-header">
-                <h2>Experiencia AstralCoach Pro</h2>
+                <h2>Experiencia AstroKey</h2>
                 <p>Descubre la magia de la astrología moderna</p>
             </div>
             <div class="video-container">
                 <iframe width="560" height="315" src="https://www.youtube.com/embed/dQw4w9WgXcQ" frameborder="0" allowfullscreen></iframe>
             </div>
+        </div>
+    </div>
+
+    <!-- Modal de Login -->
+    <div id="loginModal" class="modal">
+        <div class="modal-content login-modal">
+            <span class="close" onclick="closeLoginModal()">&times;</span>
+            <div class="login-header">
+                <h2>Acceso a tu Dashboard</h2>
+                <p>Ingresa con el email que usaste para completar el test</p>
+            </div>
+            
+            <form id="loginForm" class="login-form" onsubmit="handleLogin(event)">
+                <div class="form-group">
+                    <label for="loginEmail">Email</label>
+                    <input type="email" id="loginEmail" name="email" required placeholder="tu@email.com">
+                </div>
+                
+                <div class="form-group">
+                    <label for="loginPassword">Contraseña</label>
+                    <input type="password" id="loginPassword" name="password" required placeholder="Tu contraseña">
+                </div>
+                
+                <button type="submit" class="btn btn-primary login-btn">
+                    <i class="fas fa-sign-in-alt"></i>
+                    <span>Entrar al Dashboard</span>
+                </button>
+            </form>
+            
+
         </div>
     </div>
 

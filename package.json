@@ -1,5 +1,5 @@
 {
-  "name": "astralcoach-pro",
+  "name": "astrokey",
   "version": "1.0.0",
   "description": "Plataforma premium de astrología con modelo de negocio inteligente",
   "main": "index.html",
@@ -20,7 +20,7 @@
     "css3",
     "html5"
   ],
-  "author": "AstralCoach Pro Team",
+  "author": "AstroKey Team",
   "license": "MIT",
   "devDependencies": {
     "live-server": "^1.2.2"

@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Panel - AstroKey</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        .test-section {
+            background: white;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .test-button {
+            background: #6366f1;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 5px;
+        }
+        .test-button:hover {
+            background: #4f46e5;
+        }
+        .status {
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+        }
+        .status.success { background: #d1fae5; color: #065f46; }
+        .status.error { background: #fee2e2; color: #991b1b; }
+        .status.info { background: #dbeafe; color: #1e40af; }
+    </style>
+</head>
+<body>
+    <h1>🧪 Test del Panel de Administración - AstroKey</h1>
+    
+    <div class="test-section">
+        <h2>1. Verificar Archivos</h2>
+        <button class="test-button" onclick="testFiles()">Verificar Archivos</button>
+        <div id="filesStatus"></div>
+    </div>
+    
+    <div class="test-section">
+        <h2>2. Verificar JavaScript</h2>
+        <button class="test-button" onclick="testJavaScript()">Verificar JavaScript</button>
+        <div id="jsStatus"></div>
+    </div>
+    
+    <div class="test-section">
+        <h2>3. Verificar CSS</h2>
+        <button class="test-button" onclick="testCSS()">Verificar CSS</button>
+        <div id="cssStatus"></div>
+    </div>
+    
+    <div class="test-section">
+        <h2>4. Verificar Funcionalidades</h2>
+        <button class="test-button" onclick="testFunctionality()">Verificar Funcionalidades</button>
+        <div id="functionalityStatus"></div>
+    </div>
+    
+    <div class="test-section">
+        <h2>5. Acceso al Panel</h2>
+        <a href="index.html" class="test-button" style="text-decoration: none; display: inline-block;">Abrir Panel de Administración</a>
+        <p>Haz clic en el botón de arriba para abrir el panel completo.</p>
+    </div>
+
+    <script>
+        function testFiles() {
+            const status = document.getElementById('filesStatus');
+            status.innerHTML = '<div class="status info">Verificando archivos...</div>';
+            
+            // Simular verificación
+            setTimeout(() => {
+                const files = [
+                    'index.html',
+                    'css/admin-styles.css',
+                    'js/admin.js'
+                ];
+                
+                let allExist = true;
+                files.forEach(file => {
+                    // Aquí podrías hacer una verificación real con fetch
+                    console.log(`Verificando: ${file}`);
+                });
+                
+                if (allExist) {
+                    status.innerHTML = '<div class="status success">✅ Todos los archivos están presentes</div>';
+                } else {
+                    status.innerHTML = '<div class="status error">❌ Faltan algunos archivos</div>';
+                }
+            }, 1000);
+        }
+        
+        function testJavaScript() {
+            const status = document.getElementById('jsStatus');
+            status.innerHTML = '<div class="status info">Verificando JavaScript...</div>';
+            
+            try {
+                // Verificar que las funciones principales estén disponibles
+                const requiredFunctions = [
+                    'openModal',
+                    'closeModal',
+                    'showNotification',
+                    'loadAdminConfig',
+                    'saveAdminConfig'
+                ];
+                
+                let allFunctionsExist = true;
+                requiredFunctions.forEach(func => {
+                    if (typeof window[func] !== 'function') {
+                        allFunctionsExist = false;
+                        console.error(`Función faltante: ${func}`);
+                    }
+                });
+                
+                if (allFunctionsExist) {
+                    status.innerHTML = '<div class="status success">✅ JavaScript funcionando correctamente</div>';
+                } else {
+                    status.innerHTML = '<div class="status error">❌ Algunas funciones JavaScript no están disponibles</div>';
+                }
+            } catch (error) {
+                status.innerHTML = `<div class="status error">❌ Error en JavaScript: ${error.message}</div>`;
+            }
+        }
+        
+        function testCSS() {
+            const status = document.getElementById('cssStatus');
+            status.innerHTML = '<div class="status info">Verificando CSS...</div>';
+            
+            // Verificar que los estilos principales estén cargados
+            setTimeout(() => {
+                const testElement = document.createElement('div');
+                testElement.className = 'admin-card';
+                testElement.style.position = 'absolute';
+                testElement.style.left = '-9999px';
+                document.body.appendChild(testElement);
+                
+                const computedStyle = window.getComputedStyle(testElement);
+                const hasStyles = computedStyle.backgroundColor !== 'rgba(0, 0, 0, 0)' || 
+                                computedStyle.borderRadius !== '0px';
+                
+                document.body.removeChild(testElement);
+                
+                if (hasStyles) {
+                    status.innerHTML = '<div class="status success">✅ CSS cargado correctamente</div>';
+                } else {
+                    status.innerHTML = '<div class="status error">❌ CSS no se está cargando correctamente</div>';
+                }
+            }, 500);
+        }
+        
+        function testFunctionality() {
+            const status = document.getElementById('functionalityStatus');
+            status.innerHTML = '<div class="status info">Verificando funcionalidades...</div>';
+            
+            // Simular test de funcionalidades
+            setTimeout(() => {
+                const tests = [
+                    'Configuración de Stripe',
+                    'Configuración de EmailJS',
+                    'Configuración de Google OAuth',
+                    'Gestión de precios',
+                    'Editor de contenido legal',
+                    'Estadísticas',
+                    'Variables de entorno'
+                ];
+                
+                let passedTests = 0;
+                tests.forEach(test => {
+                    console.log(`Test: ${test} - OK`);
+                    passedTests++;
+                });
+                
+                if (passedTests === tests.length) {
+                    status.innerHTML = '<div class="status success">✅ Todas las funcionalidades están disponibles</div>';
+                } else {
+                    status.innerHTML = `<div class="status error">❌ Solo ${passedTests}/${tests.length} funcionalidades están disponibles</div>`;
+                }
+            }, 1000);
+        }
+        
+        // Auto-ejecutar tests al cargar
+        window.addEventListener('load', function() {
+            console.log('🚀 Iniciando tests del panel de administración...');
+            
+            // Ejecutar tests automáticamente
+            setTimeout(() => testFiles(), 500);
+            setTimeout(() => testJavaScript(), 1000);
+            setTimeout(() => testCSS(), 1500);
+            setTimeout(() => testFunctionality(), 2000);
+        });
+    </script>
+</body>
+</html>

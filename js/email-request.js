@@ -1,4 +1,4 @@
-// ===== EMAIL REQUEST SCRIPT - ASTRALCOACH PRO =====
+// ===== EMAIL REQUEST SCRIPT - ASTROKEY =====
 
 // Inicialización cuando se carga la página
 document.addEventListener('DOMContentLoaded', function() {
@@ -95,9 +95,9 @@ function submitEmail() {
     // Mostrar notificación de éxito
     showNotification('¡Email guardado exitosamente! Redirigiendo...', 'success');
     
-    // Redirigir a la página principal después de 2 segundos
+    // Redirigir a la página de pago después de 2 segundos
     setTimeout(() => {
-        window.location.href = 'index.html';
+        window.location.href = 'payment.html';
     }, 2000);
 }
 

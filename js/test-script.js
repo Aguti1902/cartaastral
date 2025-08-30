@@ -1,4 +1,4 @@
-// ===== TEST SCRIPT - ASTRALCOACH PRO =====
+// ===== TEST SCRIPT - ASTROKEY =====
 
 // Variables globales del test
 let currentStep = 1;
@@ -15,7 +15,7 @@ const fillerPages = [
     { step: 3, title: "¡Genial!", description: "La posición del Sol, la Luna y los planetas en el día en que nacimos y en el momento en que respiramos por primera vez determina nuestra carta natal.", image: "images/Fortune Telling with Crystal Balls and Books.png", alt: "Bola de cristal y libros de adivinación" },
     { step: 6, title: "Cosas que se prometen", description: "Comprende lo que te han prometido, los temas en los que debes profundizar, tus tendencias y la actitud que debes tener.", image: "images/Illustration of Fortune Telling Session.png", alt: "Sesión de adivinación" },
     { step: 9, title: "La carta natal no es una adivinación", description: "Es una ayuda para interpretar científicamente la astrología. Sólo puede ser creada e interpretada por personas experimentadas y certificadas.", image: "images/Illustration of Tarot Reader with Cards.png", alt: "Lector de tarot con cartas" },
-    { step: 12, title: "Descubre tu potencial", description: "Cada respuesta nos acerca más a revelar tu verdadero potencial astrológico y las oportunidades que el universo tiene preparadas para ti.", image: "images/Illustration of Witch Practicing Magic.png", alt: "Bruja practicando magia" }
+    { step: 12, title: "Descubre tu potencial", description: "Cada respuesta nos acerca más a revelar tu verdadero potencial astrológico y las oportunidades que el universo tiene preparadas para ti.", image: "images/Illustration of Fortune Telling Session.png", alt: "Bruja practicando magia" }
 ];
 
 // Inicialización cuando se carga la página
@@ -26,6 +26,19 @@ document.addEventListener('DOMContentLoaded', function() {
     setupEventListeners();
     populateSelectOptions();
     showStep(1);
+    
+    // Debug: Mostrar estado inicial
+    console.log('📊 Estado inicial:', testAnswers);
+    
+    // Debug: Simular datos de prueba para el paso 4
+    setTimeout(() => {
+        console.log('🧪 Simulando datos de prueba...');
+        testAnswers.birthTime.hour = '14';
+        testAnswers.birthTime.minute = '30';
+        console.log('📊 Estado después de simulación:', testAnswers);
+    }, 2000);
+    
+
 });
 
 // Inicializar el test
@@ -161,6 +174,16 @@ function setupTextInputs() {
         
         input.addEventListener('input', function() {
             clearFieldError(this);
+            // Guardar el valor en tiempo real
+            const step = this.closest('.test-step').dataset.step;
+            const fieldName = this.name;
+            const value = this.value;
+            
+            if (step === '2') {
+                // Nombre y apellidos
+                if (fieldName === 'firstName') testAnswers.firstName = value;
+                if (fieldName === 'lastName') testAnswers.lastName = value;
+            }
         });
     });
     
@@ -171,16 +194,16 @@ function setupTextInputs() {
             const fieldName = this.name;
             const value = this.value;
             
-            if (step === '2') {
+            if (step === '3') {
                 // Fecha de nacimiento
                 if (fieldName === 'birthDay') testAnswers.birthDate.day = value;
                 if (fieldName === 'birthMonth') testAnswers.birthDate.month = value;
                 if (fieldName === 'birthYear') testAnswers.birthDate.year = value;
-            } else if (step === '3') {
+            } else if (step === '4') {
                 // Hora de nacimiento
                 if (fieldName === 'birthHour') testAnswers.birthTime.hour = value;
                 if (fieldName === 'birthMinute') testAnswers.birthTime.minute = value;
-            } else if (step === '4') {
+            } else if (step === '5') {
                 // Lugar de nacimiento
                 testAnswers.birthPlace = value;
             }
@@ -436,6 +459,8 @@ function populateSelectOptions() {
 
 // Mostrar paso específico
 function showStep(stepNumber) {
+    console.log(`👁️ Mostrando paso ${stepNumber}`);
+    
     // Ocultar todos los pasos
     const allSteps = document.querySelectorAll('.test-step');
     allSteps.forEach(step => {
@@ -447,6 +472,7 @@ function showStep(stepNumber) {
     const fillerPage = fillerPages.find(page => page.step === stepNumber);
     
     if (fillerPage) {
+        console.log(`📖 Es una página de relleno:`, fillerPage);
         // Mostrar página de relleno como modal
         showFillerPage(fillerPage);
         // Mostrar el paso anterior para que el usuario pueda ver el test
@@ -459,11 +485,15 @@ function showStep(stepNumber) {
             }
         }
     } else {
+        console.log(`📝 Es un paso normal del test`);
         // Mostrar el paso normal del test
         const currentStepElement = document.getElementById(`step${stepNumber}`);
         if (currentStepElement) {
             currentStepElement.style.display = 'block';
             currentStepElement.classList.add('active');
+            console.log(`✅ Paso ${stepNumber} mostrado correctamente`);
+        } else {
+            console.log(`❌ No se encontró el elemento para el paso ${stepNumber}`);
         }
     }
     
@@ -529,24 +559,29 @@ function updateContinueButton(stepNumber) {
 
 // Siguiente paso
 function nextStep() {
+    console.log(`🚀 Intentando avanzar desde paso ${currentStep}`);
+    
     if (currentStep < totalSteps) {
-        // Primero validar el paso actual
-        if (validateCurrentStep()) {
-            // Verificar si después de este paso debe mostrar una página de relleno
-            const fillerPage = fillerPages.find(page => page.step === currentStep);
+        // Verificar si el paso actual debe mostrar una página de relleno
+        const fillerPage = fillerPages.find(page => page.step === currentStep);
+        
+        if (fillerPage) {
+            console.log(`📖 Mostrando página de relleno para paso ${currentStep}`);
+            // Mostrar página de relleno sin incrementar el paso
+            showFillerPage(fillerPage);
+        } else if (validateCurrentStep()) {
+            console.log(`✅ Validación exitosa, avanzando al paso ${currentStep + 1}`);
+            // Avanzar al siguiente paso real del test
+            currentStep++;
+            showStep(currentStep);
             
-            if (fillerPage) {
-                // Mostrar página de relleno después de completar el paso
-                showFillerPage(fillerPage);
-            } else {
-                // Avanzar al siguiente paso real del test
-                currentStep++;
-                showStep(currentStep);
-                
-                // Scroll al top
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-            }
+            // Scroll al top
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        } else {
+            console.log(`❌ Validación fallida en paso ${currentStep}`);
         }
+    } else {
+        console.log(`🏁 Ya estás en el último paso (${currentStep})`);
     }
 }
 
@@ -687,6 +722,8 @@ function skipStep() {
 function validateCurrentStep() {
     const currentStepElement = document.getElementById(`step${currentStep}`);
     
+    console.log(`🔍 Validando paso ${currentStep}:`, testAnswers);
+    
     switch (currentStep) {
         case 1: // Sexo
             if (!testAnswers.gender) {
@@ -695,79 +732,90 @@ function validateCurrentStep() {
             }
             break;
             
-        case 2: // Fecha de nacimiento
+        case 2: // Nombre y apellidos
+            console.log('📝 Validando nombre y apellidos:', {
+                firstName: testAnswers.firstName,
+                lastName: testAnswers.lastName
+            });
+            if (!testAnswers.firstName || !testAnswers.lastName) {
+                showNotification('Por favor completa tu nombre y apellidos', 'error');
+                return false;
+            }
+            break;
+            
+        case 3: // Fecha de nacimiento
             if (!testAnswers.birthDate.day || !testAnswers.birthDate.month || !testAnswers.birthDate.year) {
                 showNotification('Por favor completa tu fecha de nacimiento', 'error');
                 return false;
             }
             break;
             
-        case 3: // Hora de nacimiento
+        case 4: // Hora de nacimiento
+            console.log('🕐 Validando hora de nacimiento:', {
+                hour: testAnswers.birthTime.hour,
+                minute: testAnswers.birthTime.minute
+            });
             if (!testAnswers.birthTime.hour || !testAnswers.birthTime.minute) {
                 showNotification('Por favor completa tu hora de nacimiento', 'error');
                 return false;
             }
             break;
             
-        case 4: // Lugar de nacimiento
+        case 5: // Lugar de nacimiento
             if (!testAnswers.birthPlace) {
                 showFieldError(document.getElementById('birthPlace'), 'Este campo es requerido');
                 return false;
             }
             break;
             
-        case 5: // Situación sentimental
+        case 6: // Situación sentimental
             if (!testAnswers.relationshipStatus) {
                 showNotification('Por favor selecciona tu situación sentimental', 'error');
                 return false;
             }
             break;
             
-        case 6: // Carta natal previa
+        case 7: // Carta natal previa
+            console.log('📋 Validando carta natal previa:', {
+                hasNatalChart: testAnswers.hasNatalChart
+            });
             if (!testAnswers.hasNatalChart) {
                 showNotification('Por favor responde si te has hecho una carta natal', 'error');
                 return false;
             }
             break;
             
-        case 7: // Temas de pensamiento
+        case 8: // Temas de pensamiento
             if (!testAnswers.currentThoughts) {
                 showNotification('Por favor selecciona en qué temas has pensado', 'error');
                 return false;
             }
             break;
             
-        case 8: // Elementos
+        case 9: // Elementos
             if (!testAnswers.element) {
                 showNotification('Por favor selecciona tu elemento dominante', 'error');
                 return false;
             }
             break;
             
-        case 9: // Rasgos de personalidad
+        case 10: // Rasgos de personalidad
             if (testAnswers.personalityTraits.length === 0) {
                 showNotification('Por favor selecciona al menos un rasgo de personalidad', 'error');
                 return false;
             }
             break;
             
-        case 10: // Compatibilidad con signos
+        case 11: // Compatibilidad con signos
             if (testAnswers.compatibleSigns.length === 0) {
                 showNotification('Por favor selecciona al menos un signo compatible', 'error');
                 return false;
             }
             break;
             
-        case 11: // Dificultades en la vida
+        case 12: // Dificultades en la vida
             if (!testAnswers.lifeDifficulties) {
                 showNotification('Por favor selecciona qué te ha costado más en la vida', 'error');
-                return false;
-            }
-            break;
-            
-        case 12: // Nombre
-            if (!testAnswers.fullName) {
-                showFieldError(document.getElementById('fullName'), 'Este campo es requerido');
                 return false;
             }
             break;
@@ -786,16 +834,7 @@ function validateCurrentStep() {
             }
             break;
             
-        case 15: // Email final
-            if (!testAnswers.finalEmail) {
-                showFieldError(document.getElementById('finalEmail'), 'Este campo es requerido');
-                return false;
-            }
-            if (!isValidEmail(testAnswers.finalEmail)) {
-                showFieldError(document.getElementById('finalEmail'), 'Introduzca un email válido');
-                return false;
-            }
-            break;
+
     }
     
     return true;
@@ -803,23 +842,43 @@ function validateCurrentStep() {
 
 // Guardar respuesta
 function saveAnswer(step, value) {
+    console.log(`💾 Guardando respuesta para paso ${step}:`, value);
+    
     switch (step) {
         case '1':
             testAnswers.gender = value;
             break;
+        case '2':
+            testAnswers.fullName = value;
+            break;
+        case '3':
+            // Fecha de nacimiento se maneja en setupTextInputs
+            break;
+        case '4':
+            // Hora de nacimiento se maneja en setupTextInputs
+            break;
         case '5':
-            testAnswers.relationshipStatus = value;
+            testAnswers.birthPlace = value;
             break;
         case '6':
-            testAnswers.hasNatalChart = value;
+            testAnswers.relationshipStatus = value;
             break;
         case '7':
-            testAnswers.currentThoughts = value;
+            testAnswers.hasNatalChart = value;
             break;
         case '8':
+            testAnswers.currentThoughts = value;
+            break;
+        case '9':
             testAnswers.element = value;
             break;
+        case '10':
+            // Rasgos de personalidad se maneja en setupOptionSelection
+            break;
         case '11':
+            // Compatibilidad con signos se maneja en setupOptionSelection
+            break;
+        case '12':
             testAnswers.lifeDifficulties = value;
             break;
         case '13':
@@ -828,7 +887,10 @@ function saveAnswer(step, value) {
         case '14':
             testAnswers.astrologicalPreferences = value;
             break;
+
     }
+    
+    console.log('📊 Estado actualizado:', testAnswers);
 }
 
 // Finalizar test
@@ -970,6 +1032,8 @@ function validateField(field) {
     
     // Guardar valor en testAnswers
     const fieldName = field.name;
+    if (fieldName === 'firstName') testAnswers.firstName = value;
+    if (fieldName === 'lastName') testAnswers.lastName = value;
     if (fieldName === 'fullName') testAnswers.fullName = value;
     if (fieldName === 'finalEmail') testAnswers.finalEmail = value;
     
